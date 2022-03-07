@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9298bb74-64dd-4aca-abbf-29631f84e7e2" name="Changes" comment="Changes" />
+    <list default="true" id="9298bb74-64dd-4aca-abbf-29631f84e7e2" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/.idea/Module 1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss2_tuduylaptrinh/bai_tap/Course1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss2_tuduylaptrinh/bai_tap/Course2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss2_tuduylaptrinh/bai_tap/Course3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/.idea/bai_tap.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/ThuatToanCauTrucDieuKien.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/ThuatToanChuyenDoiTienTe.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/ThuatToanTimMaxGiua3So.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/ThuatToanTinhTrungBinh.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/bai_tap/TimGiaTriLonNhatDaySo.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/thuc_hanh/GameDoanSo.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss3_magia_luudo/thuc_hanh/ThuatToanChuyenDoiNhietDo.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/bai_tap/bai_tap_clone.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/my_newproject/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/my_newproject/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/my_newproject/.idea/my_newproject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/my_newproject/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/my_newproject/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/my_newproject/my-new-project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss4_git/thuc_hanh/wf-hello" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss5_html/bai_tap/CVBanThan.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module 1/ss5_html/bai_tap/TaoDanhSach.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/my_newproject/my-new-project/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/my_newproject/my-new-project/head.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/wf-hello/hello.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/wf-hello/hello.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Module1/ss5_html/bai_tap/CVBanThan.html" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/ss5_html/bai_tap/CVBanThan.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +50,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="25kJXOIzr8FAuaEh6BxS4kb0CBj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,6 +82,10 @@
       <workItem from="1646117961551" duration="237000" />
       <workItem from="1646120232307" duration="145000" />
       <workItem from="1646120389120" duration="3000" />
+      <workItem from="1646660831875" duration="1038000" />
+      <workItem from="1646661938783" duration="204000" />
+      <workItem from="1646662679350" duration="326000" />
+      <workItem from="1646663022976" duration="1000" />
     </task>
     <servers />
   </component>
