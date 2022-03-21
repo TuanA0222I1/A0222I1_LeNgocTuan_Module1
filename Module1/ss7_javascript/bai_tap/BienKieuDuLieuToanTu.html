@@ -27,17 +27,17 @@
   var click = document.getElementById("click");
   var input5 = document.getElementById("input5")
 
-  input3.addEventListener("keyup",output1function);
-  click.addEventListener("mousedown",clickfunction);
+  input3.addEventListener("keyup",output1Function);
+  click.addEventListener("mousedown",clickFunction);
   input5.addEventListener("keyup",circle);
 
-  function output1function(){
+  function output1Function(){
     let sum = parseInt(input1.value) + parseInt(input2.value) + parseInt(input3.value);
     let avg = sum/3;
     document.getElementById("output1").innerHTML = sum;
     document.getElementById("output2").innerHTML = avg;
   }
-  function clickfunction() {
+  function clickFunction() {
     let a = document.getElementById("input4").value;
     let output3 = ( 160 + (parseInt(a)) * 9 ) / 5;
     document.getElementById("output3").innerHTML = output3;

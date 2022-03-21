@@ -18,24 +18,24 @@
     var multi = document.getElementById("multi");
     var div = document.getElementById("div");
 
-    add.addEventListener("click", AddFunction);
-    sub.addEventListener("click", SubFunction);
-    multi.addEventListener("click", MultiFunction);
-    div.addEventListener("click", DivFunction);
+    add.addEventListener("click", addFunction);
+    sub.addEventListener("click", subFunction);
+    multi.addEventListener("click", multiFunction);
+    div.addEventListener("click", divFunction);
 
-    function AddFunction() {
+    function addFunction() {
         let add = parseInt(input1.value) + parseInt(input2.value);
         document.getElementById("output").innerHTML = add;
     }
-    function SubFunction() {
+    function subFunction() {
         let sub = parseInt(input1.value) - parseInt(input2.value);
         document.getElementById("output").innerHTML = sub;
     }
-    function MultiFunction() {
+    function multiFunction() {
         let mut = parseInt(input1.value) * parseInt(input2.value);
         document.getElementById("output").innerHTML = mut;
     }
-    function DivFunction() {
+    function divFunction() {
         let div = parseInt(input1.value) / parseInt(input2.value);
         document.getElementById("output").innerHTML = div
     }

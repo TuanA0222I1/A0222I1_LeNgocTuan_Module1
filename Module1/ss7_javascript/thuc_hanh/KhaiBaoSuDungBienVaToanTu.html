@@ -26,11 +26,11 @@
     document.write(b + "<br>");
     document.write(c + "<br>");
     document.write(d + "<hr>");
-    input2.addEventListener("keyup",outputfunction);
+    input2.addEventListener("keyup",outputFunction);
     document.write("chu vi hinh tron " + PC +"<br>");
     document.write("dien tich hinh tron " + AC);
 
-    function outputfunction() {
+    function outputFunction() {
         let output = (parseInt(input1.value)+parseInt(input2.value))*2;
         document.getElementById("output").innerHTML= output;
     }

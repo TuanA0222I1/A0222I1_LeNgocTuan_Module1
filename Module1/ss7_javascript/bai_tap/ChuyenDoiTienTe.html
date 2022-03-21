@@ -68,7 +68,7 @@
     conv.addEventListener("click", convertCurrency);
 
     function convertCurrency() {
-      let output = parseInt(input1.value) * ((parseInt(input3.value) / parseInt(input2.value)));
+      let output = parseInt(input1.value) * ((parseInt(input2.value) / parseInt(input3.value)));
       document.getElementById("output").innerHTML = output;
     }
 
