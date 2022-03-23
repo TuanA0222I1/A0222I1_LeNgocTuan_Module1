@@ -14,11 +14,11 @@
     </form>
     <script>
 
-        var calcu = document.getElementById("calcu");
+        var calCu = document.getElementById("calCu");
 
-        calcu.addEventListener("click", dayfunction);
+        calCu.addEventListener("click", dayFunction);
 
-        function dayfunction() {
+        function dayFunction() {
             var input1 = parseInt(document.getElementById("input1").value);
             if (input1 > 12) {
                 document.getElementById("output1").innerHTML =" > 12 ";
@@ -33,10 +33,10 @@
                     case 10:
                     case 12:
                         document.getElementById("output1").innerHTML = input1;
-                        document.getElementById("output2").innerHTML = 31;
+                        document.getElementById("output2").innerHTML = "31";
                         break;
                     case 2:
-                        document.getElementById("output1").innerHTML = 2;
+                        document.getElementById("output1").innerHTML = "2";
                         document.getElementById("output2").innerHTML = "28 or 29";
                         break;
                     case 4:
@@ -44,7 +44,7 @@
                     case 8:
                     case 11:
                         document.getElementById("output1").innerHTML = input1;
-                        document.getElementById("output2").innerHTML = 30;
+                        document.getElementById("output2").innerHTML = "30";
                         break;
 
                 }
