@@ -8,7 +8,7 @@
 
 <body>
     <form>
-        <input type="number" name="month" id="input1"> <input type="button" name="calculator" id="calcu" value="Date">
+        <input type="number" name="month" id="input1"> <input type="button" name="calculator" id="calCu" value="Date">
         <p> Month <span id="output1"></span> have a <span id="output2"></span> days</p>
         <input type="reset" vae="Reset">
     </form>
@@ -21,7 +21,7 @@
         function dayFunction() {
             var input1 = parseInt(document.getElementById("input1").value);
             if (input1 > 12) {
-                document.getElementById("output1").innerHTML =" > 12 ";
+                document.getElementById("output1").innerHTML = " > 12 ";
                 document.getElementById("output2").innerHTML = "false";
             } else {
                 switch (input1) {

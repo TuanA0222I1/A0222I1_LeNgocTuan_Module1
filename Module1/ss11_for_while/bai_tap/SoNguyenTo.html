@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<script>
+    let numbers = parseInt(prompt("number?", ''));
+    let count = 0;
+    let N = 2;
+    let dem = 0;
+    while (count < numbers) {
+        for (let i = 1; i <= N; i++) {
+            if (N % i == 0) {
+                dem++;
+            }
+        }
+        if (dem == 2) {
+            document.write(N+" ");
+            count++;
+        }
+        N++;
+        dem = 0;
+    }
+</script>
+</body>
+</html>
