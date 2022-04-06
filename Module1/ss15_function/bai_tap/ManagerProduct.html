@@ -79,9 +79,13 @@
             document.getElementById("displayPro").innerHTML = str;
         }
         function editProduct(i) {
-            let newPro = prompt("Edit Product");
-            if (!PRODUCT.includes(newPro)) {
-                PRODUCT[i] = newPro;
+            let checkProduct = PRODUCT[i];
+            let newProduct = prompt("Edit Product");
+            if (newProduct == "") {
+                alert("Edit Again");
+                newProduct = checkPro;
+            } else if (!PRODUCT.includes(newProduct)) {
+                PRODUCT[i] = newProduct;
                 console.log(PRODUCT);
             } else {
                 alert("Same");
@@ -96,8 +100,12 @@
             displayProduct(PRODUCT);
         }
         function addNew(i) {
+            let checkProduct = PRODUCT[i];
             let productNew = document.getElementById("inputProduct").value;
-            if (!PRODUCT.includes(productNew)) {
+            if (productNew == "") {
+                alert("Add New Again");
+                newProduct = checkPro;
+            } else if (!PRODUCT.includes(productNew)) {
                 PRODUCT.push(productNew);
                 console.log(PRODUCT);
                 inputProduct.value = "";
