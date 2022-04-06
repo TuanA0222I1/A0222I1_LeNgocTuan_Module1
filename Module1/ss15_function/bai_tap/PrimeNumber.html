@@ -19,9 +19,18 @@
             }
             return true;
         }
-        let numbOfCheck = prompt("Input number want to check ");
-        let notice = primeNumber(numbOfCheck) ? `${numbOfCheck} is prime number` : `${numbOfCheck} not a prime number`;
-        document.write(notice);
+        
+        // let numbOfCheck = prompt("Input number want to check ");
+        // let notice = primeNumber(numbOfCheck) ? `${numbOfCheck} is prime number` : `${numbOfCheck} not a prime number`;
+        // document.write(notice);
+
+        let result = "Prime Number: ";
+        for (let i = 2; i < 10000; i++) {
+            if (primeNumber(i)) {
+                result += i + ", ";
+            }
+        }
+        document.write(result);
     </script>
 </body>
 
