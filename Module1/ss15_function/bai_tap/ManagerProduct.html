@@ -79,11 +79,9 @@
             document.getElementById("displayPro").innerHTML = str;
         }
         function editProduct(i) {
-            let checkProduct = PRODUCT[i];
             let newProduct = prompt("Edit Product");
             if (newProduct == "") {
                 alert("Edit Again");
-                newProduct = checkPro;
             } else if (!PRODUCT.includes(newProduct)) {
                 PRODUCT[i] = newProduct;
                 console.log(PRODUCT);
@@ -100,11 +98,9 @@
             displayProduct(PRODUCT);
         }
         function addNew(i) {
-            let checkProduct = PRODUCT[i];
             let productNew = document.getElementById("inputProduct").value;
             if (productNew == "") {
                 alert("Add New Again");
-                newProduct = checkPro;
             } else if (!PRODUCT.includes(productNew)) {
                 PRODUCT.push(productNew);
                 console.log(PRODUCT);
