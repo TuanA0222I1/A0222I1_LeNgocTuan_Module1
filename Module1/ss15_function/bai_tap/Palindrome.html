@@ -15,14 +15,17 @@
         //     let lens = 0;
         //     let length = textArr.length;
         //     for (i = 0; i < Math.floor(length / 2); i++) {
-        //         if (textArr[lens] == textArr[length - 1]) {
-        //             return true;
+        //         for (let i = 0; i < Math.floor(length / 2) + 1; i++) {
+        //             let temp = i;
+        //             if (textArr[i] != textArr[length - i - 1]) {
+        //                 return false;
+        //             }
         //         }
-        //         lens++;
-        //         length--;
+        //         return true;
         //     }
         // }
-        
+
+
         function isPalindrome(text) { //de quy
             let length = text.length;
             if (length == 1 || length == 0) return true;
