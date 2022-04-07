@@ -19,8 +19,7 @@
 
         // them 1 gia tri cua doi so cua ham
         function plusArgument(argument) {
-            argument++;
-            return argument;
+            return ++argument;
         }
         function actionPlusArgument() {
             let input = parseInt(prompt("Input argument"));
@@ -29,17 +28,13 @@
 
         // so sanh 2 doi so cua ham 
         function comparisons(a, b) {
-            if (a > b) {
-                return "a > b";
-            }
-            if (b > a) {
-                return (a + b);
-            }
+            if (a > b) return "a > b";
+            if (b > a) return (a + b);
         }
-        function greaterOfLesser(){
+        function greaterOfLesser() {
             let a = parseInt(prompt("Input a"));
             let b = parseInt(prompt("Input b"));
-            alert(comparisons(a,b));
+            alert(comparisons(a, b));
         }
 
     </script>

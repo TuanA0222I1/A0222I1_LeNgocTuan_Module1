@@ -16,17 +16,13 @@
         let star2 = ["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", " Ursa Major", "Leo"];
 
         function findStar(name) {
-            if (star1.indexOf(name) == -1) {
-                return "not found ...";
-            }
-            let star = star2[star1.indexOf(name)];
-            return star;
+            return star1.indexOf(name) == -1 ? "not found ..." : star2[star1.indexOf(name)];
         }
 
-        function nameStar() {
-            let name = prompt("Name your star")
-            document.getElementById("output").innerHTML = "Star you find is " + findStar(name);
-        }
+            function nameStar() {
+                let name = prompt("Name your star")
+                document.getElementById("output").innerHTML = "Star you find is " + findStar(name);
+            }
     </script>
 </body>
 

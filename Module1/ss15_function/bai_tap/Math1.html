@@ -31,15 +31,15 @@
         // chu vi dien tich hinh tron
         const PI = 3.1415;
         function perimeterCircle(radius) {
-            //    if (radius <= 0) {
-            //        return "Try input radius again";
-            //   }
+            if (radius <= 0) {
+                return "Try input radius again";
+            }
             return 2 * radius * PI;
         }
         function areaCircle(radius) {
-            //   if (radius <= 0) {
-            //      return "Try input radius again";
-            //  }
+            if (radius <= 0) {
+                return "Try input radius again";
+            }
             return Math.pow(radius, 2) * PI;
         }
         function calculatorPerimeterCircle() {
@@ -54,12 +54,10 @@
         // giai thua 1 so
 
         function factorial(numb) {
-            if (numb == 0) {
-                return 1;
-            }
+            if (numb == 0) return 1;
             return numb * factorial(numb - 1);
         }
-        function calculatorFactorials(){
+        function calculatorFactorials() {
             let numb = parseInt(prompt("Input n"));
             document.getElementById("output3").innerHTML = "Factorial of Number is " + factorial(numb);
         }

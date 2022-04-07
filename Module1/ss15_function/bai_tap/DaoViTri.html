@@ -10,14 +10,14 @@
 
 <body>
     <script>
-        //   function reverseArray(numb) {
-        //   let array = numb.split("").reverse("").join("");
-        //   return array;
-        //   }
+          function reverseArray(numb) {
+          let array = numb.split("").reverse("").join("");
+          return array;
+          }
 
-        function reverseArray(numb){
-            return (numb == 0 )? "": reverseArray(numb.substr(1)) + numb.charAt (0);
-        }
+        // function reverseArray(numb){
+        //     return (numb == 0 )? "": reverseArray(numb.substr(1)) + numb.charAt (0);
+        // }
         
         let array = prompt("input element");
         console.log(array);
