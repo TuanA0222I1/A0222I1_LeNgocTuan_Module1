@@ -79,7 +79,7 @@
             document.getElementById("displayPro").innerHTML = str;
         }
         function editProduct(i) {
-            let newProduct = prompt("Edit Product");
+            let newProduct = prompt("Edit Product",PRODUCT[i]);
             if (newProduct == "") {
                 alert("Edit Again");
             } else if (!PRODUCT.includes(newProduct)) {
