@@ -33,17 +33,19 @@
             if (checkPlayer1 && isNotData(i, j)) {
                 array[i][j] = "X";
                 checkPlayer1 = false;
+                display();
                 if (checkWin()) {
                     alert("Player X win");
                 };
             } else if (!checkPlayer1 && isNotData(i, j)) {
                 array[i][j] = "O";
                 checkPlayer1 = true;
+                display();
                 if (checkWin()) {
                     alert("Player O win");
                 };
             }
-            display();
+  
         }
         function isNotData(i, j) {
             if (array[i][j] == "") {
