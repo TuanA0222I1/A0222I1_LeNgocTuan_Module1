@@ -1,31 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <canvas id="output" style="border:1px solid #d3d3d3;" ></canvas>
+  <body>
+    <canvas
+      id="canvasRectangle"
+      width="400"
+      height="200"
+      style="border: 1px solid #0b0b0b"
+    ></canvas>
+    <p>Perimeter : <span id="output1"></span></p>
+    <p>Area: <span id="output2"></span></p>
+    <canvas
+      id="canvasCircle"
+      width="400"
+      height="200"
+      style="border: 1px solid #0b0b0b"
+    ></canvas>
+    <p></p>
+    <canvas
+      id="canvasLine"
+      width="400"
+      height="200"
+      style="border: 1px solid #0b0b0b"
+    ></canvas>
+
     <script>
-        let rectangle = {
-            length: 100,
-            height: 50,
-            getArea: function (length,height) {
-                return height * length;
-            },
-            getPerimeter: function (length,height) {
-                return 2 * (height + length);
-            },
-            getCreateRectangle: function (length,height){
-                let rectangle = document.getElementById("output").getContext("2d");
-            },
-            
-          }
-    </script>
-</body>
+      // Rectangle
+      const Rectangle = function (canvas, position, width, height, color) {
+        this.canvas = canvas;
+        this.position = position;
+        this.height = height;
+        this.width = width;
+        this.color = color;
+        this.permit = function () {
+          return 2 * (this.height + this.width);
+        };
+        this.area = function () {
+          return this.height * this.width;
+        };
+        this.draw = function () {
+          canvas.fillStyle = this.color;
+          canvas.fillRect(
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+          ); // ve x truoc y sau
+        };
+      };
+      let canvas = document.getElementById("canvasRectangle").getContext("2d");
+      let rect1 = new Rectangle(canvas, { x: 200, y: 20 }, 150, 50, "red");
+      rect1.draw();
+      let rect2 = new Rectangle(canvas, { x: 40, y: 40 }, 140, 70, "blue");
+      rect2.draw();
+      document.getElementById("output1").innerHTML = rect1.permit();
+      document.getElementById("output2").innerHTML = rect1.area();
 
+      // Circle
+      const Circle = function (canvas, position, radius, color) {
+        this.canvas = canvas;
+        this.position = position;
+        this.radius = radius;
+        this.color = color;
+        this.draw = function () {
+          canvas.beginPath();
+          canvas.fillStyle = this.color;
+          canvas.arc(this.position.x, this.position.y, this.radius,0 , 2 * Math.PI); // toa do x, y, ban kinh, diem bat dau la 0 do, chu vi
+          canvas.fill();
+        };
+      };
+      let canvas1 = document.getElementById("canvasCircle").getContext("2d");
+      let circle = new Circle(canvas1, { x: 150, y: 100 }, 70, "green");
+      circle.draw();
+
+      // ve line
+      const Line = function (canvas, positionBegin, positionEnd) {
+        this.canvas = canvas;
+        this.positionBegin = positionBegin;
+        this.positionEnd = positionEnd;
+        this.draw = function () {
+          canvas.moveTo(this.positionBegin.x,this.positionBegin.y);
+          canvas.lineTo(this.positionEnd.x,this.positionEnd.y);
+          canvas.stroke();
+        };
+      };
+      let canvas2 = document.getElementById("canvasLine").getContext("2d");
+      let line = new Line(canvas2, {x: 20, y: 50}, {x:200, y:100} );
+      line.draw();
+    </script>
+  </body>
 </html>
