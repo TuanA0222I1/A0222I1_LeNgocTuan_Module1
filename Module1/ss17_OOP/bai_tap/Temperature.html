@@ -11,12 +11,14 @@
     <div>Celsius To Kelvin <span id="celsiusToKelvin"></span></div>
     <div>Celsius To Fahrenheit <span id="celsiusToFar"></span></div>
     <script>
-      const TemperatureCelsius = function (temperature) {
+      class TemperatureCelsius {
+        constructor(temperature) {
         this.temperature = Math.max(temperature, -273);
-        this.getConverterFar = function () {
+        }
+        getConverterFar() {
           return (9 / 5) * this.temperature + 32;
         };
-        this.getConverterKelvin = function () {
+        getConverterKelvin() {
           return this.temperature + 273;
         };
       };

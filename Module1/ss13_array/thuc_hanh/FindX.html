@@ -16,31 +16,34 @@
     <button id="findX" onclick="findX()">Find X in Array</button>
     <div id="output"></div>
     <script>
-        let x = 0;
-        let array = Array();
+    let x = 0;
+    let array = Array();
 
-        function addArray() {
-            array[x] = document.getElementById("input1").value;
-            alert("Element add " + x + " - value: " + input1.value);
-            x++;
-            document.getElementById("input1").innerHTML = "";
-        }
-        function displayArray() {
-            let element = "<hr>"
-            for (lens = 0; lens < array.length; lens++) {
-                element += "Element " + lens + " - value " + array[lens] + "<br>";
+    function addArray() {
+        array[x] = document.getElementById("input1").value;
+        alert("Element add " + x + " - value: " + input1.value);
+        x++;
+        document.getElementById("input1").innerHTML = "";
+    }
 
-            } document.getElementById("output").innerHTML = element;
+    function displayArray() {
+        let element = "<hr>"
+        for (lens = 0; lens < array.length; lens++) {
+            element += "Element " + lens + " - value " + array[lens] + "<br>";
+
         }
-        function findX() {
-            let numbToFind = parseInt(prompt("number X want to find: "));
-            for ( lens = 0; lens < array.length ; lens ++){
-                if ( numbToFind == array[lens]){
-                    alert("Element want to find is " + lens + " value " + array[lens]);
-                    break;
-                }
+        document.getElementById("output").innerHTML = element;
+    }
+
+    function findX() {
+        let numbToFind = parseInt(prompt("number X want to find: "));
+        for (lens = 0; lens < array.length; lens++) {
+            if (numbToFind == array[lens]) {
+                alert("Element want to find is " + lens + " value " + array[lens]);
+                break;
             }
         }
+    }
     </script>
 </body>
 
