@@ -28,10 +28,10 @@
           console.table(`${this.name} talk ${this.voice}`);
         }
         eatApple(Apple) {
-          do {
+          while (Apple.weight > 0) {
             Apple.weight--;
             this.weight++;
-          } while (Apple.weight >  0);
+          }
           return this.weight;
         }
         checkApple(Apple) {
