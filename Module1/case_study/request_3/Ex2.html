@@ -11,10 +11,14 @@
       const numbers1 = [7, 2, 5, 3, 5, 3];
       const numbers2 = [7, 2, 5, 1, 1, 4, 6, 3, 5, 3];
       let checkArray = [];
+
+      // dung set
       //   function checkNumber() {
       //     const result = new Set(numbers2.filter(x => !numbers1.includes(x)));   // dung set thi return [...]
       //     return [...result];
       //   }
+      
+      // dung includes
       function checkNumber() {
         for (value of numbers2) {
           if (!numbers1.includes(value) && !(checkArray.includes(value))) {
