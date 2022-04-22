@@ -63,10 +63,8 @@
   </table>
   <script>
     var input1 = document.getElementById("input1");
-    var conv = document.getElementById("convert");
-
-    conv.addEventListener("click", convertCurrency);
-
+    var converter = document.getElementById("convert");
+    converter.addEventListener("click", convertCurrency);
     function convertCurrency() {
       let output = parseInt(input1.value) * ((parseInt(input2.value) / parseInt(input3.value)));
       document.getElementById("output").innerHTML = output;

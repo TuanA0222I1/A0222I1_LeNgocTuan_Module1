@@ -11,7 +11,6 @@
     <p>Array: <span id="output"></span></p>
     <script>
       let numbers = prompt("Number: ");
-      document.getElementById("input").innerHTML = numbers;
       let str = "";
       for (value of numbers) {
         str +=
@@ -39,7 +38,7 @@
       // Higher - order function
       // const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
       // const str = numbers.split("").map(x => words[x]).join(" ");
-      
+      document.getElementById("input").innerHTML = numbers;
       document.getElementById("output").innerHTML = str;
     </script>
   </body>
