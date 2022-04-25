@@ -20,7 +20,7 @@
       onclick="checkResult()"
     />
     <script>
-      let ticket = Array(5).fill(0);
+      let ticket = Array(4).fill(0);
       class Ticket {
         static win_Number = Array(6).fill(0);
         constructor() {
@@ -67,33 +67,29 @@
         }
 
         checkWin() {
-          let conditionWin = 0;
-          for (let i = 0; i < this.number.length; i++) {
-            for (let j = 0; j < Ticket.win_Number.length; j++) {
-              if (this.number[i] == Ticket.win_Number[j]) {
-                conditionWin++;
-              }
-            }
-          }
+          let conditionWin = this.number.filter((x) =>
+            Ticket.win_Number.includes(x)
+          ).length;
           switch (conditionWin) {
             case 3:
-              return alert(`Consolation prizes with 30$`);
+              alert(`Consolation prizes with 30$`);
               break;
             case 4:
-              return alert(`The second prize with 100$`);
+              alert(`The second prize with 100$`);
               break;
             case 5:
-              return alert(`The first prize with 200$`);
+              alert(`The first prize with 200$`);
               break;
             case 6:
-              return alert(`Jackpot with 10000$`);
+              alert(`Jackpot with 10000$`);
               break;
             default:
-              return alert(`Good Luck Next Time`);
+              alert(`Good Luck Next Time`);
               break;
           }
         }
       }
+
       function buyTicket() {
         for (let i = 0; i < 4; i++) {
           let choice = parseInt(
