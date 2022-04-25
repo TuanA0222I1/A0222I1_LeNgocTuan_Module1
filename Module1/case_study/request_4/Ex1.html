@@ -17,19 +17,24 @@
       //   .filter((x) => x.trim() != "")
       //   .map((x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase())
       //   .join(" ");
-      
-      let check = text.split(" ");
-      let str = "";
-      let max = 0;
 
-      for (value of check){
-        if(value == "") {
+      let check = text.split(" ");
+      console.log(check)
+      let str = "";
+      let max = [];
+
+      for (value of check) {
+        if (value == "") {
           continue;
         }
-        if(value.length > max){
-          max = value.charAt(0).toUpperCase() + value.substring(1).toLowerCase();
+        console.log(value.length);
+        if (value.length > max.length) {
+          max =
+            value.charAt(0).toUpperCase() + value.substring(1).toLowerCase();
         }
-        str += `${value.charAt(0).toUpperCase() + value.substring(1).toLowerCase()} `;
+        str += `${
+          value.charAt(0).toUpperCase() + value.substring(1).toLowerCase()
+        } `;
       }
 
       document.getElementById("input").innerHTML = text;
