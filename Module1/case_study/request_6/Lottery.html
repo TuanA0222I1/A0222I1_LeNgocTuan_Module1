@@ -25,7 +25,7 @@
         static win_Number = Array(6).fill(0);
         constructor() {
           this.min = 1;
-          this.max = 9;
+          this.max = 99;
           this.number = Array(6).fill(0);
         }
         randomNumber(min = this.min, max = this.max) {
@@ -59,7 +59,7 @@
           return this.displayTable(Ticket.win_Number);
         }
         displayTable(number = this.number) {
-          let str = "<table><tr>";
+          let str = "<table border ='1'><tr>";
           for (let i = 0; i < number.length; i++) {
             str += `<td> ${number[i]} </td>`;
           }
