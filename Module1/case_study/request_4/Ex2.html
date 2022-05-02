@@ -15,19 +15,18 @@
       // let text = new Set(arr);
       // let count = text.size;
 
-
-      function differentString(str){
-            let arr = [];
-            for ( let i = 0; i < str.length; i++){
-               if(!(arr.includes(str.charAt(i)))){
-                arr.push(str.charAt(i));
-               }
-            }
-            return arr.length;
+      function differentString(str) {
+        let arr = [];
+        for (let i = 0; i < str.length; i++) {
+          if (!arr.includes(str.charAt(i))) {
+            arr.push(str.charAt(i));
+          }
         }
-        let text = prompt("Input you text: ");
-        console.log(differentString(text));
-        document.getElementById("input").innerHTML = text;
+        return arr.length;
+      }
+      let text = prompt("Input you text: ");
+      console.log(differentString(text));
+      document.getElementById("input").innerHTML = text;
       document.getElementById("output").innerHTML = differentString(text);
     </script>
   </body>
