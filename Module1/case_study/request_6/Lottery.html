@@ -25,7 +25,7 @@
         static win_Number = Array(6).fill(0);
         constructor() {
           this.min = 1;
-          this.max = 99;
+          this.max = 9;
           this.number = Array(6).fill(0);
         }
         randomNumber(min = this.min, max = this.max) {
@@ -65,12 +65,14 @@
           }
           return (str += `</tr></table>`);
         }
-
         checkWin() {
-          let conditionWin = this.number.filter((x) =>
-            Ticket.win_Number.includes(x)
-          ).length;
-          switch (conditionWin) {
+          let conditionWin = [];
+          for (let i = 0; i < this.number.length; i++) {
+            if (!conditionWin.includes(this.number[i])) {
+              conditionWin.push(this.number[i]);
+            }
+          }
+          switch (conditionWin.length) {
             case 3:
               alert(`Consolation prizes with 30$`);
               break;
