@@ -65,14 +65,12 @@
           }
           return (str += `</tr></table>`);
         }
+
         checkWin() {
-          let conditionWin = [];
-          for (let i = 0; i < this.number.length; i++) {
-            if (!conditionWin.includes(this.number[i])) {
-              conditionWin.push(this.number[i]);
-            }
-          }
-          switch (conditionWin.length) {
+          let conditionWin = this.number.filter((x) =>
+            Ticket.win_Number.includes(x)
+          ).length;
+          switch (conditionWin) {
             case 3:
               alert(`Consolation prizes with 30$`);
               break;
