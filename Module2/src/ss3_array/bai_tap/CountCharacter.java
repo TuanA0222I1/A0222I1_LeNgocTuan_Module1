@@ -3,7 +3,7 @@ package ss3_array.bai_tap;
 import java.util.Scanner;
 
 public class CountCharacter {
-    //    public static int countCharacterInString(String text, String target){
+//        public static int countCharacterInString(String text, String target){
 //        int count = 0;
 //        String[] newString = text.split("");
 //        for (String i: newString){
@@ -13,6 +13,7 @@ public class CountCharacter {
 //        }
 //        return count;
 //    }
+
     public static int countCharacterInString(String text, char target) {
         int count = 0;
         for (int i = 0; i < text.length(); i++){
