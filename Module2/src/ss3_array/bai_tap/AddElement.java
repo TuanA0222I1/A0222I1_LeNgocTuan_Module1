@@ -24,10 +24,8 @@ public class AddElement {
             idx = scanner.nextInt();
             if (idx >= lens) {
                 System.out.println("index MUST smaller length numbs");
-                continue;
-            }else if (idx < 0) {
+            } else if (idx < 0) {
                 System.out.println("index MUST bigger 0");
-                continue;
             } else {
                 System.out.print("Input value you want to add: ");
                 break;
@@ -35,11 +33,7 @@ public class AddElement {
         }
 
         int value = scanner.nextInt();
-        for (int i = 0; i < lens; i++) {
-            if (i == idx) {
-                numbs[i] = value;
-            }
-        }
+        numbs[idx] = value;
         System.out.print("List Number: ");
         for (int i : numbs) {
             System.out.printf("%d ", i);

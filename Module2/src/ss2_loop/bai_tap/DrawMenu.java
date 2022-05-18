@@ -12,6 +12,7 @@ public class DrawMenu {
             System.out.println("2. Square triangle");
             System.out.println("3. Isosceles triangle");
             System.out.println("4. Out");
+            System.out.print("Your choice: ");
             choice = scanner.nextByte();
             if (choice <= 0) System.out.println("Your choice MUST bigger 0");
             if (choice == 1) {
@@ -66,6 +67,7 @@ public class DrawMenu {
                 }
                 System.out.println(triangle);
             } else {
+                System.out.print("Bye");
                 break;
             }
         }
