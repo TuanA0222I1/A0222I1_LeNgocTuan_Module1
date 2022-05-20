@@ -22,7 +22,7 @@ public class SumsInColumn {
         System.out.print("Input length: ");
         lens = scanner.nextInt();
         while (true){
-            System.out.print("\n Column your want calculator: ");
+            System.out.print("\nColumn your want calculator: ");
             column = scanner.nextInt();
             if(column < lens) break;
         }

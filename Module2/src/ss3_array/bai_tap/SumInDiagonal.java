@@ -14,11 +14,22 @@ public class SumInDiagonal {
         return ans;
     }
 
-    public static int calculatorDiagonal(int[][] nums) {
+    public static int calculatorDiagonalLeftToRight(int[][] nums) {
         int diagonal = 0;
         for (byte i = 0; i < nums.length; i++) {
             for (byte j = 0; j < nums[i].length; j++) {
                 if (i == j) {
+                    diagonal += nums[i][j];
+                }
+            }
+        }
+        return diagonal;
+    }
+    public static int calculatorDiagonalRightToLeft(int[][] nums) {
+        int diagonal = 0;
+        for (byte i = 0; i < nums.length; i++) {
+            for (byte j = 0; j < nums[i].length; j++) {
+                if (j == nums.length - i - 1) {
                     diagonal += nums[i][j];
                 }
             }
@@ -38,6 +49,7 @@ public class SumInDiagonal {
             }
         }
         System.out.printf("List Numbers:\n%s", displayNumbs(numbers));
-        System.out.printf("With diagonal %d",calculatorDiagonal(numbers));
+        System.out.printf("With diagonal left to right: %d\n",calculatorDiagonalLeftToRight(numbers));
+        System.out.printf("With diagonal right to left: %d\n",calculatorDiagonalRightToLeft(numbers));
     }
 }

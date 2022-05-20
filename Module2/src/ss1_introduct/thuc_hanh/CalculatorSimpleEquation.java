@@ -16,9 +16,9 @@ public class CalculatorSimpleEquation {
             x = -b/a;
            System.out.printf("x: %f",x);
         } else if( b == 0){
-            System.out.println("The solution is all x!");
+            System.out.println("The Solution is all x!");
         } else {
-            System.out.println("No solution!");
+            System.out.println("No Solution!");
         }
     }
 }
