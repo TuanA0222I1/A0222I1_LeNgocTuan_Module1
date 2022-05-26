@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Diagram>
   <ID>JAVA</ID>
-  <OriginalElement>ss4_oop.bai_tap.quadratic_equation.QuadraticEquation</OriginalElement>
+  <OriginalElement>ss4_oop.bai_tap.fan.Fan</OriginalElement>
   <nodes>
-    <node x="-365.0" y="-211.0">ss4_oop.bai_tap.quadratic_equation.QuadraticEquation</node>
+    <node x="-552.0" y="-294.0">ss4_oop.bai_tap.fan.Fan</node>
   </nodes>
   <notes />
   <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="-223.0" y="-65.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="-297.5" y="-57.0" />
   <SelectedNodes>
-    <node>ss4_oop.bai_tap.quadratic_equation.QuadraticEquation</node>
+    <node>ss4_oop.bai_tap.fan.Fan</node>
   </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
