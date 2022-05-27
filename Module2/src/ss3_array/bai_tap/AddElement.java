@@ -12,7 +12,7 @@ public class AddElement {
         numbs[2] = 3;
         numbs[3] = 8;
         numbs[4] = 9;
-        System.out.print("List numbers: ");
+        System.out.print("NewList numbers: ");
         for (int i = 0; i < lens; i++) {
             System.out.printf("%d ", numbs[i]);
         }
@@ -34,7 +34,7 @@ public class AddElement {
 
         int value = scanner.nextInt();
         numbs[idx] = value;
-        System.out.print("List Number: ");
+        System.out.print("NewList Number: ");
         for (int i : numbs) {
             System.out.printf("%d ", i);
         }

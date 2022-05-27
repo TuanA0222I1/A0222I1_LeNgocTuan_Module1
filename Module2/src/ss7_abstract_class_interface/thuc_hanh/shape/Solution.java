@@ -12,12 +12,12 @@ public class Solution {
         circles[3] = new Circle(2f, "yellow");
         circles[4] = new Circle(4.2f, "azure");
         circles[5] = new Circle(1f, "green");
-        System.out.print("List before sort\n");
+        System.out.print("NewList before sort\n");
         for (Circle circle : circles) {
             System.out.println(circle.getInfo());
         }
         Arrays.sort(circles);
-        System.out.print("List after sort:\n");
+        System.out.print("NewList after sort:\n");
         for (Circle circle : circles) {
             System.out.println(circle.getInfo());
         }

@@ -9,7 +9,7 @@ public class MaxInArray {
                 max = i;
             }
         }
-        System.out.print("List number: ");
+        System.out.print("NewList number: ");
         for(byte i :numbers){
             System.out.printf("%d\t",i);
         }

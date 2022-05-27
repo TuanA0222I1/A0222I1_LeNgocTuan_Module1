@@ -21,7 +21,7 @@ public class MinInNumbers {
             System.out.printf("Input element %d: ",i);
             numbers[i] = scanner.nextInt();
         }
-        System.out.print("List number: ");
+        System.out.print("NewList number: ");
         for(int i : numbers){
             System.out.printf("%d\t",i);
         }

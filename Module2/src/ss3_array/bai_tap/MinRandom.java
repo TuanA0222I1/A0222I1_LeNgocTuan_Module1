@@ -23,7 +23,7 @@ public class MinRandom {
         for (byte i = 0; i < lens; i++) {
             numbs[i] = (int) (Math.random() * 100) + 1;
         }
-        System.out.printf("List Number: %s",displayNumbs(numbs));
+        System.out.printf("NewList Number: %s",displayNumbs(numbs));
         System.out.printf("\nMin is: %s",findMinOfNumbs(numbs));
     }
 }

@@ -48,7 +48,7 @@ public class SumInDiagonal {
                 numbers[i][j] = (int) (Math.random() * 100);
             }
         }
-        System.out.printf("List Numbers:\n%s", displayNumbs(numbers));
+        System.out.printf("NewList Numbers:\n%s", displayNumbs(numbers));
         System.out.printf("With diagonal left to right: %d\n",calculatorDiagonalLeftToRight(numbers));
         System.out.printf("With diagonal right to left: %d\n",calculatorDiagonalRightToLeft(numbers));
     }

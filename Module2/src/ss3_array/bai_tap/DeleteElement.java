@@ -25,7 +25,7 @@ public class DeleteElement {
     }
 
     public static String displayNumber(int[] numbers) {
-        String result = "List Number: ";
+        String result = "NewList Number: ";
         for (int i : numbers) {
             result += i + " ";
         }

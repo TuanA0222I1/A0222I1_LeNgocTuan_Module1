@@ -35,6 +35,6 @@ public class SumsInColumn {
                 }
             }
         }
-        System.out.printf("List number: \n%swith Sum in Columm %d is %d",displayNumbs(numbers),column,result);
+        System.out.printf("NewList number: \n%swith Sum in Columm %d is %d",displayNumbs(numbers),column,result);
     }
 }
