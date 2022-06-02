@@ -2,9 +2,16 @@ package ss7_abstract_class_interface.bai_tap.color;
 
 public class Solution {
     public static void main(String[] args) {
-       Square square = new Square();
-       Square square1 = new Square(1.3,"yellow");
-       square.howToColor();
-       square1.howToColor();
+       Shape[] shapes = new Shape[5];
+       shapes[0] = new Square(1,"green");
+       shapes[1] = new Square();
+       shapes[2] = new SquareOrigin();
+       shapes[3] = new SquareOrigin(1,"black");
+       shapes[4] = new Square(2,"purple");
+        for (Shape shape : shapes) {
+            if(shape instanceof Colorable){
+                ((Colorable) shape).howToColor();
+            }
+        }
     }
 }

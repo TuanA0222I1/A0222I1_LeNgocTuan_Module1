@@ -104,7 +104,11 @@ public class MyList<Integer> {
 
     public void getInfo() {
         for (Object o : myList) {
-            System.out.print(o + ", ");
+            if (o == null) {
+                System.out.print("empty, ");
+            } else {
+                System.out.print(o + ", ");
+            }
         }
         System.out.println("\n");
     }

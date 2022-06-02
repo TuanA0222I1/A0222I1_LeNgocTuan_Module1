@@ -1,8 +1,8 @@
 package ss7_abstract_class_interface.bai_tap.color;
 
-public class Square implements Colorable {
-    private double width = 1;
-    private String color = "red";
+public class Square extends Shape implements Colorable {
+    private double width = 2;
+    private String color = "azure";
 
     public Square() {
     }

@@ -16,7 +16,7 @@ public class DrawMenu {
             choice = scanner.nextByte();
             if (choice <= 0) System.out.println("Your choice MUST bigger 0");
             if (choice == 1) {
-                String rectangle = "";
+                StringBuilder rectangle = new StringBuilder();
                 System.out.println("Input your height rectangle ");
                 byte height = scanner.nextByte();
                 System.out.println("Input your width rectangle");
@@ -24,46 +24,46 @@ public class DrawMenu {
                 for (byte i = 0; i < height; i++) {
                     if (i == 0 || i == height - 1) {
                         for (byte j = 0; j < width; j++) {
-                            rectangle += " * ";
+                            rectangle.append(" * ");
                         }
                     } else {
                         for (byte j = 1; j <= width; j++) {
-                            rectangle += j == 1 || j == width ? " * " : "   ";
+                            rectangle.append(j == 1 || j == width ? " * " : "   ");
                         }
                     }
-                    rectangle += "\n";
+                    rectangle.append("\n");
                 }
                 System.out.println(rectangle);
             } else if (choice == 2) {
-                String triangle = "";
+                StringBuilder triangle = new StringBuilder();
                 System.out.println("Input height in square triangle");
                 byte height = scanner.nextByte();
                 for (byte i = 0; i < height; i++) {
                     for (byte j = 0; j <= i; j++) {
-                        triangle += " * ";
+                        triangle.append(" * ");
                     }
-                    triangle += "\n";
+                    triangle.append("\n");
                 }
                 System.out.println(triangle);
             } else if (choice == 3) {
-                String triangle = "";
+                StringBuilder triangle = new StringBuilder();
                 System.out.println("Input your height in ");
                 byte height = scanner.nextByte();
                 for (byte i = 1; i <= height; i++) {
                     if (i == height) {
                         for (byte j = 1; j <= 2 * i - 1; j++) {
-                            triangle += " * ";
+                            triangle.append(" * ");
                         }
                     } else {
                         for (byte j = 1; j <= 2 * height + 1; j++) {
                             if (j == height - i + 1 || j == height + i - 1) {
-                                triangle += " * ";
+                                triangle.append(" * ");
                             } else {
-                                triangle += "   ";
+                                triangle.append("   ");
                             }
                         }
                     }
-                    triangle += "\n";
+                    triangle.append("\n");
                 }
                 System.out.println(triangle);
             } else {

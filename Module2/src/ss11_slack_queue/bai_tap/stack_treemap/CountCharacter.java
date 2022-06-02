@@ -1,4 +1,4 @@
-package ss11_slack_queue.bai_tap.reverse_stack;
+package ss11_slack_queue.bai_tap.stack_treemap;
 
 import java.util.Map;
 import java.util.TreeMap;

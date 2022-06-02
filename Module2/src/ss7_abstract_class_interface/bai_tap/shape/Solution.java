@@ -9,14 +9,13 @@ public class Solution {
         library[3] = new Square(2.4, "green");
         library[4] = new Rectangle();
         library[5] = new Rectangle(5.2, 4.2, "orange");
+        Square square = new Square(5.2,"black");
         for (Shape shape: library) {
             shape.getInfo();
+            shape.resize();
         }
-        library[0].resize();
-        library[1].resize();
-        library[2].resize();
-        library[3].resize();
-        library[4].resize();
-        library[5].resize();
+        System.out.println("Resize with interface: ");
+        square.getInfo();
+        square.resize();
     }
 }

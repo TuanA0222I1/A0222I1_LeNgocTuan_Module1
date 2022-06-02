@@ -15,7 +15,7 @@ public class Square extends Shape implements Resizeable {
     @Override
     public void resize() {
         double resize = randomPercent();
-        System.out.printf("New Area: %f with resize %.2f %%\n", getArea() * resize, resize*100);
+        System.out.printf("New Area of Square: %.2f with resize %.2f %%\n", getArea() * resize, resize*100);
     }
 
 

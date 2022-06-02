@@ -20,6 +20,6 @@ public class Solution {
         myList.removeObjectInIndex(myList.findIndexOfObject(14)); //remove object 14
         System.out.println("List: ");
         myList.getInfo();
-        myList.addObjectInIndex(52,44); // index too big
+        myList.addObjectInIndex(52,44); // catch exception index too big
     }
 }
