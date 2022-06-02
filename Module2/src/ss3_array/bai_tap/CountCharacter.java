@@ -3,9 +3,9 @@ package ss3_array.bai_tap;
 import java.util.Scanner;
 
 public class CountCharacter {
-//        public static int countCharacterInString(String text, String target){
+//        public static int countCharacterInString(String text.txt, String target){
 //        int count = 0;
-//        String[] newString = text.split("");
+//        String[] newString = text.txt.split("");
 //        for (String i: newString){
 //            if(i.toLowerCase().equals(target.toLowerCase())){
 //                count++;
@@ -26,7 +26,7 @@ public class CountCharacter {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Input your text: ");
+        System.out.print("Input your text.txt: ");
         String text = scanner.nextLine();
         System.out.print("Input character: ");
         char value = scanner.nextLine().charAt(0);

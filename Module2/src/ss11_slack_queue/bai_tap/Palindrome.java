@@ -15,7 +15,7 @@ public class Palindrome {
         for (int i = 0; i < str.length(); i++) {
             ans.append(newStr.pop());
         }
-        return str.toLowerCase().equals(ans.toString().toLowerCase());
+        return str.equalsIgnoreCase(ans.toString());
     }
 
     public static boolean isPalindromeQueue(String str) {
@@ -25,7 +25,7 @@ public class Palindrome {
             newStr.add(str.charAt(i));
             ans.append(newStr.remove());
         }
-        return str.toLowerCase().equals(ans.toString().toLowerCase());
+        return str.equalsIgnoreCase(ans.toString());
     }
 
     public static boolean isPalindrome(String str) {

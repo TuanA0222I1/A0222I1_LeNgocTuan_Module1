@@ -126,7 +126,7 @@ public class NumberToString {
                 ans += numberInTenDigits == 2 ? "twenty" : numberInTenDigits == 3 ? "thirty" : numberInTenDigits == 4 ? "forty" : numberInTenDigits == 5 ? "fifty" : numberInTenDigits == 6 ? "sixty" : numberInTenDigits == 7 ? "seventy" : numberInTenDigits == 8 ? "eighty" : "ninety";
                 ans += unitDigits == 1 ? " one" : unitDigits == 2 ? " two" : unitDigits == 3 ? " three" : unitDigits == 4 ? " four" : unitDigits == 5 ? " five" : unitDigits == 6 ? " six" : unitDigits == 7 ? " seven" : unitDigits == 8 ? " eight" : " nine";
             }
-            System.out.println("Number to text is: " + ans);
+            System.out.println("Number to text.txt is: " + ans);
         }
     }
 }

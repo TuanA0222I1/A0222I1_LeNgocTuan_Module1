@@ -110,6 +110,6 @@ public class MyList<Integer> {
                 System.out.print(o + ", ");
             }
         }
-        System.out.println("\n");
+        System.out.println("\nSize list now is " + getSizeOfList() + "\n");
     }
 }
