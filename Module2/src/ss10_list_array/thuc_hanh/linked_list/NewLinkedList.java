@@ -8,19 +8,6 @@ public class NewLinkedList {
         head = new Node(data);
     }
 
-    public class Node {
-        private Node next;
-        private Object data;
-
-        public Node(Object data) {
-            this.data = data;
-        }
-
-        public Object getData() {
-            return data;
-        }
-    }
-
     public void addData(int index, Object data) {
         Node temp = (Node) head;
         Node holder;
