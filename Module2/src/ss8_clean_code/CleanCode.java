@@ -53,8 +53,8 @@ public class CleanCode {
         int diff = Math.abs(point1 - point2);
         if (diff == 1 && point1 > point2) return advantage_player = "Advantage Player 1";
         if (diff == 1 && point1 < point2) return advantage_player = "Advantage Player 2";
-        if (diff == 2 && point1 > point2) return win_player = "Player 1 WIN";
-        if (diff == 2 && point1 < point2) return win_player = "Player 2 WIN";
+        if (diff >= 2 && point1 > point2) return win_player = "Player 1 WIN";
+        if (diff >= 2 && point1 < point2) return win_player = "Player 2 WIN";
         return "Never";
     }
 
