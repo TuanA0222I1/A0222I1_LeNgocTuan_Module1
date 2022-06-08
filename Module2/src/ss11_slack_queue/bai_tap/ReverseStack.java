@@ -1,4 +1,4 @@
-package ss11_slack_queue.bai_tap.stack_treemap;
+package ss11_slack_queue.bai_tap;
 
 import java.util.ArrayList;
 import java.util.Stack;
