@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Solution {
     private static final String COMMA_DELIMITER = ",";
+    //D:\CODEGYM\Full module\Module2\src\ss16_text_file\bai_tap\read_csv\NationList.csv
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

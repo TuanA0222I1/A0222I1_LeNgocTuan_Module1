@@ -13,7 +13,9 @@ public class ExistCharacterIsMax {
         int MAX = Integer.MIN_VALUE;
         for (int i = 0; i < str.length(); i++) {
             int finalI = i;
-            List<String> findCharacter = stringArrayList.stream().filter(x -> x.equalsIgnoreCase(stringArrayList.get(finalI))).collect(Collectors.toList());
+            List<String> findCharacter = stringArrayList.stream()
+                    .filter(x -> x.equalsIgnoreCase(stringArrayList.get(finalI)))
+                    .collect(Collectors.toList());
             if (findCharacter.size() > MAX) {
                 MAX = findCharacter.size();
                 result = findCharacter;

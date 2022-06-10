@@ -150,8 +150,7 @@ public class Solution {
     }
 
     public static void displayData(List<Product> list) {
-        for (Product pro : list
-        ) {
+        for (Product pro : list) {
             System.out.println(pro);
         }
     }
