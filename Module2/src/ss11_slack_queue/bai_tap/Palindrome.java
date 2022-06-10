@@ -23,7 +23,7 @@ public class Palindrome {
         StringBuilder ans = new StringBuilder();
         for (int i = (str.length() - 1); i >= 0; i--) {
             newStr.add(str.charAt(i));
-            ans.append(newStr.remove());
+            ans.append(newStr.poll());
         }
         return str.equalsIgnoreCase(ans.toString());
     }
@@ -36,7 +36,7 @@ public class Palindrome {
             queue.add(str.toLowerCase().charAt(i));
         }
         for (int i = 0; i < str.length(); i++) {
-            if(stack.pop() != queue.remove()) return false;
+            if(stack.pop() != queue.poll()) return false;
         }
         return true;
     }
