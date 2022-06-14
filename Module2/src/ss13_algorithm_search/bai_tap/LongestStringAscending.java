@@ -19,10 +19,12 @@ public class LongestStringAscending {
                 tempe.push(value);
                 continue;
             }
+
             if (value < tempe.peek()) {
 //                tempe.clear();
                 continue;
             }
+
             tempe.push(value);
             if (tempe.size() > MAX) {
                 MAX = tempe.size();
@@ -39,19 +41,13 @@ public class LongestStringAscending {
         }
         return str.toString();
     }
+
 // find longest string lower -> higher in ASCII;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Input your String: ");
         String yourStr = scanner.nextLine();
 //        String str = "aabbccaadcbaaabbccss"; // -> result = dcbaaa
-        long start = LocalDateTime.now()
-                .toInstant(OffsetDateTime.now().getOffset())
-                .toEpochMilli();
         System.out.println(findLongestStringAscending(yourStr));
-        long end = LocalDateTime.now()
-                .toInstant(OffsetDateTime.now().getOffset())
-                .toEpochMilli();
-        System.out.println(end - start + " minutes seconds");
     }
 }

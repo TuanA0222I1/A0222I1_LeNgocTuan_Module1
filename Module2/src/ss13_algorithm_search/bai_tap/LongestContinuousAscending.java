@@ -13,9 +13,11 @@ public class LongestContinuousAscending {
                 temp.push(str.charAt(i));
                 continue;
             }
+
             if (str.charAt(i) < temp.peek()) {
                 temp.clear();
             }
+
             temp.push(str.charAt(i));
             if (temp.size() > MAX) {
                 MAX = temp.size();
