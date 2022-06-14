@@ -1,23 +1,20 @@
-package ss14.algorithm_sort.bai_tap;
+package ss14_algorithm_sort.bai_tap;
 
 import java.util.Arrays;
 
 public class InsertSort {
     public static int[] insertionSort(int[] numbers) {
-        Arrays.sort(numbers);
-        int position = 0;
-        int value = 0;
-
-        for (int i = 0; i < numbers.length; i++) {
-            position = i;
-            value = numbers[i];
-            while (position > 0 && value < numbers[i - 1]) {
-                numbers[i] = numbers[i - 1];
-                position--;
+        int length = numbers.length;
+        for (int i = 1; i < length; ++i) {
+            int key = numbers[i];
+            int j = i - 1;
+            while (j >= 0 && numbers[j] > key) {
+                numbers[j + 1] = numbers[j];
+                j = j - 1;
             }
-            numbers[position] = value;
+            numbers[j + 1] = key;
         }
-        return numbers;
+        return  numbers;
     }
 
     public static void main(String[] args) {
