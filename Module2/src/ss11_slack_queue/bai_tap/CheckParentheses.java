@@ -25,9 +25,9 @@ public class CheckParentheses {
                 stack.push(character);
                 continue;
             }
-            if (character == ')' && stack.pop() != '(') return false;
-            if (character == '}' && stack.pop() != '{') return false;
-            if (character == ']' && stack.pop() != '[') return false;
+            if (character == ')' && (stack.pop() != '(' || stack.empty())) return false;
+            if (character == '}' && (stack.pop() != '{' || stack.empty())) return false;
+            if (character == ']' && (stack.pop() != '[' || stack.empty())) return false;
         }
         return stack.isEmpty();
     }
