@@ -6,13 +6,13 @@ public class InsertSort {
     public static int[] insertionSort(int[] numbers) {
         int length = numbers.length;
         for (int i = 1; i < length; ++i) {
-            int key = numbers[i];
+            int value = numbers[i];
             int j = i - 1;
-            while (j >= 0 && numbers[j] > key) {
+            while (j >= 0 && numbers[j] > value) {
                 numbers[j + 1] = numbers[j];
                 j = j - 1;
             }
-            numbers[j + 1] = key;
+            numbers[j + 1] = value;
         }
         return  numbers;
     }

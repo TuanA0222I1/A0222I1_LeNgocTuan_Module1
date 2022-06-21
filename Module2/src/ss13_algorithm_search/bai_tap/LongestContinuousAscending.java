@@ -14,9 +14,13 @@ public class LongestContinuousAscending {
                 continue;
             }
 
-            if (str.charAt(i) < temp.peek()) {
+            if (str.charAt(i) < temp.peek()) {  // -> if ascending
                 temp.clear();
             }
+
+//            if (isExistCharacterInStack(temp, str.charAt(i))) { // if not ascending
+//                temp.clear();
+//            }
 
             temp.push(str.charAt(i));
             if (temp.size() > MAX) {
@@ -35,6 +39,12 @@ public class LongestContinuousAscending {
         return str.toString();
     }
 
+    public static boolean isExistCharacterInStack(Stack<Character> stack, Character character) {
+        for (Character value : stack) {
+            if (value.toString().equalsIgnoreCase(character.toString())) return true;
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
