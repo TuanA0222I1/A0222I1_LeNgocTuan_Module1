@@ -36,7 +36,7 @@ public class Solution {
 //                System.out.println("File already exists.");
 //            }
 
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file,true));
             for (String str : data) {
                 bufferedWriter.write(str + "\n");
 

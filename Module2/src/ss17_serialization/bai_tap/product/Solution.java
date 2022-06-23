@@ -91,7 +91,10 @@ public class Solution {
     }
 
     public static boolean isExist(List<Product> products, int id) {
-        return products.stream().anyMatch(x -> x.getId() == id);
+        for (Product product: products) {
+            if (product.getId() == (id)) return true;
+        }
+        return false;
     }
 
     public static void addDataIntoFile(String fileName, List<Product> list) {
