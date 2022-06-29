@@ -22,6 +22,7 @@ public class Solution {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println(data);
         return data;
     }
 
