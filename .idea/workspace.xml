@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9298bb74-64dd-4aca-abbf-29631f84e7e2" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/wf-hello" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/wf-hello" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/wf-hello/hello.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Module1/ss4_git/thuc_hanh/wf-hello/hello.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,15 +22,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Test" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/CODEGYM/Full module/Module2"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -58,10 +59,11 @@
       <workItem from="1646671463648" duration="31000" />
       <workItem from="1646671519615" duration="15000" />
       <workItem from="1655218065381" duration="69000" />
+      <workItem from="1656661683135" duration="21000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
 </project>
