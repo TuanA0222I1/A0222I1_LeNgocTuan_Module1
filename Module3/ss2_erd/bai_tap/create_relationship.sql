@@ -11,11 +11,14 @@ primary key(ma_ncc,sdt)
 );
 
 create table nha_lien_he(
-sdt varchar(10) primary key,
-ten_nguoi_lien_he varchar(10),
-address varchar(50),
-constraint fk_nha_lh_nha_cc foreign key (sdt) references nha_cc(sdt)
+ma_ncc varchar(10),
+sdt varchar(10),
+ten_nguoi_lien_he varchar(50),
+address varchar(50)
 );
+
+drop table nha_lien_he;
+alter table nha_lien_he add foreign key (ma_ncc,sdt) references nha_cc(ma_ncc,sdt);
 
 create table don_vi_dh(
 so_dh varchar(10) primary key,
