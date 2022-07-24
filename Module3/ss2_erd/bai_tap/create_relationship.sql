@@ -1,70 +1,73 @@
 create database if not exists relationship;
 
 use relationship;
-
-create table nha_cc(
-ma_ncc varchar(10),
-ten_cc varchar(50),
-dia_chi varchar(50),
-sdt varchar(10),
-primary key(ma_ncc,sdt)
+CREATE TABLE nha_lien_he (
+    sdt VARCHAR(10) primary key,
+    ten_nguoi_lien_he VARCHAR(50),
+    address VARCHAR(50)
 );
 
-create table nha_lien_he(
-ma_ncc varchar(10),
-sdt varchar(10),
-ten_nguoi_lien_he varchar(50),
-address varchar(50)
+CREATE TABLE nha_cc (
+    ma_ncc VARCHAR(10) primary key,
+    ten_cc VARCHAR(50),
+    dia_chi VARCHAR(50),
+    sdt VARCHAR(10),
+    FOREIGN KEY (sdt)
+        REFERENCES nha_lien_he (sdt)
 );
 
-drop table nha_lien_he;
-alter table nha_lien_he add foreign key (ma_ncc,sdt) references nha_cc(ma_ncc,sdt);
-
-create table don_vi_dh(
-so_dh varchar(10) primary key,
-ngaydh datetime,
-ma_ncc varchar(10),
-constraint fk_cc_dh foreign key (ma_ncc) references nha_cc(ma_ncc)
+CREATE TABLE don_vi_dh (
+    so_dh VARCHAR(10) PRIMARY KEY,
+    ngaydh DATETIME,
+    ma_ncc VARCHAR(10),
+    CONSTRAINT fk_cc_dh FOREIGN KEY (ma_ncc)
+        REFERENCES nha_cc (ma_ncc)
 );
 
-create table phieu_xuat(
-so_px varchar(10) primary key,
-ngay_xuat datetime
+CREATE TABLE phieu_xuat (
+    so_px VARCHAR(10) PRIMARY KEY,
+    ngay_xuat DATETIME
 );
 
-create table phieu_nhap(
-so_pn varchar(10) primary key,
-ngay_nhap datetime
+CREATE TABLE phieu_nhap (
+    so_pn VARCHAR(10) PRIMARY KEY,
+    ngay_nhap DATETIME
 );
 
-create table vat_tu(
-ma_vtu varchar(10) primary key,
-ten_vtu varchar(50)
+CREATE TABLE vat_tu (
+    ma_vtu VARCHAR(10) PRIMARY KEY,
+    ten_vtu VARCHAR(50)
 );
 
-create table cu_the_xuat_vat_tu(
-so_px varchar(10),
-ma_vtu varchar(10), 
-dg_xuat varchar(10),
-sl_xuat int,
-constraint fk_xuat_vt foreign key (so_px) references phieu_xuat(so_px),
-constraint fk_vt_xuat foreign key (ma_vtu) references vat_tu(ma_vtu)
+CREATE TABLE cu_the_xuat_vat_tu (
+    so_px VARCHAR(10),
+    ma_vtu VARCHAR(10),
+    dg_xuat VARCHAR(10),
+    sl_xuat INT,
+    CONSTRAINT fk_xuat_vt FOREIGN KEY (so_px)
+        REFERENCES phieu_xuat (so_px),
+    CONSTRAINT fk_vt_xuat FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
 
-create table cu_the_nhap_vat_tu(
-so_pn varchar(50),
-ma_vtu varchar(10),
-dg_nhap varchar(10),
-sl_nhap int,
-constraint fk_nhap_vt foreign key (so_pn) references phieu_nhap(so_pn),
-constraint fk_vt_nhap foreign key (ma_vtu) references vat_tu(ma_vtu)
+CREATE TABLE cu_the_nhap_vat_tu (
+    so_pn VARCHAR(50),
+    ma_vtu VARCHAR(10),
+    dg_nhap VARCHAR(10),
+    sl_nhap INT,
+    CONSTRAINT fk_nhap_vt FOREIGN KEY (so_pn)
+        REFERENCES phieu_nhap (so_pn),
+    CONSTRAINT fk_vt_nhap FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
 
-create table cu_the_dieu_hanh_vat_tu(
-so_dh varchar(10),
-ma_vtu varchar(10),
-ngay_dh date,
-so_luong int,
-constraint fk_dh_vt foreign key (so_dh) references don_vi_dh(so_dh),
-constraint fk_vt_dh foreign key (ma_vtu) references vat_tu(ma_vtu)
+CREATE TABLE cu_the_dieu_hanh_vat_tu (
+    so_dh VARCHAR(10),
+    ma_vtu VARCHAR(10),
+    ngay_dh DATE,
+    so_luong INT,
+    CONSTRAINT fk_dh_vt FOREIGN KEY (so_dh)
+        REFERENCES don_vi_dh (so_dh),
+    CONSTRAINT fk_vt_dh FOREIGN KEY (ma_vtu)
+        REFERENCES vat_tu (ma_vtu)
 );
