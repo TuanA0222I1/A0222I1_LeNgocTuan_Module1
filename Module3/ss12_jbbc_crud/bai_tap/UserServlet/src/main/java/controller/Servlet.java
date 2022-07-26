@@ -143,7 +143,7 @@ public class Servlet extends HttpServlet {
     private void insertUserIntoSQL(HttpServletRequest request, HttpServletResponse response) {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        String country = request.getParameter("country");
+        String country = request.getParameter("country").toUpperCase();
         userDTO.insertUser(name, email, country);
         try {
             request.setAttribute("message", "Create Successfully!!!");

@@ -2,6 +2,9 @@ package service;
 
 import models.User;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.DriverManager;
 
 import java.sql.Connection;
@@ -12,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDTOImpl implements UserDTO {
-    private String port = "jdbc:mysql://127.0.0.1/ss12_jdbc_crud";
-    private String userName = "root";
-    private String password = "cumeo144";
+    private final String port = "jdbc:mysql://127.0.0.1/ss12_jdbc_crud";
+
+    private final String path = "D:\\CODEGYM\\Full module\\Module3\\ss12_jbbc_crud\\bai_tap\\user.txt";
 
     public static final String INSERT_USERS_SQL = "INSERT INTO user_ss12 (name, email, country) VALUES " + " (?, ?, ?);";
 
@@ -28,6 +31,22 @@ public class UserDTOImpl implements UserDTO {
 
     public Connection getConnection() {
         Connection connection = null;
+        String userName = "";
+        String password = "";
+        boolean flag = true;
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = reader.readLine()) != null){
+                if(flag){
+                    userName = line;
+                    flag= false;
+                }
+                password = line;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(port, userName, password);
@@ -37,8 +56,8 @@ public class UserDTOImpl implements UserDTO {
         return connection;
     }
 
-        public List<User> searchUserByCountry(String target) {
-        List<User> users  = new ArrayList<>();
+    public List<User> searchUserByCountry(String target) {
+        List<User> users = new ArrayList<>();
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_COUNTRY)) {
             preparedStatement.setString(1, target);
             ResultSet rs = preparedStatement.executeQuery();
@@ -53,6 +72,7 @@ public class UserDTOImpl implements UserDTO {
         }
         return users;
     }
+
     @Override
     public User searchUserById(int id) {
         User user = null;
