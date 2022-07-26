@@ -17,7 +17,7 @@ import java.util.List;
 public class UserDTOImpl implements UserDTO {
     private final String port = "jdbc:mysql://127.0.0.1/ss12_jdbc_crud";
 
-    private final String path = "D:\\CODEGYM\\Full module\\Module3\\ss12_jbbc_crud\\bai_tap\\user.txt";
+    private final String path = "D:\\CODEGYM\\user.txt";
 
     public static final String INSERT_USERS_SQL = "INSERT INTO user_ss12 (name, email, country) VALUES " + " (?, ?, ?);";
 
