@@ -3,7 +3,6 @@ package models;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,8 +10,9 @@ import lombok.Setter;
 public class User {
     int id;
     String name;
-    String country;
     String email;
+    String country;
+
 
     public User setId(int id) {
         this.id = id;

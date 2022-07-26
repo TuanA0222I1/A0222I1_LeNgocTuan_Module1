@@ -5,13 +5,13 @@ import models.User;
 import java.util.List;
 
 public interface UserDTO {
-    User searchUser(int id);
+    User searchUserById(int id);
 
-    void insertUser(User user);
+    void insertUser(String name,String email,String country);
 
     boolean deleteUser(int id);
 
     boolean updateUser(User user);
 
-    List<User> getListUser();
+    List<User> getListUser(String query);
 }

@@ -30,7 +30,7 @@
         <c:if test='${requestScope["message"] != null}'>
             <span class="message">${requestScope["message"]}</span>
         </c:if>
-    </p>
+        </p>
     <a href="/list">
         <button class="btn btn-dark">Back List</button>
     </a>
