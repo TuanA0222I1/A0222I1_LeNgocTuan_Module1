@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDTOImpl implements UserDTO {
-    private final String port = "jdbc:mysql://127.0.0.1/ss12_jdbc_crud";
-
-    private final String path = "D:\\CODEGYM\\user.txt";
 
     public static final String INSERT_USERS_SQL = "INSERT INTO user_ss12 (name, email, country) VALUES " + " (?, ?, ?);";
 
@@ -30,10 +27,13 @@ public class UserDTOImpl implements UserDTO {
     public static final String UPDATE_USERS_SQL = "UPDATE user_ss12 SET name = ?,email= ?, country =? WHERE id = ?;";
 
     public Connection getConnection() {
+        String port = "jdbc:mysql://127.0.0.1/ss12_jdbc_crud";
         Connection connection = null;
         String userName = "";
         String password = "";
         boolean flag = true;
+        String path = "D:\\CODEGYM\\user.txt";
+        
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = reader.readLine()) != null){
@@ -49,6 +49,7 @@ public class UserDTOImpl implements UserDTO {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
+
             connection = DriverManager.getConnection(port, userName, password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
