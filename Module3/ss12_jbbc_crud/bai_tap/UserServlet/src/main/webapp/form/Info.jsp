@@ -16,18 +16,19 @@
 </head>
 <body>
 <header>Info User</header>
-<nav>
+<div class="user-info-delete">
     <% User user = (User) request.getAttribute("user"); %>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Id User : <%=user.getId()%></li>
-            <li class="list-group-item">Name User : <%=user.getName()%></li>
-            <li class="list-group-item">Email User : <%=user.getEmail()%></li>
-            <li class="list-group-item">Country User : <%=user.getCountry()%></li>
-        </ul>
-</nav>
-<aside>
-
-</aside>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Id User : <%=user.getId()%>
+        </li>
+        <li class="list-group-item">Name User : <%=user.getName()%>
+        </li>
+        <li class="list-group-item">Email User : <%=user.getEmail()%>
+        </li>
+        <li class="list-group-item">Country User : <%=user.getCountry()%>
+        </li>
+    </ul>
+</div>
 <footer>
     <div>
         <a href="/list">
