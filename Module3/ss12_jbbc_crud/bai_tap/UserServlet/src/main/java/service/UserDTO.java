@@ -9,9 +9,9 @@ public interface UserDTO {
 
     void insertUser(String name,String email,String country);
 
-    boolean deleteUser(int id);
+    void deleteUser(int id);
 
-    boolean updateUser(User user);
+    void updateUser(User user);
 
     List<User> getListUser(String query);
 }

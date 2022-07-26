@@ -104,30 +104,26 @@ public class UserDTOImpl implements UserDTO {
     }
 
     @Override
-    public boolean deleteUser(int id) {
-        boolean rowDeleted = false;
+    public void deleteUser(int id) {
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(DELETE_USERS_SQL);) {
             statement.setInt(1, id);
-            rowDeleted = statement.executeUpdate() > 0;
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rowDeleted;
     }
 
     @Override
-    public boolean updateUser(User user) {
-        boolean rowUpdated = false;
+    public void updateUser(User user) {
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
             statement.setInt(4, user.getId());
-            rowUpdated = statement.executeUpdate() > 0;
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return rowUpdated;
     }
 
     @Override
