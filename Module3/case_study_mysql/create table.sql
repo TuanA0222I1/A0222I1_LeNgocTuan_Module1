@@ -397,7 +397,7 @@ CREATE
     TRIGGER  count_sl_hd_after_update
  AFTER update ON hop_dong FOR EACH ROW 
     INSERT INTO trigger_data SET actions = 'delete' , ngay_action = NOW() , ngay_end_new = old.ngay_end , ngay_end_old = old.ngay_end , so_luong_hd_con = COUNT_SO_HD_CON_LAI();
-    
+
 drop table trigger_data;
 drop trigger count_sl_hd_after_delete;
 DROP TRIGGER IF EXISTS update_ngay_end;
@@ -421,27 +421,6 @@ end if;
 end$$
 
 DELIMITER ;
-use casestudy;
-
-DROP TRIGGER IF EXISTS delete_contract;
-
-DELIMITER $$
-create trigger delete_contract
-before delete on hop_dong for each row
-begin
-delete from hd_info where hd_info.ma_hd = old.ma_hd;
-end $$
-DELIMITER ;
-
-
-DROP TRIGGER IF EXISTS delete_customer;
-DELIMITER $$
-create trigger delete_customer
-before delete on khach_hang for each row
-begin
-delete from hop_dong where hop_dong.ma_kh = old.ma_kh;
-end $$
-DELIMITER ;
 
 DROP procedure IF EXISTS `searchMaHopDongInYear`;
 
@@ -453,3 +432,26 @@ select ma_hd from hop_dong where year(ngay_begin) = year_check;
 END$$
 
 DELIMITER ;
+
+DROP function IF EXISTS func_dem_dich_vu;
+ -- 27 a
+delimiter $$
+create function func_dem_dich_vu (money int)
+returns int
+deterministic
+begin
+	declare result int;
+	select count(*) into result from
+	(
+		select
+			dich_vu.ma_dv
+		from dich_vu
+			join hop_dong on hop_dong.ma_dv = dich_vu.ma_dv
+			left join hd_info on hop_dong.ma_hd = hd_info.ma_hd
+			left join dich_vu_kem on hd_info.ma_dv_kem= dich_vu_kem.ma_dv_kem
+		group by dich_vu.ma_dv
+		having SUM(chi_phi_thue + ifnull( so_luong * price,0)) >= money
+    ) as tmp;
+return result;
+end $$
+delimiter ;

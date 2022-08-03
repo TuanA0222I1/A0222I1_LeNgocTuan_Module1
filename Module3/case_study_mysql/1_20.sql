@@ -302,8 +302,10 @@ WHERE
             hop_dong
         WHERE
             YEAR(ngay_begin) < 2021);
-        use casestudy;
- DELETE FROM khach_hang 
+            
+        -- delete data 
+set foreign_key_checks  = 0;
+DELETE FROM khach_hang 
 WHERE
     ma_kh IN (SELECT 
         ma_kh
@@ -312,7 +314,8 @@ WHERE
     
     WHERE
         YEAR(ngay_begin) < 2021);
-            
+set foreign_key_checks  = 1;
+
 -- 19
 UPDATE dich_vu_kem 
 SET 

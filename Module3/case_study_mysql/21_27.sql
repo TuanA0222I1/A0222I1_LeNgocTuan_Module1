@@ -39,16 +39,10 @@ call create_new_hd(9,1,5,2); -- false because 9 is duplicate
 
 call create_new_hd(19,2,5,2); -- true because 19 is correct create_new_hd
 
+-- 27a
+select func_dem_dich_vu(4000000);
+
 -- 27b
 -- thu nghiem tinh ngay dai nhat theo ma khach hang
 SELECT CALCULATORDAYDIFFMAX(4);
 
-alter table hop_dong drop foreign key fk_hd_kh;
-
-DELETE hop_dong , khach_hang FROM khach_hang
-        INNER JOIN
-    hop_dong ON hop_dong.ma_kh = khach_hang.ma_kh 
-WHERE
-    khach_hang.ma_kh = 9;
-
-alter table hop_dong add constraint fk_hd_kh foreign key (ma_kh) references khach_hang(ma_kh);
