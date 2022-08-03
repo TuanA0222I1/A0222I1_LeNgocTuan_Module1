@@ -65,13 +65,16 @@ END$$
 
 DELIMITER ;
 
-DROP procedure IF EXISTS `new_procedure`;
+DROP procedure IF EXISTS `ss12_jdbc_crud`.`update_user`;
+;
 
 DELIMITER $$
 USE `ss12_jdbc_crud`$$
-CREATE PROCEDURE `new_procedure` (id_select int, new_name varchar(50), new_email varchar(50), new_country varchar(50))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_user`(id_select int, new_name varchar(50), new_email varchar(50), new_country varchar(50))
 BEGIN
 update user_ss12 set id=id_select,`name` = new_name,email=new_email,country=new_country where id= id_select;
 END$$
 
 DELIMITER ;
+;
+

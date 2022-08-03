@@ -57,7 +57,7 @@
 <footer>
     <div>
         <a href="/list">
-            <button class="btn btn-secondary"> Back List</button>
+            <button class="btn btn-secondary">Back List</button>
         </a>
     </div>
 </footer>
