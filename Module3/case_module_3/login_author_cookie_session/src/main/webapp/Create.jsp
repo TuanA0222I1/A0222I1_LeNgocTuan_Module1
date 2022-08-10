@@ -23,8 +23,8 @@
                 <li>
                     <a href="#"><img src="logo/cart.png" class="icon" alt="not found">My Cart</a>
                 </li>
-                <c:if test="${requestScope[message] != null }">
-                    <li>${requestScope[message]}</li>
+                <c:if test="${requestScope.message != null }">
+                    <li>${requestScope.message}</li>
                 </c:if>
                 <c:if test="${sessionScope.account != null }">
                     <li>Hello ${sessionScope.account.username}</li>
