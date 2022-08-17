@@ -1,6 +1,7 @@
-package service;
+package repository;
 
 import models.professional_furama.Service;
+import service.DTOService;
 import utils.Query;
 import utils.Utils;
 

@@ -1,4 +1,4 @@
-package service;
+package repository;
 
 import models.professional_furama.Contract;
 import utils.Query;

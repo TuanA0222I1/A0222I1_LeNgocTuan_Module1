@@ -1,4 +1,4 @@
-package service;
+package repository;
 
 import controller.MainServlet;
 import models.person.Customer;

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="models.person.Customer" %>
 <%@ page import="java.util.List" %>
-<%@ page import="service.CustomerService" %>
+<%@ page import="repository.CustomerService" %>
 <%@ page import="utils.Query" %>
 <%@ page import="models.extra.TypeCustomer" %><%--
   Created by IntelliJ IDEA.

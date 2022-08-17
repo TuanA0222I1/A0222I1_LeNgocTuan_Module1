@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="service.EmployeeService" %>
+<%@ page import="repository.EmployeeService" %>
 <%@ page import="java.util.List" %>
 <%@ page import="models.person.Employee" %>
 <%@ page import="utils.Query" %>
