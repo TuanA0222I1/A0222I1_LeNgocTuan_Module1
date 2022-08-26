@@ -6,7 +6,7 @@
 <%@ page import="models.professional_furama.Service" %>
 <%@ page import="models.professional_furama.Contract" %>
 <%@ page import="models.professional_furama.AttachService" %>
-<%@ page import="service.DetailsService" %>
+<%@ page import="repository.DetailsService" %>
 <%@ page import="models.professional_furama.ContractDetail" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="repository.EmployeeService" %>
+<%@ page import="service.impl.EmployeeService" %>
 <%@ page import="java.util.List" %>
 <%@ page import="models.person.Employee" %>
 <%@ page import="utils.Query" %>
@@ -60,10 +60,7 @@
         <td>Division</td>
         <td>Action</td>
     </tr>
-    <%
-        List<Employee> list = (List<Employee>) request.getAttribute("list");
-    %>
-    <c:forEach items="<%=list%>" var="item">
+    <c:forEach items="${requestScope.list}" var="item">
         <tr>
             <td><c:out value="${item.id}"></c:out></td>
             <td><c:out value="${item.name}"></c:out></td>
@@ -157,27 +154,24 @@
                     </div>
                     <div class="col-md-12 ">
                         <label class="form-label">Education Degree Id</label>
-                        <% List<Education> educations = (List<Education>) request.getAttribute("educations");%>
                         <select class="form-control" name="educations" id="educationEdit" required>
-                            <c:forEach items="<%=educations%>" var="item">
+                            <c:forEach items="${requestScope.educations}" var="item">
                                 <option value="${item.id}">${item.name}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="col-md-12 ">
                         <label class="form-label">Position</label>
-                        <% List<Position> positions = (List<Position>) request.getAttribute("positions");%>
                         <select class="form-control" name="positions" id="positionEdit" required>
-                            <c:forEach items="<%=positions%>" var="item">
+                            <c:forEach items="${requestScope.positions}" var="item">
                                 <option value="${item.id}">${item.name}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="col-md-12 ">
                         <label class="form-label">Division</label>
-                        <% List<Division> divisionList = (List<Division>) request.getAttribute("divisions");%>
                         <select class="form-control" name="divisions" id="divisionEdit" required>
-                            <c:forEach items="<%=divisionList%>" var="item">
+                            <c:forEach items="${requestScope.divisions}" var="item">
                                 <option value="${item.id}">${item.name}</option>
                             </c:forEach>
                         </select>

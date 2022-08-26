@@ -1,15 +1,15 @@
 package controller;
 
+import repository.DetailsService;
 import models.professional_furama.Contract;
 import models.person.Customer;
 import models.person.Employee;
 import models.professional_furama.ContractDetail;
 import models.professional_furama.Service;
-import repository.ContractService;
-import repository.CustomerService;
-import repository.EmployeeService;
-import repository.ServiceControl;
-import service.*;
+import service.impl.ContractService;
+import service.impl.CustomerService;
+import service.impl.EmployeeService;
+import service.impl.ServiceControl;
 import utils.DivertUrl;
 import utils.Query;
 import utils.Utils;

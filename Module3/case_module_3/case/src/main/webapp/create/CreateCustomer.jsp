@@ -72,17 +72,19 @@
 
                                                 <div class="form-outline">
                                                     <input type="date" name="birthday"
-                                                           value="dd/mm/yyyy"
+                                                           value="dd/MM/yyyy"
+                                                            min="1900-01-01"
+                                                           max="2022-09-01"
                                                            class="form-control form-control-lg" required/>
                                                     <label class="form-label" >Birth Day</label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="mb-4 pb-2">
                                                 <label>
                                                     <label class="form-label" >Type Customer</label>
                                                     <select class="select" name="customer_type" required>
                                                         <% List<TypeCustomer> list = (List<TypeCustomer>) request.getAttribute("listType");%>
-                                                        <c:forEach items="<%=list%>" var="item">
+                                                        <c:forEach items="${requestScope.listType}" var="item">
                                                             <option value="<c:out value="${item.id}"></c:out>">
                                                                 <c:out value="${item.name}"></c:out>
                                                             </option>

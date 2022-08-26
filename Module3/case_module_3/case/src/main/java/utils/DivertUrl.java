@@ -8,11 +8,8 @@ import models.professional_furama.AttachService;
 import models.professional_furama.Service;
 import models.person.Customer;
 import models.person.Employee;
-import repository.ContractService;
-import repository.CustomerService;
-import repository.EmployeeService;
-import repository.ServiceControl;
-import service.*;
+import repository.*;
+import service.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -20,7 +20,7 @@
     <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="index.jsp">Home</a>
     <a class="flex-sm-fill text-sm-center nav-link" href="/list?action=displayCustomer">Customer</a>
     <a class="flex-sm-fill text-sm-center nav-link" href="/list?action=displayEmployee">Employee</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="/list?action=displayService">Service</a>
+    <a class="flex-sm-fill text-sm-center nav-link" href="<c:url value="/list?action=displayService"/>">Service</a>
     <a class="flex-sm-fill text-sm-center nav-link" href="/list?action=displayContract">Contract</a>
 </nav>
 
@@ -85,7 +85,8 @@
 
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                    <input class="form-control" type="number" placeholder="0 Vnd" min="0" value="0" name="total_money"
+                                    <input class="form-control" type="number" placeholder="0 Vnd" min="0" value="0"
+                                           id="money" name="total_money"
                                            readonly></input>
                                 </div>
                             </div>
@@ -100,10 +101,11 @@
                                                     <%List<Customer> customers = (List<Customer>) request.getAttribute("customers");%>
                                                     <select class="select" name="customers" required>
                                                         <c:forEach items="<%=customers%>" var="item">
-                                                            <option value="${item.id}">Id: <c:out
-                                                                    value="${item.id}"></c:out>. Id card: <c:out
-                                                                    value="${item.id_card}"></c:out>. Name: <c:out
-                                                                    value="${item.name}"></c:out></option>
+                                                            <option value="${item.id}">Id:
+                                                                <c:out value="${item.id}"></c:out>. Id card:
+                                                                <c:out value="${item.id_card}"></c:out>. Name:
+                                                                <c:out value="${item.name}"></c:out>
+                                                            </option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -112,10 +114,11 @@
                                                     <%List<Employee> employees = (List<Employee>) request.getAttribute("employees");%>
                                                     <select class="select" name="employees" required>
                                                         <c:forEach items="<%=employees%>" var="item">
-                                                            <option value="${item.id}">Id: <c:out
-                                                                    value="${item.id}"></c:out>. Id card: <c:out
-                                                                    value="${item.id_card}"></c:out>. Name: <c:out
-                                                                    value="${item.name}"></c:out></option>
+                                                            <option value="${item.id}">Id:
+                                                                <c:out value="${item.id}"></c:out>. Id card:
+                                                                <c:out value="${item.id_card}"></c:out>. Name:
+                                                                <c:out value="${item.name}"></c:out>
+                                                            </option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -124,9 +127,9 @@
                                                     <%List<Service> services = (List<Service>) request.getAttribute("services");%>
                                                     <select class="select" name="services" required>
                                                         <c:forEach items="<%=services%>" var="item">
-                                                            <option value="${item.id}">Id: <c:out
-                                                                    value="${item.id}"></c:out>. Name: <c:out
-                                                                    value="${item.name}"></c:out></option>
+                                                            <option value="${item.id}">Id:
+                                                                <c:out value="${item.id}"></c:out>. Name:
+                                                                <c:out value="${item.name}"></c:out></option>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -137,8 +140,10 @@
                                                 </button>
                                                 <button type="reset" class="btn btn-warning btn-lg">Reset
                                                 </button>
-                                                <a href="/list?action=displayContract">
-                                                    <button type="button" class="btn btn-primary btn-lg ms-2">Back List</button>
+                                                <a href="${pageContext.request.contextPath}/list?action=displayContract">
+                                                    <button type="button" class="btn btn-primary btn-lg ms-2">Back
+                                                        List
+                                                    </button>
                                                 </a>
                                             </div>
                                         </div>
