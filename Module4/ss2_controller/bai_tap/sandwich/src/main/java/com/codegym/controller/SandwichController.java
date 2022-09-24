@@ -3,6 +3,7 @@ package com.codegym.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -12,7 +13,7 @@ public class SandwichController {
         return "/index";
     }
 
-    @GetMapping("/insert-sandwich")
+    @RequestMapping("/insert-sandwich")
     public String menuSandwich(@RequestParam("condiment") String[] condiment, Model model) {
         String result = getCondiment(condiment);
         model.addAttribute("message",result);
@@ -23,7 +24,7 @@ public class SandwichController {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Sandwich you choose have condiment: ");
         for (String str: condiment) {
-            stringBuilder.append(str);
+            stringBuilder.append(str).append(", ");
         }
         return stringBuilder.toString();
     }

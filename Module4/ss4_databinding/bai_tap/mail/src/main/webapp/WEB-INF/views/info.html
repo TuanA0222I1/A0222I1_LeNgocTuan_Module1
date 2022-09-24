@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>
+            Languages
+        </th>
+        <th>
+            Page Size
+        </th>
+        <th>
+            Spam Filter
+        </th>
+        <th>
+            Signature
+        </th>
+    </tr>
+    <tr th:each="item:${list}">
+        <td th:text="${item.getLanguages()}"></td>
+        <td th:text="${item.getPageSize()}"></td>
+        <td th:text="${item.isSpamFilter()}"></td>
+        <td th:text="${item.getSignature()}"></td>
+    </tr>
+    <tr>
+        <td>Create</td>
+        <td>
+            <a th:href="@{/}">
+                <button>Create</button>
+            </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

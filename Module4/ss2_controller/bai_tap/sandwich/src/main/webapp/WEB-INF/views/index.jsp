@@ -12,21 +12,21 @@
     <title>$Title$</title>
 </head>
 <body>
-<form action="/insert-sandwich" name="condiment">
+<form action="/insert-sandwich">
     <fieldset>
         <legend>Sandwich</legend>
         <table>
             <tr>
-                <td><input type="checkbox" name="lettuce">Lettuce</td>
+                <td><input type="checkbox" value="lettuce" name="condiment">Lettuce</td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="tomato">Tomato</td>
+                <td><input type="checkbox" value="tomato" name="condiment">Tomato</td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="mustard">Mustard</td>
+                <td><input type="checkbox" value="mustard" name="condiment">Mustard</td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="sprouts">Sprouts</td>
+                <td><input type="checkbox" value="sprouts" name="condiment">Sprouts</td>
             </tr>
             <tr>
                 <td><input type="submit"></td>

@@ -2,39 +2,43 @@ package com.produce.service;
 
 import com.produce.models.Produce;
 import com.produce.repository.IProduceRepos;
-import com.produce.repository.ProduceRepos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.*;
 
 @Service
-public class ProduceService implements IProduceService {
+public class ProduceService implements IProduceService<Produce> {
     @Autowired
-    IProduceRepos produceRepos = new ProduceRepos();
+    IProduceRepos<Produce> produceIProduceService;
 
     @Override
     public Produce findById(int id) {
-        return produceRepos.findById(id);
+        return produceIProduceService.findById(id);
     }
 
     @Override
     public void removeById(int id) {
-        produceRepos.removeById(id);
+        produceIProduceService.removeById(id);
     }
 
     @Override
     public void save(Produce produce) {
-        produceRepos.save(produce);
+        produceIProduceService.save(produce);
     }
 
     @Override
     public void update(Produce produce) {
-        produceRepos.update(produce);
+        produceIProduceService.update(produce);
     }
 
     @Override
     public Map<Integer, Produce> findAll() {
-        return produceRepos.findAll();
+        return produceIProduceService.findAll();
+    }
+
+    @Override
+    public Map<Integer, Produce> findByName(String name) {
+        return produceIProduceService.findByName(name.toLowerCase());
     }
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/create" th:object="${person}">
+    <fieldset>
+        <legend>
+            Hospital Form
+        </legend>
+        <table>
+            <tr>
+                <td>
+                    Name (*)
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{fullName}">
+                    </label>
+                    <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Year Born (*)</td>
+                <td>
+                    <label>
+                        <input type="number" th:field="*{yearBorn}">
+                    </label>
+                    <p th:if="${#fields.hasErrors('yearBorn')}" th:errors="*{yearBorn}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Passport Number (*)</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{passportNumber}">
+                    </label>
+                    <p th:if="${#fields.hasErrors('passportNumber')}" th:errors="*{passportNumber}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Vehicle (*)</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{vehicle}">
+                    </label>
+                    <p th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>Email (*)</td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{email}">
+                    </label>
+                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+                <td>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

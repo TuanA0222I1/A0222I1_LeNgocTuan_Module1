@@ -4,14 +4,16 @@ import com.produce.models.Produce;
 
 import java.util.Map;
 
-public interface IProduceRepos {
-   Produce findById(int id);
+public interface IProduceRepos<E> {
+    Produce findById(int id);
 
-   void removeById(int id);
+    Map<Integer, E> findByName(String name);
 
-   void save(Produce produce);
+    void removeById(int id);
 
-   void update(Produce produce);
+    void save(E e);
 
-   Map<Integer, Produce> findAll();
+    void update(E e);
+
+    Map<Integer, E> findAll();
 }

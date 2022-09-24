@@ -5,14 +5,16 @@ import com.produce.models.Produce;
 import java.util.List;
 import java.util.Map;
 
-public interface IProduceService {
+public interface IProduceService<E> {
     Produce findById(int id);
 
     void removeById(int id);
 
-    void save(Produce produce);
+    void save(E e);
 
-    void update(Produce produce);
+    void update(E e);
 
-    Map<Integer,Produce> findAll();
+    Map<Integer, E> findAll();
+
+    Map<Integer, E> findByName(String name);
 }

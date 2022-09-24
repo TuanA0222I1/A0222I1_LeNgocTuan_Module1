@@ -20,8 +20,6 @@ public class Translate {
         return "/home";
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
-
     @GetMapping("/translate")
     private String translateText(@RequestParam String text, Model model) {
         model.addAttribute("text",text);

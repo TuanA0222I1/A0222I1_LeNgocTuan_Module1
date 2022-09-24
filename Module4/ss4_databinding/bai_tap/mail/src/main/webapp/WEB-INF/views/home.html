@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eu">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/create" th:object="${mail}" method="get">
+    <fieldset>
+        <legend>Setting</legend>
+        <table>
+            <tr>
+                <td>Languages</td>
+                <td>
+                    <label>
+                        <select th:field="*{languages}">
+                            <option th:each="item: ${languagesList}" th:value="${item}" th:text="${item}">
+                            </option>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>Page Size:</td>
+                <td>
+                    <label>
+                        <select th:field="*{pageSize}">
+                            <option th:each="item: ${pageList}" th:value="${item}" th:text="${item}">
+                            </option>
+                        </select>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Spam Filter:
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" th:field="*{spamFilter}"> <span>Enable Filter</span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Signature:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{signature}" >
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Submit</button>
+                </td>
+                <td>
+                    <button type="reset">Reset</button>
+                </td>
+
+
+            </tr>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

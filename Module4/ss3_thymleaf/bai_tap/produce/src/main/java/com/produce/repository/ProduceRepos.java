@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class ProduceRepos implements IProduceRepos {
-    public static Map<Integer, Produce> list = new HashMap<>();;
+public class ProduceRepos implements IProduceRepos<Produce> {
+    public static Map<Integer, Produce> list = new HashMap<>();
 
     static {
         list.put(1, new Produce(1, "Pen", 123, "plastic", "SKYLER"));
@@ -19,6 +19,17 @@ public class ProduceRepos implements IProduceRepos {
     @Override
     public Produce findById(int id) {
         return list.get(id);
+    }
+
+    @Override
+    public Map<Integer, Produce> findByName(String name) {
+        Map<Integer,Produce> result= new HashMap<>();
+        for (Map.Entry<Integer,Produce> entry: list.entrySet()) {
+            if(entry.getValue().getName().toLowerCase().contains(name.toLowerCase())){
+                result.put(entry.getValue().getId(),entry.getValue());
+            }
+        }
+        return result;
     }
 
     @Override

@@ -1,11 +1,12 @@
 package com.dictionary.repository;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.TreeMap;
 
-@Service
+@Repository
 public class DictionaryImplRepos implements DictionaryRepos {
     static Map<String, String> map = new TreeMap<>();
 
