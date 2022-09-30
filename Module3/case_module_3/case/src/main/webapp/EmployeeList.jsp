@@ -112,7 +112,7 @@
 <%-- edit --%>
 <div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="/list?action=updateEmployee" method="post">
+        <form action="/contract?action=updateEmployee" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Edit title</h5>
