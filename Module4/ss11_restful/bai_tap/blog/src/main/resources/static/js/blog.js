@@ -1,3 +1,5 @@
+const base_url = window.location.origin;
+
 $(document).ready(function () {
     $('#getList').on('click', function () {
         getListBlog();
@@ -49,10 +51,17 @@ function listCategory() {
 
 function saveBlog() {
     const url_link = "http://localhost:8080/api/save";
+    const blogObj = {};
+
     const nameNew = $('#name').val();
     const contentNew = $('#content').val();
     const titleNew = $('#title').val();
     const categoryNew = $('#category').val();
+
+    blogObj.name = nameNew;
+    blogObj.content = contentNew;
+    blogObj.title = titleNew;
+    blogObj.category = categoryNew;
 
     const dataObject = {
         name: nameNew,
@@ -60,7 +69,7 @@ function saveBlog() {
         title: titleNew,
         category: categoryNew,
     }
-
+    console.log(blogObj);
     console.log(dataObject);
 
     $.ajax({
@@ -74,7 +83,8 @@ function saveBlog() {
         url: url_link,
         data: JSON.stringify(dataObject),
         success: function () {
-            $('#message').html('Status changed');
+            getListBlog();
+            $('#exampleModal').modal('hide');
         },
         error: function () {
             $('#message').html("data insert error");
@@ -93,22 +103,6 @@ function getListBlog() {
         success: function (blogJson) {
             console.log(blogJson);
             let table = drawData(blogJson)
-            // let table = "  <table class=\"table table-bordered\">\n" +
-            //     "        <thead>\n" +
-            //     "        <tr>\n" +
-            //     "            <th>Name</th>\n" +
-            //     "            <th>Content</th>\n" +
-            //     "            <th>Title</th>\n" +
-            //     "            <th>Category Name</th>\n" +
-            //     "            <th>Action</th>\n" +
-            //     "        </tr>\n" +
-            //     "        </thead>\n" +
-            //     "        <tbody>";
-            // for (let i = 0; i < blogJson.length; i++) {
-            //     table += getBlog(blogJson[i]);
-            // }
-            // table += "</tbody>\n" +
-            //     "    </table>"
             $('#table').html(table);
             $('#message').html("get data success");
         },
@@ -132,7 +126,7 @@ function drawData(blogJson) {
         "        <tbody>";
 
     for (let i = 0; i < blogJson.length; i++) {
-        table += getBlog(blogJson[i]);
+        table += drawRecord(blogJson[i]);
     }
 
     table += "</tbody>\n" +
@@ -140,7 +134,7 @@ function drawData(blogJson) {
     return table;
 }
 
-function getBlog(blog) {
+function drawRecord(blog) {
     return `<tr><td >${blog.name}</td><td >${blog.content}</td><td >${blog.title}</td><td >${blog.category.name}</td>` +
         `<td><button class="details" onclick="info(${blog.id})">Details</button></td></tr>`;
 }

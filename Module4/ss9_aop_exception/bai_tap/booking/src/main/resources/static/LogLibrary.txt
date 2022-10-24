@@ -1,0 +1,29 @@
+Rent id Book 2 where time is 2022-10-04
+Rent id Book 1 where time is 2022-10-04
+Rent id Book 1 where time is 2022-10-04
+Rent id Book 1 where time is 2022-10-04
+Rent id Book 2 where time is 2022-10-04
+Rent id Book 3 where time is 2022-10-04
+Rent id Book 2 where time is 2022-10-04
+Rent id Book 4 where time is 2022-10-04
+Rent id Book 5 where time is 2022-10-04
+Rent id Book 6 where time is 2022-10-04
+Return id rent book 10692 where time is 2022-10-04
+Return id rent book 10692 where time is 2022-10-04
+Return id rent book 10692 where time is 2022-10-04
+Return id rent book 18181 where time is 2022-10-04
+Rent id Book 4 where time is 2022-10-04
+Rent id Book 4 where time is 2022-10-04
+Rent id Book 5 where time is 2022-10-04
+Rent id Book 5 where time is 2022-10-04
+Rent id Book 3 where time is 2022-10-04
+Rent id Book 2 where time is 2022-10-04
+Return id rent book 22844 where time is 2022-10-04
+Return id rent book 13086 where time is 2022-10-04
+Return id rent book 28793 where time is 2022-10-04
+Rent id Book 4 where time is 2022-10-05
+Rent id Book 4 where time is 2022-10-05
+Rent id Book 4 where time is 2022-10-05
+Rent id Book 4 where time is 2022-10-05
+Rent id Book 4 where time is 2022-10-05
+Rent id Book 4 where time is 2022-10-05

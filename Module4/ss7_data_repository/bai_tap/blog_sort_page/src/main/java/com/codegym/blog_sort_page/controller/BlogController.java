@@ -54,7 +54,8 @@ public class BlogController {
     }
 
     @PostMapping("/update")
-    public String update(@Valid @ModelAttribute("blog") BlogDTO blogDTO, BindingResult result, RedirectAttributes attributes, Model model) {
+    public String update(@Valid @ModelAttribute("blog") BlogDTO blogDTO, BindingResult result,
+                         RedirectAttributes attributes, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("typeList", categoryService.findAll());
             return "form";
