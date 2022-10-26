@@ -1,0 +1,44 @@
+body {
+    background: azure;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    align-content: center;
+}
+
+.mainContainer{
+    position: relative;
+    top: 20px;
+    left: 7%;
+    width: 1030px;
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px;
+    grid-template-rows: 250px 250px;
+    grid-gap: 10px;
+}
+
+
+.item img {
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.item {
+    color: dodgerblue;
+    size: 10px;
+    text-align: center;
+}
+
+.page-container {
+    width: 80%;
+    position: relative;
+    left: 50%;
+}
