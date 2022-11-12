@@ -1,7 +1,9 @@
-const base_url = window.location.origin;
+const BASE_URL = window.location.origin;
+const MAX_LIMIT = 10;
+const BEGIN_PAGE = 0;
 
 
-jQuery(document).ready(function () {
+$(document).ready(function () {
     $('#getList').on('click', function () {
         getListPhone();
     });
@@ -19,17 +21,22 @@ jQuery(document).ready(function () {
     });
 })
 
+function saveLocalStorage(dataApi) {
+    const dataStr = JSON.stringify(dataApi);
+    localStorage.setItem('AllPhones', dataStr);
+}
+
 function searchPhone() {
     const modelSearch = $('#model_search').val();
-    console.log(modelSearch);
-    console.log(`${base_url}/api?searchModel=${modelSearch}`);
     $.ajax({
         type: "GET",
-        url: `${base_url}/api?searchModel=${modelSearch}`,
+        url: `${BASE_URL}/api?searchModel=${modelSearch}`,
         contentType: "application/json",
         dataType: 'json',
         success: function (event) {
-            document.getElementById("bodyTable").innerHTML = drawBodyTable(event);
+            saveLocalStorage(event);
+            document.getElementById("pageController").innerHTML = drawPage(event);
+            drawBodyTable(BEGIN_PAGE);
         },
         error: function (event) {
             if (event.status === 404) {
@@ -41,6 +48,7 @@ function searchPhone() {
 
 function editPhone() {
     const newId = $('#idEdit').val();
+    // const idnew = document.getElementById("idEdit").value;
     const newProducer = $('#edit-producer').val();
     const newModel = $('#edit-model').val();
     const newPrice = $('#edit-price').val();
@@ -52,12 +60,19 @@ function editPhone() {
     }
     $.ajax({
         type: "PUT",
-        url: `${base_url}/api/`,
+        url: `${BASE_URL}/api/`,
         contentType: "application/json",
         dataType: 'json',
         data: JSON.stringify(data),
         success: function (event) {
-            document.getElementById("bodyTable").innerHTML = drawBodyTable(event);
+            $('#editModal').modal("hide");
+            saveLocalStorage(event);
+            drawBodyTable(BEGIN_PAGE);
+        },
+        error: function (event) {
+            $("#error-producer-create").html(event.responseJSON.producer);
+            $("#error-model-create").html(event.responseJSON.model);
+            $("#error-price-create").html(event.responseJSON.price);
         }
     });
 }
@@ -73,13 +88,14 @@ function createPhone() {
     }
     $.ajax({
         type: "POST",
-        url: `${base_url}/api`,
+        url: `${BASE_URL}/api`,
         contentType: "application/json",
         dataType: 'json',
         data: JSON.stringify(data),
         success: function (event) {
-            document.getElementById("bodyTable").innerHTML = drawBodyTable(event);
-
+            $('#createModal').modal("hide");
+            saveLocalStorage(event)
+            drawBodyTable(BEGIN_PAGE);
         },
         error: function (event) {
             $("#error-producer-create").html(event.responseJSON.producer);
@@ -92,11 +108,13 @@ function createPhone() {
 function getListPhone() {
     $.ajax({
         type: "GET",
-        url: `${base_url}/api`,
+        url: `${BASE_URL}/api`,
         contentType: "application/json",
         dataType: 'json',
         success: function (event) {
-            document.getElementById("bodyTable").innerHTML = drawBodyTable(event);
+            saveLocalStorage(event);
+            document.getElementById("pageController").innerHTML = drawPage(event);
+            drawBodyTable(BEGIN_PAGE);
         },
         error: function (event) {
             if (event.status === 404) {
@@ -106,24 +124,43 @@ function getListPhone() {
     })
 }
 
-function drawBodyTable(event) {
-    let bodyTable = ""
-    for (let i = 0; i < event.length; i++) {
-        bodyTable += drawRecord(i, event[i]);
+function drawPage(data) {
+    let max_page = Math.ceil(data.length / MAX_LIMIT);
+    let page_list = "<ul class='pagination'>";
+    for (let i = 0; i < max_page; i++) {
+        page_list += `<li class="page-item"><li class="page-item"><button class="page-link" onclick="drawBodyTable(${i})"> ${i + 1}</button></li>`
     }
-    return bodyTable;
+    return page_list + "</ul>";
+}
+
+function drawBodyTable(page) {
+    let bodyTable = ""
+    const dataStr = localStorage.getItem('AllPhones');
+    const phones = JSON.parse(dataStr);
+    let i = page * MAX_LIMIT;
+    for (let j = 0; j < MAX_LIMIT; j++) {
+        if (phones[i] == null) continue;
+        bodyTable += drawRecord(j, phones[i++]);
+    }
+
+    document.getElementById("bodyTable").innerHTML = bodyTable;
 }
 
 function deletePhone() {
     const id = $("#deleteId").val();
     $.ajax({
         type: "PATCH",
-        url: `${base_url}/api/${id}`,
+        url: `${BASE_URL}/api/${id}`,
         contentType: "application/json",
         dataType: 'json',
         success: function (event) {
-            $('#delete').modal().hide();
-            document.getElementById("bodyTable").innerHTML = drawBodyTable(event);
+            $('#delete').modal("hide");
+            // $("[data-dismiss=modal]").trigger({ type: "click" });
+            saveLocalStorage(event);
+            // let checkItem = document.querySelector(".row-" + id);
+            // if (checkItem) {
+            //     checkItem.remove();
+            // }
         },
         error: function (event) {
             alert(event.responseJSON.messageError);
@@ -133,18 +170,18 @@ function deletePhone() {
 }
 
 function drawRecord(index, row) {
-    return `<tr>
+    return `<tr class = "row-${row.id}">
             <td>${index + 1}</td>
             <td>${row.producer}</td>
             <td>${row.model}</td>
             <td>${row.price}</td>
             <td> 
-               <button onclick="showInfoDelete(${row.id})" type="button"
-                    class="btn btn-outline-danger"
+               <button onclick="showInfoDelete(${row.id} ,'${row.model}')" type="button"
+                    class="btn btn-outline-danger" 
                     data-bs-toggle="modal" data-bs-target="#delete">
                     <i class="fa-solid fa-eraser"></i>
                 </button>   
-                <button onclick="showInfoEdit(${row.id})" type="button"
+                <button onclick="showInfoEdit(${row.id},'${row.producer}','${row.model}',${row.price})" type="button"
                     class="btn btn-outline-warning"
                     data-bs-toggle="modal" data-bs-target="#editModal">
                     <i class="fa-solid fa-highlighter"></i>
@@ -152,26 +189,32 @@ function drawRecord(index, row) {
             </tr>`
 }
 
-function showInfoDelete(id) {
+function showInfoDelete(id, model) {
     document.getElementById("deleteId").value = id;
+    document.getElementById("nameDelete").innerText = model;
 }
 
-function showInfoEdit(id) {
-    $.ajax({
-        type: "GET",
-        url: `${base_url}/api/${id}`,
-        contentType: "application/json",
-        dataType: 'json',
-        success: function (event) {
-            document.getElementById("idEdit").value = event.id;
-            document.getElementById("edit-producer").value = event.producer;
-            document.getElementById("edit-model").value = event.model;
-            document.getElementById("edit-price").value = event.price;
-        },
-        error: function (event) {
-            alert(event.responseJSON.messageError);
-        }
-    });
-
+function showInfoEdit(id, producer, model, price) {
+    document.getElementById("idEdit").value = id;
+    document.getElementById("edit-producer").value = producer;
+    document.getElementById("edit-model").value = model;
+    document.getElementById("edit-price").value = price;
 }
+
+// $.ajax({
+//     type: "GET",
+//     url: `${BASE_URL}/api/${id}`,
+//     contentType: "application/json",
+//     dataType: 'json',
+//     success: function (event) {
+//         document.getElementById("idEdit").value = event.id;
+//         document.getElementById("edit-producer").value = event.producer;
+//         document.getElementById("edit-model").value = event.model;
+//         document.getElementById("edit-price").value = event.price;
+//     },
+//     error: function (event) {
+//         alert(event.responseJSON.messageError);
+//     }
+// });
+
 

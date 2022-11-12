@@ -11,23 +11,22 @@
 <body>
   <div id="output"></div>
   <script>
-    // const HEIGHT = parseInt(prompt("height: "));
-    // let str = "";
-    // for (let i = 1; i <= HEIGHT; i++) {
-    //   if (i == HEIGHT) {
-    //     for (let k = 1; k <= HEIGHT; k++) {
-    //       str += " * ";
-    //     }
-    //   } else {
-    //     for (let j = 1; j <= i; j++) {
-    //       str += j == 1 || j == i ? " * " : " &nbsp&nbsp ";
-    //     }
-    //     str += "<br>";
-    //   }
-    // }
-    // document.getElementById("output").innerHTML = str;
-    var a = 1;
-    console.log(a);
+    const HEIGHT = parseInt(prompt("height: "));
+    let str = "";
+    for (let i = 1; i <= HEIGHT; i++) {
+      if (i == HEIGHT) {
+        for (let k = 1; k <= HEIGHT; k++) {
+          str += " * ";
+        }
+      } else {
+        for (let j = 1; j <= i; j++) {
+          str += j == 1 || j == i ? " * " : " &nbsp&nbsp ";
+        }
+        str += "<br>";
+      }
+    }
+    document.getElementById("output").innerHTML = str;
+
 
   </script>
 </body>
