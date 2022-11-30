@@ -1,14 +1,10 @@
 package com.example.product.controller;
 
-import com.example.product.dto.ProduceDto;
 import com.example.product.models.Produce;
 import com.example.product.service.IProduceService;
-import com.example.product.service.impl.ProduceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 

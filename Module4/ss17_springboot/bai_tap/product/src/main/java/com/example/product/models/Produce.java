@@ -21,7 +21,7 @@ public class Produce implements Serializable {
     public Produce(ProduceDto produceDto) {
         this(null,
                 produceDto.getName(),
-                produceDto.getDateToUse(),
+                Date.valueOf(produceDto.getDateToUse()),
                 produceDto.getNation(),
                 produceDto.getAvatar(),
                 produceDto.getColor(),

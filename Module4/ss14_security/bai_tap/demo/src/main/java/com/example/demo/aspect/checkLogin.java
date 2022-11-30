@@ -2,15 +2,16 @@ package com.example.demo.aspect;
 
 import com.example.demo.error.LoginBeforeAction;
 import com.example.demo.repos.IAuthenticationFacade;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 @Aspect
 @Configuration
 public class checkLogin {
+    Logger logger = LoggerFactory.getLogger(checkLogin.class);
     @Autowired
     IAuthenticationFacade authentication;
 

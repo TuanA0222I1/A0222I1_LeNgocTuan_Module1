@@ -2,6 +2,7 @@ package com.example.product.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
@@ -11,8 +12,8 @@ public class ProduceDto {
     @NotNull(message = "name field should be not null")
     String name;
 
-    @NotNull(message = "dateToUse field should be not null")
-    Date dateToUse;
+    @NotBlank(message = "dateToUse field should be not null")
+    String dateToUse;
 
     @NotNull(message = "nation field should be not null")
     String nation;

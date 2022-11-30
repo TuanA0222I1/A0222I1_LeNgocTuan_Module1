@@ -1,5 +1,5 @@
 const BASE_URL = window.location.origin;
-const MAX_LIMIT = 10;
+const MAX_LIMIT = 5;
 const BEGIN_PAGE = 0;
 
 
@@ -157,6 +157,8 @@ function deletePhone() {
             $('#delete').modal("hide");
             // $("[data-dismiss=modal]").trigger({ type: "click" });
             saveLocalStorage(event);
+            document.getElementById("pageController").innerHTML = drawPage(event);
+            drawBodyTable(BEGIN_PAGE);
             // let checkItem = document.querySelector(".row-" + id);
             // if (checkItem) {
             //     checkItem.remove();
@@ -200,21 +202,7 @@ function showInfoEdit(id, producer, model, price) {
     document.getElementById("edit-model").value = model;
     document.getElementById("edit-price").value = price;
 }
-
-// $.ajax({
-//     type: "GET",
-//     url: `${BASE_URL}/api/${id}`,
-//     contentType: "application/json",
-//     dataType: 'json',
-//     success: function (event) {
-//         document.getElementById("idEdit").value = event.id;
-//         document.getElementById("edit-producer").value = event.producer;
-//         document.getElementById("edit-model").value = event.model;
-//         document.getElementById("edit-price").value = event.price;
-//     },
-//     error: function (event) {
-//         alert(event.responseJSON.messageError);
-//     }
-// });
-
+window.onload = () => {
+    getListPhone();
+}
 
