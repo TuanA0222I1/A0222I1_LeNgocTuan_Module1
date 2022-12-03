@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChangeFontSizeComponent } from './change-font-size.component';
+import { PetComponent } from './pet.component';
 
-describe('ChangeFontSizeComponent', () => {
-  let component: ChangeFontSizeComponent;
-  let fixture: ComponentFixture<ChangeFontSizeComponent>;
+describe('PetComponent', () => {
+  let component: PetComponent;
+  let fixture: ComponentFixture<PetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChangeFontSizeComponent ]
+      declarations: [ PetComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChangeFontSizeComponent);
+    fixture = TestBed.createComponent(PetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

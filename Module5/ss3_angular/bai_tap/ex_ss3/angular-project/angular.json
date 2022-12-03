@@ -3,7 +3,7 @@
   "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "angular-change-size": {
+    "angular-project": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-change-size",
+            "outputPath": "dist/angular-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-change-size:build"
+            "browserTarget": "angular-project:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-change-size:build:production"
+              "browserTarget": "angular-project:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-change-size:build"
+            "browserTarget": "angular-project:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-change-size:serve"
+            "devServerTarget": "angular-project:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-change-size:serve:production"
+              "devServerTarget": "angular-project:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "angular-change-size"
+  "defaultProject": "angular-project"
 }

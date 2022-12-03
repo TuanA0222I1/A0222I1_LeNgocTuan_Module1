@@ -12,19 +12,20 @@ const readLine = require("readline").createInterface({
 let promise = new Promise((resolve, reject) => {
   readLine.question("Input your money: ", (answer: number) => {
     readLine.close();
-    typeof +answer == "number" ? resolve(answer) : reject("error input number");
+    setTimeout(() => {
+      typeof +answer == "number"
+        ? resolve(answer)
+        : reject("error input number");
+    }, 2000);
   });
 });
 
 promise
   .then((x) => {
     +x > 1000
-      ? displayResult(`${x} buy car success!!!`)
+      ? console.log(`${x} buy car success!!!`)
       : console.log("Not enoughs!");
   })
   .catch((error) => {
     console.log(error);
   });
-function displayResult(result: string) {
-  setTimeout(console.log(result), 1000);
-}
