@@ -1,0 +1,30 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ratingModal">
+  Rating
+</button>
+
+<!--modal-->
+<div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Rating Modal</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input (change)="changeValue(value)" [(ngModel)]="value" type="number" max="10" min="1">
+        <table class="table table-striped">
+          <tr>
+            <td *ngFor="let item of [].constructor(10); let i = index"
+                [style.background-color]="value >= i + 1 ? 'red' : 'black'" style="width: 50px; height: 50px; text-align: center; color: white" >
+              {{i + 1}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

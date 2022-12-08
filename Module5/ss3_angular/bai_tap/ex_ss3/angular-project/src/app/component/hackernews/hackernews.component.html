@@ -1,0 +1,38 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#hackerModal">
+  Hacker News
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="hackerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Hacker New</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-hover">
+          <thead >
+            <tr>
+              <th>No.</th>
+              <th>Name.</th>
+              <th>Day upload</th>
+              <th>Url</th>
+             </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of articles; let count = index">
+              <td>{{count + 1}}</td>
+              <td>{{item.name | titlecase}}</td>
+              <td>
+                {{item.dateUpdate | date :'dd/MM/yyy' }}
+              </td>
+              <td><a [href]="item.url">{{item.url | slice:0:15}} ... </a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

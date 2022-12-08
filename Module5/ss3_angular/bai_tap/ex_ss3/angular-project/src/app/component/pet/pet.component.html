@@ -18,12 +18,12 @@
             <td>Name</td>
             <td>Age</td>
             <td>Gender</td>
-            <td>Status</td>
+
           </tr>
           <tr *ngFor="let pet of petList; let count = index">
             <td>{{count + 1}}</td>
-            <td>{{pet.name}}</td>
-            <td>{{pet.age}}</td>
+            <td>{{pet.name | titlecase}}</td>
+            <td [style.color]="pet.age >= 7 ? 'red' : pet.age >= 4 ?'green' : 'black' " >{{pet.age}}</td>
             <td *ngIf="pet.gender == 0;then content else other_content"> </td>
             <ng-template #content>
               Male
@@ -31,7 +31,9 @@
             <ng-template #other_content>
               Female
             </ng-template>
-            <td>{{pet.status}}</td>
+            <td [ngClass]="pet.status == 'Die' ? 'die' : '' ">
+              {{pet.status}}
+            </td>
           </tr>
         </table>
         <div class="modal-footer">

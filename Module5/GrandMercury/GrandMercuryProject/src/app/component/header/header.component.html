@@ -1,0 +1,51 @@
+<header class="row" style="height: 120px;">
+  <div class="col-sm-12 col-lg-12 ">
+    <nav class="navbar">
+      <div class="container ">
+        <a class="navbar-brand" href="#" id="header">
+
+          <img src="../../../assets/image-form/IconResort.png" height="169" width="300"/></a>
+
+      </div>
+    </nav>
+  </div>
+</header>
+<nav class="row">
+  <div class="col-sm-12 col-lg-12 ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand ms-5 text-white" routerLink="home">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="/employee">Employee</a>
+            </li>
+            <li class="nav-item ms-5">
+              <a class="nav-link text-white" aria-current="page" href="/customer">Customer</a>
+            </li>
+            <li class="nav-item ms-5 ">
+              <a class="nav-link text-white" aria-current="page" routerLink="facility/list">Service</a>
+            </li>
+            <li class="nav-item ms-5 text-white">
+              <a class="nav-link text-white" aria-current="page" href="/contract">Contract</a>
+            </li>
+            <li class="nav-item ms-5 text-white">
+              <a class="nav-link text-white" aria-current="page" href="#">Login</a>
+            </li>
+          </ul>
+          <form class="d-flex mt-2" action="/employee" method="get">
+            <input class="form-control me-2" name="name_search" type="search"
+                   placeholder="Search employee advisory" aria-label="Search">
+            <button class="btn btn-outline-success text-white" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+</nav>
+
