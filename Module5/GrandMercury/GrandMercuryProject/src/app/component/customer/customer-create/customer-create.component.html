@@ -1,0 +1,63 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createCustomerModal">
+  Create
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="createCustomerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           <div class="form-outline mb-4">
+             <input type="text"  id="name" [(ngModel)]="customerCreate.name"
+                    class="form-control form-control-lg"/>
+            <label class="form-label">Name</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text"  id="address" [(ngModel)]="customerCreate.address"
+                   class="form-control form-control-lg"/>
+            <label class="form-label" >Address</label>
+          </div>
+
+           <div class="form-outline mb-4">
+            <input type="text"  id="phone" [(ngModel)]="customerCreate.phone"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Phone</label>
+           </div>
+
+           <div class="form-outline mb-4">
+            <input type="date"  id="dayOfBirth" [(ngModel)]="customerCreate.dayOfBirth"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Birthday</label>
+           </div>
+
+           <div class="form-outline mb-4">
+            <input type="text"  id="email" [(ngModel)]="customerCreate.email"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Phone</label>
+           </div>
+
+        <div class="form-outline mb-4">
+          <input type="file"  id="avatar" [(ngModel)]="customerCreate.avatar"
+                 class="form-control form-control-lg"/>
+          <label class="form-label" >Avatar</label>
+        </div>
+            <div class="form-outline mb-4">
+            <input type="text"  id="description" [(ngModel)]="customerCreate.description"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Description</label>
+           </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

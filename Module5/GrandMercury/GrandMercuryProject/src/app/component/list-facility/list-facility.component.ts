@@ -7,7 +7,7 @@ import {Facility} from "../../model/Facility";
   styleUrls: ['./list-facility.component.css']
 })
 export class ListFacilityComponent implements OnInit {
-@Output()
+
   listFacility: Facility[] = [];
   constructor() {
     this.listFacility.push({id: 1, name: "Deluxe King", image: "/assets/facility/deluxe-king-4-cr-800x450.png", area: 50.2 })

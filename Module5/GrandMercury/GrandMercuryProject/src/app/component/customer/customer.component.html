@@ -1,1 +1,32 @@
-<p>customer works!</p>
+<div class="container"
+     style="background: url('../../../assets/image-form/grandmercure-danang-hotel-gallery-image-64.jpg') ">
+  <div class="row">
+    <div class="col-2">
+      <app-customer-create (eventCreateCustomer)="customerList.push($event)"></app-customer-create>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm" *ngFor="let item of customerList">
+      <div class="card" style="width: 18rem;">
+        <img [src]="item.avatar" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name|titlecase}}</h5>
+          <p class="card-text">{{item.description === undefined? 'You can update soon!' : (item.description| slice:0:25).concat("...") }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Name: {{item.name | titlecase}}</li>
+          <li class="list-group-item">Address: {{item.address | titlecase}}</li>
+          <li class="list-group-item">Phone: {{item.phone| titlecase}}</li>
+        </ul>
+        <div class="card-body">
+          <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#countdownModal" (click)="this.customerSelect = item">
+            Info
+          </button>
+          <app-customer-info [customer]="customerSelect"></app-customer-info>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

@@ -9,6 +9,9 @@ import { ListFacilityComponent } from './component/list-facility/list-facility.c
 import { BackTopComponent } from './component/back-top/back-top.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
 import { CustomerComponent } from './component/customer/customer.component';
+import { CustomerInfoComponent } from './component/customer/customer-info/customer-info.component';
+import { CustomerCreateComponent } from './component/customer/customer-create/customer-create.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { CustomerComponent } from './component/customer/customer.component';
     ListFacilityComponent,
     BackTopComponent,
     HomePageComponent,
-    CustomerComponent
+    CustomerComponent,
+    CustomerInfoComponent,
+    CustomerCreateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

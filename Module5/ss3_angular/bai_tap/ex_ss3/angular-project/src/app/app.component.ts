@@ -1,4 +1,5 @@
 import {Component, Output} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,7 @@ export class AppComponent {
   changeValue($event: number) {
     this.current = $event;
   }
+
+
+
 }
