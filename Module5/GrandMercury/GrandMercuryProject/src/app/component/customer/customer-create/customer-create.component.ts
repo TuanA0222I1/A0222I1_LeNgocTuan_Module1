@@ -19,7 +19,7 @@ getAvatarLink(str: string){
   return str.split("\\")[2];
 }
   save() {
-     this.customerCreate.id = Math.floor(Math.random() * 101);
+  this.customerCreate.id = Math.floor(Math.random() * 101);
     this.customerCreate.avatar = `/assets/customer/${this.getAvatarLink(this.customerCreate.avatar)}`;
     console.log(this.customerCreate);
     this.eventCreateCustomer.emit(this.customerCreate);

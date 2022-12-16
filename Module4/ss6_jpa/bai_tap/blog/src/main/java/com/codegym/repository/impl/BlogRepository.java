@@ -39,9 +39,6 @@ public class BlogRepository implements IBlogRepository {
 
     @Override
     public Blog findById(int id) {
-//        TypedQuery<Blog> query = BaseRepository.entityManager.createQuery(findAllById, Blog.class);
-//        query.setParameter("id", id);
-//        return query.getSingleResult();
         return BaseRepository.entityManager.find(Blog.class, id);
     }
 
