@@ -1,0 +1,13 @@
+<div>
+
+<p *ngIf="result!= null ;then content else other_content"> </p>
+<ng-template #content>
+  {{result.key}} mean is {{result.value}}
+</ng-template>
+<ng-template #other_content>
+  Not found!
+</ng-template>
+  <hr>
+  <button routerLink="/dictionary" class="btn btn-warning">Back Dictionary</button>
+</div>
+

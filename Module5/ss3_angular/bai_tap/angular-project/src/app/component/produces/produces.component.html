@@ -1,0 +1,30 @@
+<table class="table table-striped-columns">
+  <tr>
+    <td>No</td>
+    <td>Name</td>
+    <td>Rating</td>
+    <td>Status</td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let item of list, let count = index">
+    <td>{{count+1}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.rating}}</td>
+    <td>{{item.status}}</td>
+    <td>
+      <button class="btn btn-info"  [routerLink]="['delete', item.id]">
+        delete
+      </button>
+      <button class="btn btn-warning" [routerLink]="['update', item.id]">
+        update
+      </button>
+
+    </td>
+  </tr>
+</table>
+
+<app-delete-produces>
+</app-delete-produces>
+<app-update-produces>
+
+</app-update-produces>
