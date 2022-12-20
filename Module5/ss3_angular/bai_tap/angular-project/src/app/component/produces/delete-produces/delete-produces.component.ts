@@ -18,16 +18,15 @@ export class DeleteProducesComponent implements OnInit {
   ngOnInit(): void {
     this.activeRouter.paramMap.subscribe(x => {
       let id = x.get("id");
-      this.produce = this.producesService.findById(parseInt(id));
-      console.log(this.produce)
+      this.producesService.findById(parseInt(id)).subscribe(value => this.produce = value);
     })
   }
 
   deleteThis(id: number) {
-    console.log(id);
-    this.producesService.removeById(id);
-    this.router.navigateByUrl("app-produces").then(r => {
-      console.log(r);
-    } ) ;
+    this.producesService.removeById(id).subscribe(value => {
+      this.router.navigateByUrl("/app-produces").then(r => {
+        this.produce = {};
+      });
+    });
   }
 }

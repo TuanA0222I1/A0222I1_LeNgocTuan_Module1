@@ -1,0 +1,92 @@
+{
+  "todo": [
+    {
+      "id": 1,
+      "content": "Do exercise 1",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "content": "Do exercise 2",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "content": "Do exercise 3",
+      "status": 1
+    },
+    {
+      "content": "watch Tv",
+      "status": 1,
+      "id": 4
+    },
+    {
+      "content": "Messi",
+      "status": 1,
+      "id": 5
+    },
+    {
+      "content": "yv",
+      "status": 0,
+      "id": 6
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "plastic"
+    },
+    {
+      "id": 2,
+      "name": "cotton"
+    },
+    {
+      "id": 3,
+      "name": "nylon"
+    }
+  ],
+  "produces": [
+    {
+      "id": 1,
+      "name": "pen1",
+      "rating": 4,
+      "status": "good",
+      "category": 1
+    },
+    {
+      "id": 2,
+      "name": "pen1",
+      "rating": 4,
+      "status": "good",
+      "category": 1
+    },
+    {
+      "id": 3,
+      "name": "pen",
+      "rating": 1,
+      "status": "bad",
+      "category": 2
+    },
+    {
+      "id": 4,
+      "name": "pen",
+      "rating": 6,
+      "status": "excellent",
+      "category": 3
+    },
+    {
+      "id": 5,
+      "name": "123",
+      "rating": "4124",
+      "status": "123",
+      "category": "1"
+    },
+    {
+      "id": 7,
+      "name": "1",
+      "rating": "5",
+      "status": "51",
+      "category": "2"
+    }
+  ]
+}

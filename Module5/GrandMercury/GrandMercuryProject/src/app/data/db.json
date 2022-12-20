@@ -1,0 +1,165 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Tuấn Lê",
+      "typeCustomer": 1,
+      "dayOfBirth": "1990/04/14",
+      "address": "Da Nang",
+      "phone": "0766754226",
+      "email": "cumeo123@gmail.com",
+      "avatar": "/assets/customer/Samurai_Gen_Taisho_MP.png",
+      "description": "Oda Nobunaga là con trai của Oda Nobuhide, người đứng đầu gia tộc Oda Danjōtadaie (弾正忠家 Đạn chính Trung gia), và là lãnh chúa địa phương vùng Owari (phía tây tỉnh Aichi). Sau khi kế vị tộc trưởng Oda Danjōtadaie, Nobunaga đã tiêu diệt gia tộc Oda Yamatomori và gia tộc Oda Ise, những shugodai Owari, đồng thời loại bỏ em trai mình là Oda Nobuyuki, dần dần củng cố quyền kiểm soát tại vùng Owari."
+    },
+    {
+      "id": 2,
+      "name": "Thái Khang",
+      "typeCustomer": 2,
+      "dayOfBirth": "2019/07/21",
+      "address": "Da Nang",
+      "phone": "0766757542",
+      "email": "cumeo124@gmail.com",
+      "avatar": "/assets/customer/Samurai_Cav_Mounted_Gunner.png",
+      "description": "Nobunaga cuối cùng được ca ngợi là một người trung thành và được tôn thờ như một vị thần trong thời kỳ Minh Trị. Sau Thế chiến II, Nobunaga được coi là một nhà đổi mới do tính mới trong các chính sách của ông. Tuy nhiên, hình ảnh này của Nobunaga với tư cách là một nhà đổi mới đang bị nghi ngờ, và trong những năm gần đây, giới học thuật lịch sử đã đánh giá lại danh tiếng của Nobunaga."
+    },
+    {
+      "id": 3,
+      "name": "Thị Min",
+      "typeCustomer": 3,
+      "dayOfBirth": "2021/01/14",
+      "address": "Da Nang",
+      "phone": "0766775422",
+      "email": "cumeo126@gmail.com",
+      "avatar": "/assets/customer/Samurai_Gen_Taisho.png",
+      "description": "Về mặt chính sách, Nobunaga thành lập chính quyền của riêng mình dưới hình thức được Shogun Mạc phủ Muromachi ủy nhiệm “thiên hạ”. Quan điểm phổ biến là ông có lập trường hợp tác đối với Thiên hoàng và triều đình."
+    },
+    {
+      "id": 5,
+      "name": "Thị Đầm",
+      "typeCustomer": 3,
+      "dayOfBirth": "1969/12/14",
+      "address": "Da Nang",
+      "phone": "0766754444",
+      "email": "cumeo122@gmail.com",
+      "avatar": "/assets/customer/Samurai_Inf_Bow_Hero.png"
+    },
+    {
+      "id": 6,
+      "name": "Văn An",
+      "typeCustomer": 1,
+      "dayOfBirth": "1990/09/10",
+      "address": "Da Nang",
+      "phone": "0766754283",
+      "email": "cumeo1113@gmail.com",
+      "avatar": "/assets/customer/Samurai_Inf_Heavy_Gunner.png",
+      "description": "Nobunaga được Nobuhide trao cho thành Nagoya từ rất sớm và trở thành thành chủ thành Nagoya. Theo \"Nobunaga Koki\", Nobunaga có nhiều hành vi lập dị và được những người xung quanh gọi là \"đại ngốc\". Một số giải thích điều này có thể do Nobunaga mắc chứng rối loạn phát triển. Ngoài ra cũng nói rằng ông đã biết Matsudaira Takechiyo (sau này là Tokugawa Ieyasu), một con tin, khi Takechiyo còn là một đứa trẻ, nhưng không có sử sách nào chứng minh điều này, mặc dù không thể phủ nhận khả năng đó."
+    },
+    {
+      "id": 7,
+      "name": "Văn Bình",
+      "typeCustomer": 2,
+      "dayOfBirth": "1990/09/10",
+      "address": "Da Nang",
+      "phone": "0766756676",
+      "email": "cumeo173@gmail.com",
+      "avatar": "/assets/customer/Samurai_Inf_Matchlock_Samurai_Hero.png"
+    },
+    {
+      "id": 8,
+      "name": "Thái Việt",
+      "typeCustomer": 2,
+      "dayOfBirth": "1992/07/10",
+      "address": "Da Nang",
+      "phone": "0765211276",
+      "email": "cumeo25@gmail.com",
+      "avatar": "/assets/customer/Samurai_Cav_Donderbuss_Cavalry.png",
+      "description": "Takeda Shingen (tiếng Nhật: 武田信玄, Vũ Điền Tín Huyền; 1521–1573) là một lãnh chúa (daimyo) của vùng Kai và vùng Shinano trong thời Chiến Quốc của Nhật Bản. Được mệnh danh là  Mãnh hổ xứ Kai\", Takeda Shingen là một trong những lãnh chúa mạnh nhất giai đoạn cuối thời Chiến Quốc"
+    }
+  ],
+  "typeCustomer": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinum"
+    },
+    {
+      "id": 3,
+      "name": "Bronze"
+    }
+  ],
+  "employee": [
+    {
+      "id": 1,
+      "name": "Nguyễn Hữu Hà",
+      "dayOfBirth": "1994-01-08",
+      "id_card": "234221123",
+      "salary": 1000000,
+      "phone": "0901234121",
+      "email": "donghanguyen@gmail.com",
+      "address": "213 Hàm Nghi, Đà Nẵng",
+      "position": 3,
+      "division": 2,
+      "eduction": 1,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "Khúc Nguyễn An Nghi",
+      "dayOfBirth": "1982-09-03",
+      "id_card": "256781231",
+      "salary": 5000000,
+      "phone": "0978653213",
+      "email": "nguyencongdao12@gmail.com",
+      "address": "K234/11 Điện Biên Phủ, Gia Lai",
+      "position": 1,
+      "division": 3,
+      "eduction": 3,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "Nguyễn Văn An",
+      "dayOfBirth": "1997-04-09",
+      "id_card": "234414123",
+      "salary": 5000000,
+      "phone": "0911123529",
+      "email": "binhlv@gmail.com",
+      "address": "6 Hoà Khánh, Đồng Nai",
+      "position": 2,
+      "division": 1,
+      "eduction": 2,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "Lê Văn Bình",
+      "dayOfBirth": "1993-01-01",
+      "id_card": "454363232",
+      "salary": 5000000,
+      "phone": "0911123529",
+      "email": "annghi20@gmail.com",
+      "address": "4 Nguyễn Chí Thanh, Huế",
+      "position": 0,
+      "division": 4,
+      "eduction": 1,
+      "status": 1
+    },
+    {
+      "id": 5,
+      "name": "Võ Công Toản",
+      "dayOfBirth": "2000-11-08",
+      "id_card": "456231786",
+      "salary": 5000000,
+      "phone": "0911123529",
+      "email": "thiyen@gmail.com",
+      "address": "111 Hùng Vương, Hà Nội",
+      "position": 0,
+      "division": 3,
+      "eduction": 1,
+      "status": 0
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<!--&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createCustomerModal"-->
+<!--        xmlns="http://www.w3.org/1999/html">-->
+<!--  Create-->
+<!--</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal Edit</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="editFrom" novalidate autocomplete="off" (ngSubmit)="edit()">
+        <input hidden formControl="id" name="id"  id="id" >
+        <div class="modal-body">
+          <div class="form-outline mb-4">
+            <input type="text"  id="name" name="name" formControlName="name"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Name</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text"  id="address"  name="address" formControlName="address"
+                   class="form-control form-control-lg"/>
+            <label class="form-label" >Address</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text"  id="phone" name="phone" formControlName="phone"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Phone</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="date"  id="dayOfBirth"  name="dayOfBirth" formControlName="dayOfBirth"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Birthday</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text"  id="email" name="email" formControlName="email"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Email</label>
+          </div>
+          <div class="form-outline mb-4">
+            <select name="typeCustomer" formControlName="typeCustomer">
+              <option value="">Select Option</option>
+              <option *ngFor="let item of typeList" value="{{item.id}}">{{item.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="file"  id="avatar"  name="avatar" formControlName="avatar"
+                   class="form-control form-control-lg"/>
+            <label class="form-label" >Avatar</label>
+          </div>
+          <div class="form-outline mb-4">
+            <input type="text"  id="description" name="description" formControlName="description"
+                   class="form-control form-control-lg"/>
+            <label class="form-label">Description</label>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  [disabled]="editFrom.invalid">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

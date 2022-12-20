@@ -1,7 +1,12 @@
+import {TypeCustomer} from "./TypeCustomer";
+
+
 export interface Customer{
-  id?: number;
+  readonly id?: number;
   name?: string;
   dayOfBirth?: Date;
+
+  typeCustomer?: TypeCustomer;
 
   address?: string;
 

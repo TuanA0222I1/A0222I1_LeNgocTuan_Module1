@@ -3,6 +3,8 @@ import {Produces} from "../../../model/Produces";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ProducesService} from "../../../service/produces.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Category} from "../../../model/Category";
+import {CategoryServiceService} from "../../../service/category-service.service";
 
 @Component({
   selector: 'app-update-produces',
@@ -10,49 +12,57 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./update-produces.component.css']
 })
 export class UpdateProducesComponent implements OnInit {
-  produce: Produces = {};
+  produceEdit: Produces = {};
 
+  categoryList: Category[] = []
   produceForm: FormGroup;
 
+
   constructor(private producesService: ProducesService,
+              private categoryService: CategoryServiceService,
               private router: Router,
               private activeRouter: ActivatedRoute,
               private _formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.categoryService.findAll().subscribe(data => this.categoryList = data)
+
+    if (this.router.url.includes("create")) {
+      this.buildForm();
+      return;
+    }
+    this.buildForm();
     this.activeRouter.paramMap.subscribe(x => {
-      let id = parseInt(x.get("id"));
-      this.produce = this.producesService.findById(id);
-      console.log(this.produce)
-      this.produceForm = this._formBuilder.group({
-        id: [this.produce.id],
-        name: [this.produce.name,[ Validators.required, Validators.max(50)]],
-        rating: [this.produce.rating,[ Validators.required, Validators.min(0), Validators.max(5)]],
-        status: [this.produce.status,Validators.required]
-      }  )
+      this.producesService.findById(+x.get("id")).subscribe(value => {
+        this.produceEdit = value;
+        this.buildForm();
+      });
     })
+  }
+
+  buildForm() {
+    this.produceForm = this._formBuilder.group({
+      id: [this.produceEdit.id],
+      name: [this.produceEdit.name, [Validators.required, Validators.maxLength(50)]],
+      rating: [this.produceEdit.rating, [Validators.required, Validators.min(0), Validators.max(5)]],
+      status: [this.produceEdit.status, Validators.required],
+      category: [this.produceEdit.category == undefined ? "" : this.produceEdit.category, [Validators.required]]
+    })
+
   }
 
   save() {
-    console.log(this.produceForm.value);
-    this.producesService.save(this.produceForm.value);
-    console.log(this.produceForm)
-    this.router.navigateByUrl("app-produces").then(r => {
-      console.log(r);
-    });
-    this.produce = {};
-    this.produceForm.reset();
+     this.producesService.save(this.produceForm.value).subscribe(data => {
+       this.router.navigateByUrl("app-produces").then(r => {
+        this.produceEdit = {};
+        this.produceForm.reset();
+      });
+
+    })
   }
 
   resetForm() {
-    this.produceForm = this._formBuilder.group({
-      id: this.produce.id,
-      name: this.produce.name,
-      rating: this.produce.rating,
-      status: this.produce.status
-    },{
-      validator: Validators.required
-    })
+    this.buildForm();
   }
 }

@@ -12,6 +12,7 @@ import {DetailsComponent} from "./component/dictionary/details/details.component
 import {ProducesComponent} from "./component/produces/produces.component";
 import {DeleteProducesComponent} from "./component/produces/delete-produces/delete-produces.component";
 import {UpdateProducesComponent} from "./component/produces/update-produces/update-produces.component";
+import {TotoComponent} from "./component/toto/toto.component";
 
 
 const routes: Routes = [
@@ -52,6 +53,12 @@ const routes: Routes = [
   },
   {
     path: "app-produces/update/:id", component: UpdateProducesComponent
+  },
+  {
+    path: "app-produces/create", component: UpdateProducesComponent
+  },
+  {
+    path: "todo", component: TotoComponent
   }
 ];
 

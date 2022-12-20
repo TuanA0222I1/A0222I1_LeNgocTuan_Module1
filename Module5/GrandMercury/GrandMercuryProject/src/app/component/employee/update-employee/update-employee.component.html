@@ -1,0 +1,78 @@
+<div class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+               class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+               alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
+
+            <form class="px-md-2" [formGroup]="formUpdate" novalidate autocomplete="off" (ngSubmit)="saveDate()">
+              <div class="form-outline mb-4">
+                <input type="number" id="id" class="form-control" formControlName="id" name="id" disabled/>
+                <label class="form-label">Id</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="name" class="form-control" formControlName="name" name="name"/>
+                <label class="form-label">Name</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="date" id="dayOfBirth" class="form-control" formControlName="dayOfBirth" name="dayOfBirth"/>
+                <label class="form-label">Birthday</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="number" id="id_card" class="form-control" formControlName="id_card" name="id_card"/>
+                <label class="form-label">Id Card</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="number" id="salary" class="form-control" formControlName="salary" name="salary"/>
+                <label class="form-label">Salary</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="phone" class="form-control" formControlName="phone" name="phone"/>
+                <label class="form-label">Phone</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="email" class="form-control" formControlName="email" name="email"/>
+                <label class="form-label">Email</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="address" class="form-control" formControlName="address" name="address"/>
+                <label class="form-label">Address</label>
+              </div>
+              <div class="form-outline mb-4">
+                <div *ngFor="let item of positionEmpls">
+                  <input type="radio" id="position" value="{{item.id}}" formControlName="position" name="position"
+                         [checked]="item.id == employeeUpdate.position"/>
+                  <span>{{item.name}}</span>
+                </div>
+                <label class="form-label">Position</label>
+              </div>
+              <div class="form-outline mb-4">
+                <select formControlName="division" name="division">
+                  <option value="">Chose Something</option>
+                  <option *ngFor="let division of divisionEmpls" value="{{division.id}}">{{division.name}}</option>
+                </select>
+                <label class="form-label">Division</label>
+              </div>
+              <div class="form-outline mb-4">
+                <select formControlName="division" name="division">
+                  <option value="">Chose Something</option>
+                  <option *ngFor="let education  of educationEmpls" value="{{education.id}}">{{education.name}}</option>
+                </select>
+                <label class="form-label">Education</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="hidden" id="status" class="form-control" formControlName="status" name="status"/>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
+              <button type="button" class="btn btn-second btn-lg mb-1" routerLink="/employee/list">Back List</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

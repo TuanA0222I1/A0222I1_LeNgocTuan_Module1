@@ -20,6 +20,12 @@
           <p>{{customer.name}}</p>
         </div>
         <div class="form-group">
+          <label>Type Customer: </label>
+          <span *ngFor="let item of typeList">
+            {{item.id == customer.typeCustomer ? item.name : ''}}
+          </span>
+        </div>
+        <div class="form-group">
           <label>Birthday</label>
           <p>{{customer.dayOfBirth | date:'dd/MM/yyyy'}}</p>
         </div>

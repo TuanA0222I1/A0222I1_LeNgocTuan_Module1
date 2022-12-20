@@ -1,0 +1,18 @@
+<form [formGroup]="formCreate" (ngSubmit)="submitValue()">
+  <input type="text" name="content" formControlName="content">
+  <span style="color: red" *ngIf="formCreate.controls.content.hasError('required') && (formCreate.controls.content.touched) "> Input Content Something </span>
+ <hr>
+  <button type="reset" class="btn btn-danger">Reset</button>
+  <button type="submit" class="btn btn-success" [disabled]="formCreate.invalid">Submit</button>
+</form>
+
+
+<table class="table table-striped-columns">
+  <tr *ngFor="let item of list">
+    <td [ngClass]="item.status == 0 ? 'deleteThis' : ''">{{item.id}}</td>
+    <td [ngClass]="item.status == 0 ? 'deleteThis' : ''">{{item.content}}</td>
+    <td [ngClass]="item.status == 0 ? 'deleteThis' : ''">
+      <button class="btn btn-warning" (click)="updateById(item.id)" [disabled]="item.status == 0">Delete</button>
+    </td>
+  </tr>
+</table>

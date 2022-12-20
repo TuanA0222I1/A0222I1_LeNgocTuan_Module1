@@ -18,6 +18,8 @@ import { DetailsComponent } from './component/dictionary/details/details.compone
 import { ProducesComponent } from './component/produces/produces.component';
 import { UpdateProducesComponent } from './component/produces/update-produces/update-produces.component';
 import { DeleteProducesComponent } from './component/produces/delete-produces/delete-produces.component';
+import { TotoComponent } from './component/toto/toto.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -35,13 +37,15 @@ import { DeleteProducesComponent } from './component/produces/delete-produces/de
     DetailsComponent,
     ProducesComponent,
     UpdateProducesComponent,
-    DeleteProducesComponent
+    DeleteProducesComponent,
+    TotoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
