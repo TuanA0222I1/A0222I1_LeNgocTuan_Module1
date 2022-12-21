@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Employee} from "../../model/employee/Employee";
 import {EmployeeServiceService} from "../../service/employee/employee-service.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-employee',
@@ -15,24 +14,29 @@ export class EmployeeComponent implements OnInit {
 
   employeeDelete: Employee = {};
 
-  constructor(private employeeService: EmployeeServiceService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private employeeService: EmployeeServiceService, private formBuilder: FormBuilder) {
   }
 
+  page = 1;
+  pageSize = 4;
+
   ngOnInit(): void {
-    this.findAllByName("");
+    this.findAllByName("", '');
     this.formSearch = this.formBuilder.group({
-      name_search: [""]
+      name_search: [""],
+      email_search: [""]
     })
   }
 
-  findAllByName(value: string) {
-    this.employeeService.findAllByName(value).subscribe(value => {
-      this.list = value;
+  findAllByName(name: string, email: string) {
+    // @ts-ignore
+    this.employeeService.findAllByName(name, email).subscribe((value: Employee[]) => {
+       this.list = value;
     })
   }
 
   search() {
-    this.findAllByName(this.formSearch.value.name_search)
+    this.findAllByName(this.formSearch.value.name_search, this.formSearch.value.email_search)
   }
 
   deleteIt(item: Employee) {

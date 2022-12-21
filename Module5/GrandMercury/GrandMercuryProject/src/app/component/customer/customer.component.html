@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm" *ngFor="let item of customerList ">
+    <div class="col-sm" *ngFor="let item of customerList| slice: (page-1) * pageSize : page * pageSize ">
       <div class="card" style="width: 18rem;">
         <img [src]="item.avatar" class="card-img-top" alt="...">
         <div class="card-body">
@@ -23,23 +23,31 @@
                   (click)="changeValueItemSelect(item)">
             Info
           </button>
-          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal"
-                  (click)="changeValueItemSelect(item)">
-            Edit
-          </button>
+<!--          <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal"-->
+<!--                  (click)="this.customerEdit = item">-->
+<!--            Edit-->
+<!--          </button>-->
           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
                   (click)="changeValueItemSelect(item)">
             Delete
           </button>
-          <app-customer-edit [customerEdit] = customerSelect></app-customer-edit>
 
           <app-customer-info [customer]="customerSelect"></app-customer-info>
         </div>
       </div>
     </div>
 
+
+
   </div>
+  <ngb-pagination
+    [collectionSize]="customerList.length"
+    [pageSize]="pageSize"
+    [(page)]="page"
+    [boundaryLinks]="true">
+  </ngb-pagination>
 </div>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

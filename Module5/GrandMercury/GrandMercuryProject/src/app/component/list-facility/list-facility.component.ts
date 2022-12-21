@@ -1,5 +1,10 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {Facility} from "../../model/facility/Facility";
+import {TypeService} from "../../model/facility/TypeService";
+import {RentType} from "../../model/facility/RentType";
+import {TypeServiceService} from "../../service/facility/type-service.service";
+import {RentServiceService} from "../../service/facility/rent-service.service";
+import {FacilityServiceService} from "../../service/facility/facility-service.service";
 
 @Component({
   selector: 'app-list-facility',
@@ -8,18 +13,25 @@ import {Facility} from "../../model/facility/Facility";
 })
 export class ListFacilityComponent implements OnInit {
 
-  listFacility: Facility[] = [];
-  constructor() {
-    this.listFacility.push({id: 1, name: "Deluxe King", image: "/assets/facility/deluxe-king-4-cr-800x450.png", area: 50.2 })
-    this.listFacility.push({id: 2, name: "Deluxe Thor", image: "/assets/facility/img-1.jpg", area: 30.1 })
-    this.listFacility.push({id: 3, name: "North King", image: "/assets/facility/north-hotel-room.jpg", area: 100.5 })
-    this.listFacility.push({id: 5, name: "Deluxe ", image: "/assets/facility/VIP-ROOM-815x655.jpg", area: 200 })
-    this.listFacility.push({id: 4, name: "Spa", image: "/assets/facility/VIP-Room-Couple-The-Nang-Spa-at-Pullman-Danang-Beach-Resort-10.jpg", area: 100 })
-    this.listFacility.push({id: 6, name: "King Size", image: "/assets/facility/vip-king-size-bed-room.jpg", area: 150 })
+  facilities: Facility[] = [];
+
+  types: TypeService[] = [];
+
+  rents: RentType[] = []
+
+  page = 1;
+  pageSize = 6;
+
+  facilitySelect: Facility = {}
+  constructor(private typeService: TypeServiceService,
+              private rentService: RentServiceService,
+              private facilityService: FacilityServiceService) {
   }
 
   ngOnInit(): void {
-    console.log(this.listFacility);
+    this.types = this.typeService.findAll();
+    this.rents = this.rentService.findAll();
+    this.facilityService.findAllByName("").subscribe(value => this.facilities = value)
   }
 
 }

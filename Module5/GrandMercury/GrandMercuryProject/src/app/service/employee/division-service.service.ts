@@ -6,22 +6,22 @@ import {DivisionEmpl} from "../../model/employee/DivisionEmpl";
   providedIn: 'root'
 })
 export class DivisionServiceService {
-  list: DivisionEmpl[] = [];
+  divisions: DivisionEmpl[] = [];
 
   constructor() {
-    this.list.push({
+    this.divisions.push({
       "id": 1,
       "name": "Sale Marketing"
     });
-    this.list.push({
+    this.divisions.push({
       "id": 2,
       "name": "Administration"
     });
-    this.list.push({
+    this.divisions.push({
       "id": 3,
       "name": "Service"
     });
-    this.list.push({
+    this.divisions.push({
       "id": 4,
       "name": "Manager"
     })
@@ -29,6 +29,10 @@ export class DivisionServiceService {
 
 
   findAll() {
-    return this.list;
+    return this.divisions;
+  }
+
+  findById(id: any): DivisionEmpl {
+    return this.divisions.find(x => x.id == id);
   }
 }

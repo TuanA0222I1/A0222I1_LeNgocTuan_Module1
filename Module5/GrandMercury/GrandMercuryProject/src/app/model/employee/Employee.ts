@@ -17,6 +17,6 @@ export interface Employee {
 
   division?: DivisionEmpl;
 
-  eduction?: EducationEmpl;
+  education?: EducationEmpl;
   status?: number
 }

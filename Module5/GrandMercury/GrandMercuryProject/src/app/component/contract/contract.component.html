@@ -1,0 +1,71 @@
+<button routerLink="/contract/create" class="btn btn-outline-success">Create</button>
+<table class="table table-dark table-striped">
+  <thead>
+  <th>
+    No.
+  </th>
+  <th>
+    Day Start
+  </th>
+  <th>
+    Day End
+  </th>
+  <th>
+    Deposit
+  </th>
+  <th>
+    Customer
+  </th>
+  <th>
+    Employee
+  </th>
+  <th>
+    Facility
+  </th>
+  <th>
+    Total Money
+  </th>
+  <th>
+    Action
+  </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of contracts| slice: (page-1) * pageSize : page * pageSize , let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{item.startDate| date: 'dd/MM/yyyy'}}</td>
+    <td>{{item.endDate| date: 'dd/MM/yyyy'}}</td>
+    <td>{{item.deposit| currency}}</td>
+    <td>{{item.customer.name}}</td>
+    <td>{{item.employee.name}}</td>
+    <td>{{item.facility.name}}</td>
+    <td>{{item.total | currency}}</td>
+    <td>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteContract"
+              (click)="deleteIt(item)"><i class="fa-solid fa-trash"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<ngb-pagination
+  [collectionSize]="contracts.length"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [boundaryLinks]="true">
+</ngb-pagination>
+<div class="modal fade" id="deleteContract" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Delete this contract with id: {{contractSelect.id}} ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteThisItem(contractSelect)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

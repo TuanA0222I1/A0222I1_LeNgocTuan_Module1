@@ -13,9 +13,11 @@ import {CustomerInfoComponent} from './component/customer/customer-info/customer
 import {CustomerCreateComponent} from './component/customer/customer-create/customer-create.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
- import {CustomerEditComponent} from './component/customer/customer-edit/customer-edit.component';
 import {EmployeeComponent} from './component/employee/employee.component';
 import {UpdateEmployeeComponent} from './component/employee/update-employee/update-employee.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ContractComponent } from './component/contract/contract.component';
+import { UpdateContractComponent } from './component/contract/update-contract/update-contract.component';
 
 @NgModule({
   declarations: [
@@ -28,18 +30,19 @@ import {UpdateEmployeeComponent} from './component/employee/update-employee/upda
     CustomerComponent,
     CustomerInfoComponent,
     CustomerCreateComponent,
-    CustomerEditComponent,
     EmployeeComponent,
-    UpdateEmployeeComponent
+    UpdateEmployeeComponent,
+    ContractComponent,
+    UpdateContractComponent
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      FormsModule,
-      HttpClientModule,
-      ReactiveFormsModule,
-
-     ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgbModule,
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -42,7 +42,6 @@ export class CustomerCreateComponent implements OnInit {
       description: [this.customerUpdate.description, [Validators.required]]
     })
   }
-
   ngOnInit(): void {
 
   }

@@ -16,36 +16,72 @@
               </div>
               <div class="form-outline mb-4">
                 <input type="text" id="name" class="form-control" formControlName="name" name="name"/>
-                <label class="form-label">Name</label>
+                <label class="form-label">
+                  Name
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.name.touched) && formUpdate.controls.name.hasError('required') "> is Something!!! Input Something </span>
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.name.touched) && formUpdate.controls.name.hasError('maxlength') "> with max length is 50 digits. input shorter !!! </span>
+                </label>
+
               </div>
               <div class="form-outline mb-4">
                 <input type="date" id="dayOfBirth" class="form-control" formControlName="dayOfBirth" name="dayOfBirth"/>
-                <label class="form-label">Birthday</label>
+                <label class="form-label">
+                  Birthday
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.dayOfBirth.touched) && formUpdate.controls.dayOfBirth.hasError('required') "> is Something!!! choose your birthday </span>
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.dayOfBirth.touched) && formUpdate.controls.dayOfBirth.hasError('small18') "> small 18!! Too Young </span>
+
+                </label>
               </div>
               <div class="form-outline mb-4">
                 <input type="number" id="id_card" class="form-control" formControlName="id_card" name="id_card"/>
-                <label class="form-label">Id Card</label>
+                <label class="form-label">
+                  Id Card
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.id_card.touched) && formUpdate.controls.id_card.hasError('required') "> is Something!!! choose your Id Card </span>
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.id_card.touched) && formUpdate.controls.id_card.hasError('pattern') "> must like 123456789. Input Again </span>
+
+                </label>
               </div>
               <div class="form-outline mb-4">
                 <input type="number" id="salary" class="form-control" formControlName="salary" name="salary"/>
-                <label class="form-label">Salary</label>
+                <label class="form-label">
+                  Salary
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.salary.touched) && formUpdate.controls.salary.hasError('required') "> is Important!!! choose your Salary </span>
+                  <span style="color:red;"
+                        *ngIf="(formUpdate.controls.salary.touched) && formUpdate.controls.salary.hasError('min') "> must bigger zeros!!! choose your Salary </span>
+                </label>
               </div>
               <div class="form-outline mb-4">
                 <input type="text" id="phone" class="form-control" formControlName="phone" name="phone"/>
                 <label class="form-label">Phone</label>
+                <span style="color:red;"
+                      *ngIf="(formUpdate.controls.phone.touched) && formUpdate.controls.phone.hasError('required') "> is something!!! input your phone </span>
+                <span style="color:red;"
+                      *ngIf="(formUpdate.controls.phone.touched) && formUpdate.controls.phone.hasError('pattern') "> is 0123456789 or +84123456789!!! Input your phone </span>
               </div>
               <div class="form-outline mb-4">
                 <input type="text" id="email" class="form-control" formControlName="email" name="email"/>
                 <label class="form-label">Email</label>
+                <span style="color:red;"
+                      *ngIf="(formUpdate.controls.email.touched) && formUpdate.controls.email.hasError('required') "> is something!!! input your email </span>
+                <span style="color:red;"
+                      *ngIf="(formUpdate.controls.email.touched) && formUpdate.controls.email.hasError('pattern') "> is Not Correct Type!!! Input again </span>
+
               </div>
               <div class="form-outline mb-4">
                 <input type="text" id="address" class="form-control" formControlName="address" name="address"/>
                 <label class="form-label">Address</label>
               </div>
               <div class="form-outline mb-4">
-                <div *ngFor="let item of positionEmpls">
+                <div *ngFor="let item of positions">
                   <input type="radio" id="position" value="{{item.id}}" formControlName="position" name="position"
-                         [checked]="item.id == employeeUpdate.position"/>
+                         [checked]=" item.id == employeeUpdate.position"/>
                   <span>{{item.name}}</span>
                 </div>
                 <label class="form-label">Position</label>
@@ -53,22 +89,25 @@
               <div class="form-outline mb-4">
                 <select formControlName="division" name="division">
                   <option value="">Chose Something</option>
-                  <option *ngFor="let division of divisionEmpls" value="{{division.id}}">{{division.name}}</option>
+                  <option *ngFor="let division of divisions" value="{{division.id}}">{{division.name}}</option>
                 </select>
                 <label class="form-label">Division</label>
               </div>
               <div class="form-outline mb-4">
-                <select formControlName="division" name="division">
+                <select formControlName="education" name="education">
                   <option value="">Chose Something</option>
-                  <option *ngFor="let education  of educationEmpls" value="{{education.id}}">{{education.name}}</option>
+                  <option *ngFor="let education of educations" value="{{education.id}}">{{education.name}}</option>
                 </select>
                 <label class="form-label">Education</label>
               </div>
               <div class="form-outline mb-4">
                 <input type="hidden" id="status" class="form-control" formControlName="status" name="status"/>
               </div>
-              <button type="submit" class="btn btn-success btn-lg mb-1">Submit</button>
-              <button type="button" class="btn btn-second btn-lg mb-1" routerLink="/employee/list">Back List</button>
+              <button type="submit" class="btn btn-success btn-lg mb-1" [disabled]="formUpdate.invalid">Submit</button>
+              <button type="button" class="btn btn-warning btn-lg mb-1" (click)="buildThisForm()">Reset</button>
+              <a href="/employee/list">
+                <button type="button" class="btn btn-second btn-lg mb-1">Back List</button>
+              </a>
             </form>
           </div>
         </div>

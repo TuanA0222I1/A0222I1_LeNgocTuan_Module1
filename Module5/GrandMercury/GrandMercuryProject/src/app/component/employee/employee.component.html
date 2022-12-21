@@ -3,8 +3,10 @@
     <form [formGroup]="formSearch" (ngSubmit)="search()">
       <div class="input-group">
         <div class="form-outline">
-          <input class="form-control" id="form1" type="text" formControlName="name_search" placeholder="name search">
-
+          <input class="form-control" id="form1" type="text" formControlName="name_search" placeholder="Name search">
+        </div>
+        <div class="form-outline">
+          <input class="form-control" id="form2" type="text" formControlName="email_search" placeholder="Email search">
         </div>
         <button class="btn btn-primary" type="submit">
           <i class="fas fa-search"></i>
@@ -13,10 +15,12 @@
     </form>
   </div>
   <div class="col-2">
-    <button class="btn btn-outline-success" routerLink="/employee/create"><i class="fa-solid fa-plus"></i></button>
+    <button class="btn btn-outline-info" routerLink="/employee/create"><i class="fa-solid fa-plus"></i></button>
+
   </div>
   <div class="col-2">
-    <button class="btn btn-outline-dark" (click)="findAllByName('')"><i class="fa-solid fa-arrows-rotate"></i></button>
+    <button class="btn btn-outline-dark" (click)="findAllByName('','')"><i class="fa-solid fa-arrows-rotate"></i>
+    </button>
   </div>
 </div>
 
@@ -36,28 +40,37 @@
   <td>Action</td>
   </thead>
   <tbody>
-  <tr *ngFor="let item of list, let i = index">
+  <tr *ngFor="let item of list | slice: (page-1) * pageSize : page * pageSize, let i = index">
     <td>{{i + 1}}</td>
     <td>{{item.name}}</td>
     <td>{{item.dayOfBirth|date:"dd/MM/yyyy"}}</td>
     <td>{{item.id_card}}</td>
-    <td>{{item.salary|currency:  'vnd':false}}</td>
+    <td>{{item.salary|currency:  'GBP':"symbol"}}</td>
     <td>{{item.phone}}</td>
     <td>{{item.email}}</td>
     <td>{{item.address | slice: 0: 10}} ...</td>
-    <td>{{item.position}}</td>
-    <td>{{item.division}}</td>
-    <td>{{item.eduction}}</td>
+    <td>{{item.position.name}}</td>
+    <td>{{item.division.name}}</td>
+    <td>{{item.education.name}}</td>
     <td>
       <button [routerLink]="['/employee/edit',item.id]" type="button" class="btn btn-warning"><i
         class="fa-regular fa-pen-to-square"></i></button>
+
       <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployee"
               (click)="deleteIt(item)"><i class="fa-solid fa-trash"></i></button>
     </td>
   </tr>
+
   </tbody>
 
 </table>
+<ngb-pagination
+  [collectionSize]="list.length"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [boundaryLinks]="true">
+</ngb-pagination>
+
 <div class="modal fade" id="deleteEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

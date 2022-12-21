@@ -15,16 +15,19 @@ export class CustomerComponent implements OnInit {
   customerList: Customer[] = [];
   typeList: TypeCustomer[] = [];
   customerSelect: Customer = {};
+  pageSize = 6;
+  page = 1;
+
   constructor(private httpClient: HttpClient,
               private customerService: CustomerServiceService,
               private typeService: TypeCustomerServiceService) {
-    this.customerService.findAll().subscribe(value => {this.customerList = value});
-    this.typeService.findAll().subscribe(value => this.typeList = value)
   };
 
 
 
   ngOnInit(): void {
+    this.customerService.findAll().subscribe(value => {this.customerList = value});
+    this.typeService.findAll().subscribe(value => this.typeList = value)
   }
 
 

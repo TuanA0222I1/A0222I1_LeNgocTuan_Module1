@@ -1,36 +1,38 @@
 import {Injectable} from '@angular/core';
-import {DivisionEmpl} from "../../model/employee/DivisionEmpl";
-import {HttpClient} from "@angular/common/http";
 import {EducationEmpl} from "../../model/employee/EducationEmpl";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EducationServiceService {
-  list: EducationEmpl[] = [];
+  educations: EducationEmpl[] = [];
 
   constructor() {
-    this.list.push({
+    this.educations.push({
       "id": 1,
       "name": "Intermediate"
     });
-    this.list.push({
+    this.educations.push({
       "id": 2,
-      "name": "DegreeOfAssociate"
+      "name": "Degree Of Associate"
     });
-    this.list.push({
+    this.educations.push({
       "id": 3,
-      "name": "Undergraduate"
+      "name": "Under Graduate"
     });
-    this.list.push({
+    this.educations.push({
       "id": 4,
-      "name": "PostGraduate"
+      "name": "Post Graduate"
     });
 
   }
 
 
   findAll() {
-    return this.list;
+    return this.educations;
+  }
+
+  findById(id: any) {
+    return this.educations.find(x => x.id == id);
   }
 }
