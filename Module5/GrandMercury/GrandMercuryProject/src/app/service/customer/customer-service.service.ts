@@ -26,6 +26,10 @@ listCustomer: Customer[] = []
     return this.httpClient.get<Customer>(`${this.base_customer_url}/${id}`);
   }
 
+  findByName(name: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${this.base_customer_url}?name_like=${name}`);
+  }
+
   deleteById(id: number): Observable<Customer> {
     return this.httpClient.delete(`${this.base_customer_url}/${id}`);
   }

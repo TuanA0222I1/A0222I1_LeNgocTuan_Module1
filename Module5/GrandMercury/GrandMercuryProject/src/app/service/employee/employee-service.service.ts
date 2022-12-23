@@ -50,4 +50,10 @@ export class EmployeeServiceService {
     return this.httpClient.post(`${this.base_url}`, employeeTemp);
   }
 
+  save(value: Employee): Observable<Employee> {
+    if (value.id == null) {
+      return this.httpClient.post(`${this.base_url}`, value);
+    }
+    return this.httpClient.patch(`${this.base_url}/${value.id}`, value);
+  }
 }

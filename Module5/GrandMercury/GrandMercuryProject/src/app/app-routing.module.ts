@@ -7,6 +7,7 @@ import {EmployeeComponent} from "./component/employee/employee.component";
 import {UpdateEmployeeComponent} from "./component/employee/update-employee/update-employee.component";
 import {ContractComponent} from "./component/contract/contract.component";
 import {UpdateContractComponent} from "./component/contract/update-contract/update-contract.component";
+import {InfoContractsComponent} from "./component/contract/info-contracts/info-contracts.component";
 
 
 const routes: Routes = [
@@ -41,6 +42,14 @@ const routes: Routes = [
   {
     path: 'contract/create',
     component: UpdateContractComponent
+  },
+  {
+    path: 'contract/edit/:id',
+    component: UpdateContractComponent
+  },
+  {
+    path: 'contract/info/:id',
+    component: InfoContractsComponent
   }]
 
 @NgModule({

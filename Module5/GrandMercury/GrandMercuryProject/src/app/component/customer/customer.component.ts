@@ -38,8 +38,8 @@ export class CustomerComponent implements OnInit {
   deleteById(id: number) {
     this.customerService.deleteById(id).subscribe(value => {
       this.customerSelect = {};
-      // @ts-ignore
-      window.location = "http://localhost:4200/customer/list";
+      document.getElementById('exampleModal').click();
+      this.ngOnInit();
     });
   }
 }

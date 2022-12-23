@@ -30,12 +30,11 @@ export class ValidatorCustomService {
   }
 
   checkDayInAndDayOut(control: AbstractControl): ValidationErrors | null {
-    const startDate = control.get("startDate").value;
-    const endDate = control.get("endDate").value;
-    if (endDate > startDate) {
-      return {'nomatch': true}
+    const startDate = moment(control.get("startDate").value);
+    const endDate = moment(control.get("endDate").value);
+    if (moment.duration(endDate.diff(startDate)).asDays() < 0) {
+      return {nomatch: true}
     }
     return null
-
   }
 }

@@ -18,7 +18,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   page = 1;
-  pageSize = 4;
+  pageSize = 5;
 
   ngOnInit(): void {
     this.findAllByName("", '');
@@ -29,8 +29,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   findAllByName(name: string, email: string) {
-    // @ts-ignore
-    this.employeeService.findAllByName(name, email).subscribe((value: Employee[]) => {
+     this.employeeService.findAllByName(name, email).subscribe((value: Employee[]) => {
        this.list = value;
     })
   }
@@ -47,8 +46,8 @@ export class EmployeeComponent implements OnInit {
     item.status = 0;
     this.employeeService.updateById(item).subscribe(value => {
       this.employeeDelete = {};
-      // @ts-ignore
-      window.location = "http://localhost:4200/employee/list"
+      document.getElementById('deleteEmployee').click();
+      this.ngOnInit();
     });
   }
 }

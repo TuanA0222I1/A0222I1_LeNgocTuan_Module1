@@ -16,11 +16,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {EmployeeComponent} from './component/employee/employee.component';
 import {UpdateEmployeeComponent} from './component/employee/update-employee/update-employee.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { ContractComponent } from './component/contract/contract.component';
-import { UpdateContractComponent } from './component/contract/update-contract/update-contract.component';
+import {ContractComponent} from './component/contract/contract.component';
+import {UpdateContractComponent} from './component/contract/update-contract/update-contract.component';
+import {PipeCurrencyCustomPipe} from "./utils/PipeCurrencyCustom";
+import { InfoContractsComponent } from './component/contract/info-contracts/info-contracts.component';
 
 @NgModule({
   declarations: [
+    PipeCurrencyCustomPipe,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -33,7 +36,8 @@ import { UpdateContractComponent } from './component/contract/update-contract/up
     EmployeeComponent,
     UpdateEmployeeComponent,
     ContractComponent,
-    UpdateContractComponent
+    UpdateContractComponent,
+    InfoContractsComponent
   ],
   imports: [
     BrowserModule,

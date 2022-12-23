@@ -69,24 +69,23 @@ export class UpdateEmployeeComponent implements OnInit {
       education: [this.employeeUpdate.education == undefined ? "" : this.employeeUpdate.education, [Validators.required]],
       dayOfBirth: [this.employeeUpdate.dayOfBirth == undefined ? new Date(now()) : this.employeeUpdate.dayOfBirth, [Validators.required, this.validatorCustom.check18Age]],
       status: [1]
-    },)
+    })
   }
 
   saveDate() {
-    if (this.formUpdate.value.id == null) {
-      this.employeeService.saveNewEmployee(this.formUpdate.value).subscribe(value => {
-        this.router.navigateByUrl("/employee/list").then(resolve => {
-          this.employeeUpdate = {};
-          this.formUpdate.reset()
-        })
-      });
-      return;
-    }
-    this.employeeService.updateById(this.formUpdate.value).subscribe(value => {
+
+    this.employeeService.save(this.formUpdate.value).subscribe(value => {
       this.router.navigateByUrl("/employee/list").then(resolve => {
         this.employeeUpdate = {};
         this.formUpdate.reset()
       })
     });
+
+    // this.employeeService.updateById(this.formUpdate.value).subscribe(value => {
+    //   this.router.navigateByUrl("/employee/list").then(resolve => {
+    //     this.employeeUpdate = {};
+    //     this.formUpdate.reset()
+    //   })
+    // });
   }
 }

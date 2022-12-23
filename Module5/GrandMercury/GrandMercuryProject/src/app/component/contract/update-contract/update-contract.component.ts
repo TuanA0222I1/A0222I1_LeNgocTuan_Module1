@@ -7,10 +7,12 @@ import {AttachService} from "../../../model/contract/AttachService";
 import {Customer} from "../../../model/customer/Customer";
 import {Employee} from "../../../model/employee/Employee";
 import {Facility} from "../../../model/facility/Facility";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidatorCustomService} from "../../../service/validatorCustomer/validator-custom.service";
 import {ContractService} from "../../../service/contract/contract.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Contract} from "../../../model/contract/Contract";
+import {now} from "moment";
 
 @Component({
   selector: 'app-update-contract',
@@ -27,7 +29,7 @@ export class UpdateContractComponent implements OnInit {
 
   formUpdate: FormGroup;
 
-  formDate: FormGroup
+  contractChose: Contract = {};
 
   total: number = 0;
 
@@ -38,41 +40,57 @@ export class UpdateContractComponent implements OnInit {
               private contractService: ContractService,
               private formBuilder: FormBuilder,
               private customerValidator: ValidatorCustomService,
-              private router: Router) {
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.buildForm();
     this.attachServices = this.attachService.findAll();
     this.customerService.findAll().subscribe(value => this.customers = value)
     this.facilityService.findAllByName("").subscribe(value => this.facilities = value)
     this.employeeService.findAllByName("", "").subscribe(value => this.employees = value);
+    if (this.router.url.includes("create")) {
+      return;
+    }
+    this.activatedRoute.paramMap.subscribe(value => {
+      let id = +value.get("id");
+      this.contractService.findById(id).subscribe(value => {
+        this.contractChose = value;
+        this.buildForm();
+        console.log(this.contractChose)
+      })
+    })
+
+  }
+
+  buildForm() {
     this.formUpdate = this.formBuilder.group({
-      id: [],
-      startDate: ['', [Validators.required, this.customerValidator.checkPresentAndFuture]],
-      endDate: ['', [Validators.required, this.customerValidator.checkPresentAndFuture]],
-      deposit: [0, [Validators.required, Validators.min(0)]],
-      total: [this.total],
-      employee: ['', [Validators.required]],
-      customer: ['', [Validators.required]],
-      facility: ['', [Validators.required]]
-    }, [this.customerValidator.checkDayInAndDayOut])
+      id: [this.contractChose.id],
+      startDate: [this.contractChose.startDate, [Validators.required, this.customerValidator.checkPresentAndFuture]],
+      endDate: [this.contractChose.endDate, [Validators.required, this.customerValidator.checkPresentAndFuture]],
+      deposit: [this.contractChose.deposit, [Validators.required, Validators.min(0)]],
+      total: [this.contractChose.total == undefined ? 0 : this.contractChose.total],
+      employee: [this.contractChose.employee == undefined ? "" : this.contractChose.employee, [Validators.required]],
+      customer: [this.contractChose.customer == undefined ? "" : this.contractChose.customer, [Validators.required]],
+      facility: [this.contractChose.facility == undefined ? "" : this.contractChose.facility, [Validators.required]]
+    }, {validator: this.customerValidator.checkDayInAndDayOut})
   }
 
   updateTotal() {
     let facilitySelect = this.facilityService.findById(+this.costFacility.nativeElement.value).subscribe(value => {
       this.total = value.cost - +this.deposit.nativeElement.value;
-      console.log(this.total)
     })
 
   }
 
   saveForm() {
-    console.log(this.formUpdate);
-    // this.contractService.saveContract(this.formUpdate.value).subscribe(value => {
-    //   this.router.navigateByUrl("/contract/list").then(r => {
-    //     this.formUpdate.reset();
-    //     this.total = 0
-    //   })
-    // });
+        this.contractService.save(this.formUpdate.value).subscribe(value => {
+        this.router.navigateByUrl("/contract/list").then(r => {
+          this.formUpdate.reset();
+          this.contractChose = {}
+          this.total = 0
+        })
+      });
   }
 }
