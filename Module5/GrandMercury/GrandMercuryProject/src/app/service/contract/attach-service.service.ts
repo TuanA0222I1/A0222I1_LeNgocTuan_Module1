@@ -55,4 +55,9 @@ export class AttachServiceService {
   findAll(): AttachService[] {
     return this.attachs;
   }
+
+  findById(attach: any) {
+    return this.attachs.find(x => x.id == attach);
+
+  }
 }

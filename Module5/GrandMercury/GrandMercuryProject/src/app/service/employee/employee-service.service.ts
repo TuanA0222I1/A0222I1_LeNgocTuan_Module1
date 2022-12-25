@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Employee} from "../../model/employee/Employee";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
-import {DivisionEmpl} from "../../model/employee/DivisionEmpl";
 import {DivisionServiceService} from "./division-service.service";
 import {PositionServiceService} from "./position-service.service";
 import {EducationServiceService} from "./education-service.service";
@@ -16,6 +15,7 @@ export class EmployeeServiceService {
 
   base_url = "http://localhost:3000/employee";
 
+
   constructor(private httpClient: HttpClient,
               private divisionService: DivisionServiceService,
               private positionService: PositionServiceService,
@@ -23,24 +23,35 @@ export class EmployeeServiceService {
   }
 
 
-  findAllByName(name: string, email: string): Observable<Employee[]> {
-    return this.httpClient.get<Employee[]>(`${this.base_url}?_sort=id&_order=asc&name_like=${name}&email_like=${email}&status=1`).pipe(
-      map((employees: Employee[]) => {
-          return employees.map(employee => {
-              employee.division = this.divisionService.findById(employee.division);
-              employee.education = this.educationService.findById(employee.education);
-              employee.position = this.positionService.findById(employee.position);
-              return employee;
-            }
-          )
-        }
-      )
-    );
+  findAllByName(name: string, email: string, position: string): Observable<Employee[]> {
+    return this.httpClient.get<Employee[]>(`${this.base_url}?_sort=id&_order=asc&name_like=${name}&email_like=${email}&position_like=${position}&status=1`)
+      .pipe(
+        map((employees: Employee[]) => {
+            return employees.map(employee => {
+                employee.division = this.divisionService.findById(employee.division);
+                employee.education = this.educationService.findById(employee.education);
+                employee.position = this.positionService.findById(employee.position);
+                return employee;
+              }
+            )
+          }
+        )
+      );
   }
 
   findById(id: any): Observable<Employee> {
-    return this.httpClient.get<Employee>(`${this.base_url}/${id}`) ;
+    return this.httpClient.get<Employee>(`${this.base_url}/${id}`).pipe(map((employee: Employee) => {
+      return this.converterAll(employee);
+    }))
   }
+
+  converterAll(employee: Employee): Employee {
+    employee.division = this.divisionService.findById(employee.division);
+    employee.education = this.educationService.findById(employee.education);
+    employee.position = this.positionService.findById(employee.position);
+    return employee
+  }
+
 
   updateById(employeeTemp: Employee): Observable<Employee> {
     return this.httpClient.patch(`${this.base_url}/${employeeTemp.id}`, employeeTemp);

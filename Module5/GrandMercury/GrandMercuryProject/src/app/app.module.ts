@@ -20,6 +20,7 @@ import {ContractComponent} from './component/contract/contract.component';
 import {UpdateContractComponent} from './component/contract/update-contract/update-contract.component';
 import {PipeCurrencyCustomPipe} from "./utils/PipeCurrencyCustom";
 import { InfoContractsComponent } from './component/contract/info-contracts/info-contracts.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { InfoContractsComponent } from './component/contract/info-contracts/info
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
+    Ng2SearchPipeModule
    ],
   providers: [],
   bootstrap: [AppComponent]

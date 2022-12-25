@@ -5,7 +5,7 @@ import {EmployeeServiceService} from "../employee/employee-service.service";
 import {FacilityServiceService} from "../facility/facility-service.service";
 import {Contract} from "../../model/contract/Contract";
 import {Observable} from "rxjs";
-import {filter, map} from "rxjs/operators";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,34 @@ export class ContractService {
         return contract
       })
     }))
+    // return new Promise(async (resolve, reject) => {
+    //   this.http.get<ContractDto[]>(`${this.url}?_sort=deposit,id&startDate_like=${dateIn}`).subscribe(async (contracts) => {
+    //
+    //     const arr = [];
+    //     for (let contract of contracts) {
+    //       const [e, cus, f] = await Promise.all([
+    //         this.employeeService.findById(contract.employee).toPromise(),
+    //         this.customerService.findById(contract.customer).toPromise(),
+    //       this.facilityService.findById(contract.facility).toPromise()
+    //       ])
+    //
+    //       const c: Contract = {
+    //         ...contract
+    //       } as Contract;
+    //       delete c.employee;
+    //       delete c.customer;
+    //       delete c.facility;
+    //
+    //       c.employee = e;
+    //       c.customer = cus;
+    //       c.facility = f;
+    //
+    //       arr.push(c);
+    //     }
+    //
+    //     resolve(arr);
+    //   })
+    // })
   }
 
 
@@ -48,9 +76,7 @@ export class ContractService {
   }
 
   save(value: Contract) {
-    console.log(value);
     if (value.id == null) return this.http.post<Contract>(`${this.url}`, value);
-    console.log("here");
     return this.http.put<Contract>(`${this.url}/${value.id}`, value);
   }
 }

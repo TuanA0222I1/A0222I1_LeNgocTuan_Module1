@@ -8,143 +8,104 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <h3 class="fw-normal mb-5" style="color: #4835d4;">Contract Information</h3>
-
                   <div class="mb-4 pb-2">
-
                   </div>
-
                   <div class="row">
+
+
                     <div class="col-md-6 mb-4 pb-2">
-
                       <div class="form-outline">
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplev2">First name</label>
+                        <p class="form-control form-control-lg">{{contract.startDate}}</p>
+                        <label class="form-label">Start Day</label>
                       </div>
-
                     </div>
                     <div class="col-md-6 mb-4 pb-2">
-
                       <div class="form-outline">
-                        <input type="text" id="form3Examplev3" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplev3">Last name</label>
+                        <p class="form-control form-control-lg">{{contract.endDate}}</p>
+                        <label class="form-label">End Day</label>
                       </div>
-
                     </div>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <select class="select">
-                      <option value="1">Position</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                    </select>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline">
-                      <input type="text" id="form3Examplev4" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Examplev4">Position</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
-
+                    <div class="col-md-6 mb-4 pb-2">
                       <div class="form-outline">
-                        <input type="text" id="form3Examplev5" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplev5">Bussines Arena</label>
+                        <p class="form-control form-control-lg">{{contract.deposit | pipeCurrencyCustom}}</p>
+                        <label class="form-label">Deposit</label>
                       </div>
-
                     </div>
-                    <div class="col-md-6">
-
-                      <select class="select">
-                        <option value="1">Employees</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                      </select>
-
+                    <div class="col-md-6 mb-4 pb-2">
+                      <div class="form-outline">
+                        <p class="form-control form-control-lg">{{contract.total| pipeCurrencyCustom}}</p>
+                        <label class="form-label">Total Money</label>
+                      </div>
                     </div>
                   </div>
+                  <table class="table table-success table-striped">
+
+                    <tr>
+
+                      <td class="form-label">Customer</td>
+                      <td>{{customerSelect.name}}</td>
+                      <td>
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#customerModal">
+                          <img src="../../../../assets/image-form/icons8-info-100.png">
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="form-label">Employee</td>
+                      <td> {{employeeSelect.name}}</td>
+                      <td>
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#employeeModal">
+                          <img src="../../../../assets/image-form/icons8-info-100.png"></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="form-label">Facility</td>
+                      <td>{{facilitySelect.name}}</td>
+                      <td>
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#facilityModal">
+                          <img src="../../../../assets/image-form/icons8-info-100.png">
+                        </button>
+                      </td>
+
+
+                    </tr>
+                  </table>
 
                 </div>
               </div>
               <div class="col-lg-6 bg-indigo text-white">
                 <div class="p-5">
                   <h3 class="fw-normal mb-5">Contact Details</h3>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Examplea2">Street + Nr</label>
-                    </div>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea3" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Examplea3">Additional Information</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
-
+                  <div *ngFor="let item of contractDetailsSelect">
+                    <div class="mb-4 pb-2">
                       <div class="form-outline form-white">
-                        <input type="text" id="form3Examplea4" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplea4">Zip Code</label>
+                        <label class="mb-0">Id Contract Details</label>s
+                        <p class="form-label">{{item.id}}</p>
                       </div>
-
                     </div>
-                    <div class="col-md-7 mb-4 pb-2">
-
+                    <div class="mb-4 pb-2">
                       <div class="form-outline form-white">
-                        <input type="text" id="form3Examplea5" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplea5">Place</label>
+                        <label class="mb-0">Attach Service</label>s
+                        <p class="form-label">{{item.attach}}
+                          <span> <button class="btn btn-light" (click)="findAttachService(item.attach)" data-bs-toggle="modal" data-bs-target="#attachServiceModal">
+                            <img
+                              src="../../../../assets/image-form/icons8-info-100.png"></button>
+                          </span>
+                        </p>
+
                       </div>
-
                     </div>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea6" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Examplea6">Country</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
-
+                    <div class="mb-4 pb-2">
                       <div class="form-outline form-white">
-                        <input type="text" id="form3Examplea7" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplea7">Code +</label>
+                        <label class="mb-0">Quantity</label>
+                        <p class="form-label">{{item.quantity}}</p>
                       </div>
-
                     </div>
-                    <div class="col-md-7 mb-4 pb-2">
-
-                      <div class="form-outline form-white">
-                        <input type="text" id="form3Examplea8" class="form-control form-control-lg"/>
-                        <label class="form-label" for="form3Examplea8">Phone Number</label>
-                      </div>
-
-                    </div>
+                    <hr>
                   </div>
-
-                  <div class="mb-4">
-                    <div class="form-outline form-white">
-                      <input type="text" id="form3Examplea9" class="form-control form-control-lg"/>
-                      <label class="form-label" for="form3Examplea9">Your Email</label>
-                    </div>
-                  </div>
-
                   <button type="button" class="btn btn-light btn-lg"
-                          data-mdb-ripple-color="dark" routerLink="/contract/list">Back List
+                          data-mdb-ripple-color="dark" (click)="resetAll()" routerLink="/contract/list">Back List
                   </button>
-
                 </div>
               </div>
             </div>
@@ -154,3 +115,121 @@
     </div>
   </div>
 </section>
+
+<div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="customerLabel">Modal Info Customer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 18rem;">
+          <img src="{{customerSelect.avatar}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Name Customer</h5>
+            <p class="card-text">{{customerSelect.name}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Birthday: {{customerSelect.dayOfBirth | date: 'dd/MM/yyyy'}}</li>
+            <li class="list-group-item">Phone: {{customerSelect.phone}}</li>
+            <li class="list-group-item">Email: {{customerSelect.email}}</li>
+            <li class="list-group-item">Address: {{customerSelect.address}}</li>
+            <li class="list-group-item">
+              Description: {{customerSelect.description == undefined ? "Update Soon" : customerSelect.description}}</li>
+            <li class="list-group-item">Type Customer: {{customerSelect.typeCustomer}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="employeeLabel">Modal Info Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Name: {{employeeSelect.name}}</li>
+          <li class="list-group-item">Birthday: {{employeeSelect.dayOfBirth | date: 'dd/MM/yyyy'}}</li>
+          <li class="list-group-item">Phone: {{employeeSelect.phone}}</li>
+          <li class="list-group-item">Id Card: {{employeeSelect.id_card}}</li>
+          <li class="list-group-item">Salary: {{employeeSelect.salary | pipeCurrencyCustom}}</li>
+          <li class="list-group-item">Email: {{employeeSelect.email}}</li>
+          <li class="list-group-item">Address: {{employeeSelect.address}}</li>
+          <li class="list-group-item">Position: {{employeeSelect.position.name}}</li>
+          <li class="list-group-item">Education: {{employeeSelect.education.name}}</li>
+          <li class="list-group-item">Division: {{employeeSelect.division.name}}</li>
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="facilityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="facilityLabel">Modal Info Facility</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 18rem;">
+          <img src="{{facilitySelect.image}}" class="card-img-top" alt="..." style="width:18rem ">
+          <div class="card-body">
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Name: {{facilitySelect.name}}</li>
+              <li class="list-group-item">Pool Area: {{facilitySelect.pool_area}}</li>
+              <li class="list-group-item">Area: {{facilitySelect.area}}</li>
+              <li class="list-group-item">Id Card: {{facilitySelect.max_people}}</li>
+              <li class="list-group-item">Salary: {{facilitySelect.area | pipeCurrencyCustom}}</li>
+              <li class="list-group-item">Rent Type: {{facilitySelect.rent_type_id.name}}</li>
+              <li class="list-group-item">Type Service: {{facilitySelect.service_type_id.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="attachServiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsLabel">Modal Info Contract Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Name: {{this.attachServiceSelect.name}}</li>
+              <li class="list-group-item">Cost: {{this.attachServiceSelect.cost}}</li>
+              <li class="list-group-item">Unit: {{this.attachServiceSelect.unit}}</li>
+              <li class="list-group-item">Status: {{this.attachServiceSelect.status}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="this.attachServiceSelect = {}"
+               >Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

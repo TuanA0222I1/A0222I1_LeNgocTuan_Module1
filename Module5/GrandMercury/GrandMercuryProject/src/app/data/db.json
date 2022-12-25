@@ -344,10 +344,170 @@
       "startDate": "2022-12-23",
       "endDate": "2022-12-24",
       "deposit": 100,
-      "total": 4900,
+      "total": 6400,
       "employee": "6",
       "customer": "3",
       "facility": "13"
+    },
+    {
+      "id": 124,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 125,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 126,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 127,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 128,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 129,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 130,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 131,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 132,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 133,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 134,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 135,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 136,
+      "startDate": null,
+      "endDate": null,
+      "deposit": null,
+      "total": 0,
+      "employee": "",
+      "customer": "",
+      "facility": ""
+    },
+    {
+      "id": 137,
+      "startDate": "2022-12-26",
+      "endDate": "2022-12-27",
+      "deposit": 1000,
+      "total": 1010,
+      "employee": "6",
+      "customer": "5",
+      "facility": "2"
+    },
+    {
+      "id": 139,
+      "startDate": "2022-12-29",
+      "endDate": "2022-12-31",
+      "deposit": 200,
+      "total": 2950,
+      "employee": "5",
+      "customer": "3",
+      "facility": "3"
+    },
+    {
+      "id": 140,
+      "startDate": "2023-01-01",
+      "endDate": "2023-01-03",
+      "deposit": 4000,
+      "total": 4000,
+      "employee": "6",
+      "customer": "5",
+      "facility": "4"
     }
   ],
   "contractDetails": [
@@ -428,6 +588,48 @@
       "contract": 12,
       "attach": 1,
       "quantity": 1
+    },
+    {
+      "id": 14,
+      "contract": 123,
+      "attach": 4,
+      "quantity": 10
+    },
+    {
+      "id": 15,
+      "contract": 137,
+      "attach": 2,
+      "quantity": "1"
+    },
+    {
+      "id": 16,
+      "contract": 137,
+      "attach": 2,
+      "quantity": "1"
+    },
+    {
+      "id": 17,
+      "contract": 138,
+      "attach": 1,
+      "quantity": "1"
+    },
+    {
+      "id": 18,
+      "contract": 138,
+      "attach": 2,
+      "quantity": 1
+    },
+    {
+      "id": 19,
+      "contract": 139,
+      "attach": 4,
+      "quantity": "1"
+    },
+    {
+      "id": 20,
+      "contract": 140,
+      "attach": 1,
+      "quantity": "2"
     }
   ]
 }

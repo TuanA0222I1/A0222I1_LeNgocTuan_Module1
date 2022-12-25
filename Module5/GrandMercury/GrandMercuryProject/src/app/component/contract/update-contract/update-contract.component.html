@@ -1,4 +1,4 @@
-<section class="h-100 bg-dark">
+<section class="h-100 bg-dark" xmlns="http://www.w3.org/1999/html">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
@@ -106,6 +106,37 @@
                     <input type="number" id="total" class="form-control form-control-lg" [(ngModel)]="total"
                            formControlName="total" name="total" readonly/>
                     <label class="form-label" for="total">Total</label>
+                  </div>
+                  <div *ngIf="this.router.url.includes('create')">
+                    <div class="form-outline mb-4">
+                      <button type="button" (click)="addAttach()" class="btn-secondary">add on</button>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <div *ngFor="let addOn of attachServicesAddOn.controls, let i =index">
+                        <ng-container [formGroup]="addOn">
+                          <p>{{i + 1}}.</p>
+                          <select formControlName="attach" class="form-select" aria-label="Default select example">
+                            <option value="">Choice</option>
+                            <option *ngFor="let item of attachServices" [ngValue]="item">{{item.name}}
+                              have {{item.cost}}</option>
+                          </select>
+                          <label>Attach add on
+                            <span style="color:red;"
+                                  *ngIf="(addOn.controls.attach.touched) && addOn.controls.attach.hasError('required') "> is something!!! Input Add On</span>
+                          </label>
+                          <input formControlName="quantity" class="form-control"/>
+                          <label>Quantity
+                            <span style="color:red;"
+                                  *ngIf="(addOn.controls.quantity.touched) && addOn.controls.quantity.hasError('required') "> is something!!! Input Quantity</span>
+                            <span style="color:red;"
+                                  *ngIf="(addOn.controls.quantity.touched) && addOn.controls.quantity.hasError('min') "> should be bigger 1 !!! Input Quantity</span>
+                          </label>
+                        </ng-container>
+                      </div>
+
+
+                    </div>
                   </div>
 
                   <div class="d-flex justify-content-end pt-3">

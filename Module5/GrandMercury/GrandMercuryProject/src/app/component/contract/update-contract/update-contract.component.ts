@@ -7,12 +7,12 @@ import {AttachService} from "../../../model/contract/AttachService";
 import {Customer} from "../../../model/customer/Customer";
 import {Employee} from "../../../model/employee/Employee";
 import {Facility} from "../../../model/facility/Facility";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidatorCustomService} from "../../../service/validatorCustomer/validator-custom.service";
 import {ContractService} from "../../../service/contract/contract.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Contract} from "../../../model/contract/Contract";
-import {now} from "moment";
+import {ContractDetailServiceService} from "../../../service/contract/contract-detail-service.service";
 
 @Component({
   selector: 'app-update-contract',
@@ -28,6 +28,7 @@ export class UpdateContractComponent implements OnInit {
   facilities: Facility[] = [];
 
   formUpdate: FormGroup;
+  attachServicesAddOn = new FormArray([]);
 
   contractChose: Contract = {};
 
@@ -41,15 +42,17 @@ export class UpdateContractComponent implements OnInit {
               private formBuilder: FormBuilder,
               private customerValidator: ValidatorCustomService,
               private router: Router,
+              private contractDetailsService: ContractDetailServiceService,
               private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.buildFormGroupAddOn();
     this.buildForm();
     this.attachServices = this.attachService.findAll();
     this.customerService.findAll().subscribe(value => this.customers = value)
     this.facilityService.findAllByName("").subscribe(value => this.facilities = value)
-    this.employeeService.findAllByName("", "").subscribe(value => this.employees = value);
+    this.employeeService.findAllByName("", "", '').subscribe(value => this.employees = value);
     if (this.router.url.includes("create")) {
       return;
     }
@@ -58,7 +61,6 @@ export class UpdateContractComponent implements OnInit {
       this.contractService.findById(id).subscribe(value => {
         this.contractChose = value;
         this.buildForm();
-        console.log(this.contractChose)
       })
     })
 
@@ -78,19 +80,43 @@ export class UpdateContractComponent implements OnInit {
   }
 
   updateTotal() {
-    let facilitySelect = this.facilityService.findById(+this.costFacility.nativeElement.value).subscribe(value => {
+    if(this.costFacility.nativeElement.value == '') return
+    this.facilityService.findById(+this.costFacility.nativeElement.value).subscribe(value => {
       this.total = value.cost - +this.deposit.nativeElement.value;
     })
 
   }
 
   saveForm() {
-        this.contractService.save(this.formUpdate.value).subscribe(value => {
-        this.router.navigateByUrl("/contract/list").then(r => {
-          this.formUpdate.reset();
-          this.contractChose = {}
-          this.total = 0
-        })
-      });
+    console.log(this.attachServicesAddOn)
+    this.contractService.save(this.formUpdate.value).subscribe(value => {
+      for (const valueElement of this.attachServicesAddOn.value) {
+        if(valueElement.quantity == 0) continue;
+        if(valueElement.attach.id == '') continue;
+        let contractDetail = {
+          contract: value,
+          attach: valueElement.attach,
+          quantity: valueElement.quantity
+        }
+        this.contractDetailsService.saveContractDetails(contractDetail).subscribe()
+      }
+      this.router.navigateByUrl("/contract/list").then(r => {
+        this.formUpdate.reset();
+        this.contractChose = {}
+        this.total = 0
+      })
+    });
   }
+
+  buildFormGroupAddOn(): AbstractControl {
+    return new FormGroup({
+      attach: new FormControl('', Validators.required),
+      quantity: new FormControl(0, [Validators.required, Validators.min(1)])
+    });
+  }
+
+  addAttach() {
+    this.attachServicesAddOn.push(this.buildFormGroupAddOn())
+  }
+
 }

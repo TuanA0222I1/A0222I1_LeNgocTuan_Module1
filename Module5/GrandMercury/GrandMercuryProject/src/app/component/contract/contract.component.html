@@ -1,9 +1,14 @@
 <div class="row" style="margin: auto">
-  <div class="col-2">
+  <div class="col-1">
     <button routerLink="/contract/create" class="btn btn-outline-success">Create</button>
   </div>
-  <div class="col-2">
-    <button (click)="getList('')" class="btn btn-outline-info">Refresh</button>
+  <div class="col-1">
+    <button (click)="refreshList()" class="btn btn-outline-info">Refresh</button>
+  </div>
+  <div class="col-4">
+    <div class="search-hero">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="name people want check">
+    </div>
   </div>
   <div class="col-6">
     <div class="input-group rounded">
@@ -17,6 +22,7 @@
    </button>
       </span>
     </div>
+
   </div>
 </div>
 
@@ -51,7 +57,7 @@
   </th>
   </thead>
   <tbody>
-  <tr *ngFor="let item of contracts| slice: (page-1) * pageSize : page * pageSize , let i = index">
+  <tr *ngFor="let item of contracts| slice: (page-1) * pageSize : page * pageSize | filter:searchText, let i = index">
     <td>{{i + 1}}</td>
     <td>{{item.startDate| date: 'dd/MM/yyyy'}}</td>
     <td>{{item.endDate| date: 'dd/MM/yyyy'}}</td>

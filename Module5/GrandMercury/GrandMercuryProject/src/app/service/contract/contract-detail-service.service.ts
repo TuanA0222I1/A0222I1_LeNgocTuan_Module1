@@ -17,8 +17,11 @@ export class ContractDetailServiceService {
     return this.http.get<ContractDetail[]>(this.url);
   }
 
-  saveContractDetails(value: ContractDetail): Observable<ContractDetail> {
+  findByIdContract(idContract: number): Observable<ContractDetail[]> {
+    return this.http.get<ContractDetail[]>(`${this.url}?contract=${idContract}`);
+  }
 
+  saveContractDetails(value: ContractDetail): Observable<ContractDetail> {
     let temp = {
       id: null,
       contract: value.contract.id,
@@ -28,11 +31,8 @@ export class ContractDetailServiceService {
     this.contractService.findById(value.contract.id).subscribe(data => {
       data.total += (value.quantity * value.attach.cost);
       this.contractService.save(data).subscribe(data => {
-
       });
     })
     return this.http.post<ContractDetail>(this.url, temp);
-
-
   }
 }

@@ -3,11 +3,9 @@ import {Contract} from "../../model/contract/Contract";
 import {ContractService} from "../../service/contract/contract.service";
 import {AttachService} from "../../model/contract/AttachService";
 import {AttachServiceService} from "../../service/contract/attach-service.service";
-import {Customer} from "../../model/customer/Customer";
 import {CustomerServiceService} from "../../service/customer/customer-service.service";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ContractDetailServiceService} from "../../service/contract/contract-detail-service.service";
-import {logger} from "codelyzer/util/logger";
 
 @Component({
   selector: 'app-contract',
@@ -17,11 +15,11 @@ import {logger} from "codelyzer/util/logger";
 export class ContractComponent implements OnInit {
 
   @ViewChild("dateFind") dayFind: ElementRef;
-  @ViewChild("customer") customer: ElementRef;
+  // @ViewChild("customer") customer: ElementRef;
   contracts: Contract[] = [];
   attachServices: AttachService[] = [];
   page = 1;
-
+  searchText: string = "";
   pageSize = 5;
 
   contractSelect: Contract = {}
@@ -43,12 +41,7 @@ export class ContractComponent implements OnInit {
 
   getList(date: string) {
     this.contractService.findAllByDate(date).subscribe(contracts => {
-      this.contracts = contracts;
-       this.contracts.filter(x => {
-        console.log(x)
-        console.log(x.customer)
-        console.log(x.customer.name)
-      })
+      this.contracts = contracts
     })
   }
 
@@ -66,7 +59,7 @@ export class ContractComponent implements OnInit {
 
   findList() {
     let findDay = this.dayFind.nativeElement.value;
-    let findCustomer = this.customer.nativeElement.value;
+    // let findCustomer = this.customer.nativeElement.value;
     this.getList(findDay);
   }
 
@@ -85,5 +78,11 @@ export class ContractComponent implements OnInit {
       document.getElementById("addAttachModal").click();
       this.ngOnInit();
     });
+  }
+
+  refreshList() {
+    this.getList('');
+    this.searchText = "";
+    this.contractSelect = {};
   }
 }

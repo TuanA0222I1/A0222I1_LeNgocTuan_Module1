@@ -18,4 +18,7 @@ export class RentServiceService {
     return this.rents;
   }
 
+  findById(rent_type_id: any) {
+    return this.rents.find(x => x.id == rent_type_id);
+  }
 }

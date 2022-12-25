@@ -25,4 +25,8 @@ export class TypeServiceService {
   findAll(): TypeService[] {
     return this.types;
   }
+
+  findById(type_id: any) {
+    return this.types.find(x => x.id == type_id);
+  }
 }

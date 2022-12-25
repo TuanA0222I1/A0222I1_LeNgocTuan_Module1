@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Customer} from "../../model/customer/Customer";
 import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +19,11 @@ listCustomer: Customer[] = []
   }
 
   save(customerUpdate: Customer): Observable<Customer> {
-    console.log(customerUpdate);
-    return this.httpClient.post(this.base_customer_url, customerUpdate);
+     return this.httpClient.post(this.base_customer_url, customerUpdate);
   }
 
   findById(id: any): Observable<Customer> {
-    return this.httpClient.get<Customer>(`${this.base_customer_url}/${id}`);
+    return this.httpClient.get<Customer>(`${this.base_customer_url}/${id}`) ;
   }
 
   findByName(name: string): Observable<Customer[]> {

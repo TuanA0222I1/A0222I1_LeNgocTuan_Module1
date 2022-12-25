@@ -8,6 +8,12 @@
         <div class="form-outline">
           <input class="form-control" id="form2" type="text" formControlName="email_search" placeholder="Email search">
         </div>
+        <div class="form-outline">
+          <select class="form-control" id="position" formControlName="position_search">
+            <option value="" disabled selected>Choice position search</option>
+            <option *ngFor="let item of positions" value="{{item.id}}">{{item.name}}</option>
+          </select>
+        </div>
         <button class="btn btn-primary" type="submit">
           <i class="fas fa-search"></i>
         </button>
@@ -19,7 +25,7 @@
 
   </div>
   <div class="col-2">
-    <button class="btn btn-outline-dark" (click)="findAllByName('','')"><i class="fa-solid fa-arrows-rotate"></i>
+    <button class="btn btn-outline-dark" (click)="refreshPage()"><i class="fa-solid fa-arrows-rotate"></i>
     </button>
   </div>
 </div>
