@@ -15,9 +15,13 @@
                 <label class="form-label">Id</label>
               </div>
               <div class="form-outline mb-4">
+                <input type="number" id="idcus" class="form-control" formControlName="id" name="id" disabled/>
+                <label class="form-label">Id Customer</label>
+              </div>
+              <div class="form-outline mb-4">
                 <input type="text" id="name" class="form-control" formControlName="name" name="name"/>
                 <label class="form-label">
-                  Name
+                  Name Customer
                   <span style="color:red;"
                         *ngIf="(formUpdate.controls.name.touched) && formUpdate.controls.name.hasError('required') "> is Something!!! Input Something </span>
                   <span style="color:red;"

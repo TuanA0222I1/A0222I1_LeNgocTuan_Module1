@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-8">
+  <div class="col-6">
     <form [formGroup]="formSearch" (ngSubmit)="search()">
       <div class="input-group">
         <div class="form-outline">
@@ -22,11 +22,13 @@
   </div>
   <div class="col-2">
     <button class="btn btn-outline-info" routerLink="/employee/create"><i class="fa-solid fa-plus"></i></button>
-
   </div>
   <div class="col-2">
     <button class="btn btn-outline-dark" (click)="refreshPage()"><i class="fa-solid fa-arrows-rotate"></i>
     </button>
+  </div>
+  <div *ngIf="message" [ngClass]="message == '1' ? 'col-2 alert alert-danger' : 'col-2 alert alert-success'" role="alert">
+    <span *ngIf="message">{{message}}</span>
   </div>
 </div>
 
@@ -56,6 +58,7 @@
     <td>{{item.email}}</td>
     <td>{{item.address | slice: 0: 10}} ...</td>
     <td>{{item.position.name}}</td>
+
     <td>{{item.division.name}}</td>
     <td>{{item.education.name}}</td>
     <td>

@@ -31,8 +31,8 @@ export class UpdateContractComponent implements OnInit {
   attachServicesAddOn = new FormArray([]);
 
   contractChose: Contract = {};
-
   total: number = 0;
+  flag: boolean = true;
 
   constructor(private attachService: AttachServiceService,
               private customerService: CustomerServiceService,
@@ -56,6 +56,7 @@ export class UpdateContractComponent implements OnInit {
     if (this.router.url.includes("create")) {
       return;
     }
+    this.flag = false;
     this.activatedRoute.paramMap.subscribe(value => {
       let id = +value.get("id");
       this.contractService.findById(id).subscribe(value => {
@@ -63,9 +64,7 @@ export class UpdateContractComponent implements OnInit {
         this.buildForm();
       })
     })
-
   }
-
   buildForm() {
     this.formUpdate = this.formBuilder.group({
       id: [this.contractChose.id],
@@ -78,15 +77,12 @@ export class UpdateContractComponent implements OnInit {
       facility: [this.contractChose.facility == undefined ? "" : this.contractChose.facility, [Validators.required]]
     }, {validator: this.customerValidator.checkDayInAndDayOut})
   }
-
   updateTotal() {
     if(this.costFacility.nativeElement.value == '') return
     this.facilityService.findById(+this.costFacility.nativeElement.value).subscribe(value => {
       this.total = value.cost - +this.deposit.nativeElement.value;
     })
-
   }
-
   saveForm() {
     console.log(this.attachServicesAddOn)
     this.contractService.save(this.formUpdate.value).subscribe(value => {
@@ -119,4 +115,8 @@ export class UpdateContractComponent implements OnInit {
     this.attachServicesAddOn.push(this.buildFormGroupAddOn())
   }
 
+  resetAll() {
+    this.buildForm();
+    this.attachServicesAddOn.clear()
+  }
 }

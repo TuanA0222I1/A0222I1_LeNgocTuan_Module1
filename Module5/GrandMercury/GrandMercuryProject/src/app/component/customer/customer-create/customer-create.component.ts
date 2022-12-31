@@ -25,13 +25,12 @@ export class CustomerCreateComponent implements OnInit {
               private customerService: CustomerServiceService,
               private formBuilder: FormBuilder,
   ) {
-    this.typeService.findAll().subscribe(value => this.typeList = value)
-    this.buildForm();
+
   }
 
   buildForm() {
     this.formCreate = this.formBuilder.group({
-      id: [this.customerUpdate.id == undefined ? "0" : this.customerUpdate.id],
+      id: [this.customerUpdate.id == undefined ? null : this.customerUpdate.id],
       name: [this.customerUpdate.name, [Validators.required]],
       address: [this.customerUpdate.address, [Validators.required]],
       phone: [this.customerUpdate.phone, [Validators.required]],
@@ -42,8 +41,10 @@ export class CustomerCreateComponent implements OnInit {
       description: [this.customerUpdate.description, [Validators.required]]
     })
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.buildForm();
+    this.typeService.findAll().subscribe(value => this.typeList = value)
   }
 
   getAvatarLink(str: string) {

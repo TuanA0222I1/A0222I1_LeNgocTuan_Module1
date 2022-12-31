@@ -35,10 +35,8 @@ export class TotoComponent implements OnInit {
 
   submitValue() {
     this.todoService.save(this.formCreate.value).subscribe(data => {
-      // @ts-ignore
-      window.location = this.url_base;
       this.formCreate.reset();
-
+      this.ngOnInit()
     });
 
   }

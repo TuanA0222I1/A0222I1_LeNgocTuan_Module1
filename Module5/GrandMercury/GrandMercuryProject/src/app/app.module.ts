@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './component/header/header.component';
@@ -39,7 +38,7 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
     ContractComponent,
     UpdateContractComponent,
     InfoContractsComponent
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

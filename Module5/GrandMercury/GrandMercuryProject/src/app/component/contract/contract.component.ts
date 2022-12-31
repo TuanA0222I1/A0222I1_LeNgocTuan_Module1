@@ -6,6 +6,7 @@ import {AttachServiceService} from "../../service/contract/attach-service.servic
 import {CustomerServiceService} from "../../service/customer/customer-service.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ContractDetailServiceService} from "../../service/contract/contract-detail-service.service";
+import {changeDate} from "../../utils/TestDateByMoment";
 
 @Component({
   selector: 'app-contract',
@@ -37,6 +38,7 @@ export class ContractComponent implements OnInit {
     this.addAttachServiceIntoContract(undefined)
     this.attachServices = this.attachService.findAll()
     this.getList("");
+    changeDate();
   }
 
   getList(date: string) {

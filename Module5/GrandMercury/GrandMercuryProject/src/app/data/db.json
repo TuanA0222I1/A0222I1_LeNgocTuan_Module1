@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Tuấn Lê",
       "typeCustomer": 1,
-      "dayOfBirth": "1990/04/14",
+      "dayOfBirth": "1990-04-14",
       "address": "Da Nang",
       "phone": "0766754226",
       "email": "cumeo123@gmail.com",
@@ -14,19 +14,19 @@
     {
       "id": 2,
       "name": "Thái Khang",
-      "typeCustomer": 2,
-      "dayOfBirth": "2019/07/21",
       "address": "Da Nang",
       "phone": "0766757542",
+      "typeCustomer": 2,
+      "dayOfBirth": "2019-07-21",
       "email": "cumeo124@gmail.com",
-      "avatar": "/assets/customer/Samurai_Cav_Mounted_Gunner.png",
+      "avatar": "/assets/customer/Samurai_Inf_Tetsubo_Hero.png",
       "description": "Nobunaga cuối cùng được ca ngợi là một người trung thành và được tôn thờ như một vị thần trong thời kỳ Minh Trị. Sau Thế chiến II, Nobunaga được coi là một nhà đổi mới do tính mới trong các chính sách của ông. Tuy nhiên, hình ảnh này của Nobunaga với tư cách là một nhà đổi mới đang bị nghi ngờ, và trong những năm gần đây, giới học thuật lịch sử đã đánh giá lại danh tiếng của Nobunaga."
     },
     {
       "id": 3,
       "name": "Thị Min",
       "typeCustomer": 3,
-      "dayOfBirth": "2021/01/14",
+      "dayOfBirth": "2021-01-14",
       "address": "Da Nang",
       "phone": "0766775422",
       "email": "cumeo126@gmail.com",
@@ -36,18 +36,19 @@
     {
       "id": 5,
       "name": "Thị Đầm",
-      "typeCustomer": 3,
-      "dayOfBirth": "1969/12/14",
       "address": "Da Nang",
       "phone": "0766754444",
+      "typeCustomer": "1",
+      "dayOfBirth": "1969-12-14",
       "email": "cumeo122@gmail.com",
-      "avatar": "/assets/customer/Samurai_Inf_Bow_Hero.png"
+      "avatar": "/assets/customer/Samurai_Inf_Naginata_Samurai_Hero.png",
+      "description": "NV Hattori Heiji là con trai cảnh sát trưởng Osaka Hattori Heizo và vợ là Hattori Shizuka. Nhờ chức vụ và quyền hạn của cha, anh từ nhỏ đã thân thiết với sở cảnh sát thành phố, đồng thời có cơ hội rèn luyện các kỹ năng tư duy, suy luận, tương tự như Shinichi. "
     },
     {
       "id": 6,
       "name": "Văn An",
       "typeCustomer": 1,
-      "dayOfBirth": "1990/09/10",
+      "dayOfBirth": "1990-09-10",
       "address": "Da Nang",
       "phone": "0766754283",
       "email": "cumeo1113@gmail.com",
@@ -58,7 +59,7 @@
       "id": 7,
       "name": "Văn Bình",
       "typeCustomer": 2,
-      "dayOfBirth": "1990/09/10",
+      "dayOfBirth": "1990-09-10",
       "address": "Da Nang",
       "phone": "0766756676",
       "email": "cumeo173@gmail.com",
@@ -68,7 +69,7 @@
       "id": 8,
       "name": "Thái Việt",
       "typeCustomer": 2,
-      "dayOfBirth": "1992/07/10",
+      "dayOfBirth": "1992-07-10",
       "address": "Da Nang",
       "phone": "0765211276",
       "email": "cumeo25@gmail.com",
@@ -100,10 +101,10 @@
       "phone": "0901234121",
       "email": "donghanguyen@gmail.com",
       "address": "213 Hàm Nghi, Đà Nẵng",
-      "position": "5",
+      "position": "1",
       "division": 2,
-      "education": 1,
-      "status": 1
+      "education": 3,
+      "status": 0
     },
     {
       "id": 2,
@@ -128,19 +129,10 @@
       "phone": "0911123529",
       "email": "binhlv@gmail.com",
       "address": "6 Hoà Khánh, Đồng Nai",
-      "position": {
-        "id": 2,
-        "name": "Expert"
-      },
-      "division": {
-        "id": 1,
-        "name": "Sale Marketing"
-      },
-      "education": {
-        "id": 2,
-        "name": "Degree Of Associate"
-      },
-      "status": 0
+      "position": "2",
+      "division": 1,
+      "education": 2,
+      "status": 1
     },
     {
       "id": 4,
@@ -151,9 +143,9 @@
       "phone": "0911123529",
       "email": "annghi20@gmail.com",
       "address": "4 Nguyễn Chí Thanh, Huế",
-      "position": "2",
-      "division": 4,
-      "education": 1,
+      "position": "1",
+      "division": "4",
+      "education": 3,
       "status": 1
     },
     {
@@ -194,8 +186,36 @@
       "email": "cumeo154@gmail.com",
       "address": "144 Phan Thanh, Đà Nẵng",
       "position": "2",
-      "division": "1",
-      "education": "3",
+      "division": 1,
+      "education": 3,
+      "status": 1
+    },
+    {
+      "id": 8,
+      "name": "Lê Văn Công Toản",
+      "salary": 11111,
+      "phone": "0921231321",
+      "email": "123123@gmail.com",
+      "id_card": 111231231,
+      "address": "111 Hùng Vương, Huế",
+      "position": "3",
+      "division": 3,
+      "education": 2,
+      "dayOfBirth": "1990-12-12",
+      "status": 1
+    },
+    {
+      "id": 9,
+      "name": "Le Ngoc Tuan",
+      "salary": 4000,
+      "phone": "0766754227",
+      "email": "cumeo154@gmail.com",
+      "id_card": 928189991,
+      "address": "Co Do, Huế",
+      "position": "2",
+      "division": 2,
+      "education": 3,
+      "dayOfBirth": "1990-01-29",
       "status": 1
     }
   ],
@@ -325,7 +345,7 @@
       "endDate": "2022-12-27",
       "deposit": 700,
       "total": 3300,
-      "employee": 1,
+      "employee": "1",
       "customer": 2,
       "facility": 1
     },
@@ -348,136 +368,6 @@
       "employee": "6",
       "customer": "3",
       "facility": "13"
-    },
-    {
-      "id": 124,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 125,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 126,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 127,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 128,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 129,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 130,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 131,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 132,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 133,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 134,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 135,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
-    },
-    {
-      "id": 136,
-      "startDate": null,
-      "endDate": null,
-      "deposit": null,
-      "total": 0,
-      "employee": "",
-      "customer": "",
-      "facility": ""
     },
     {
       "id": 137,
@@ -525,7 +415,7 @@
     },
     {
       "id": 3,
-      "contract": 12,
+      "contract": 1,
       "attach": 1,
       "quantity": 1
     },
@@ -537,25 +427,25 @@
     },
     {
       "id": 5,
-      "contract": 12,
+      "contract": 123,
       "attach": 1,
       "quantity": 1
     },
     {
       "id": 6,
-      "contract": 12,
+      "contract": 140,
       "attach": 1,
       "quantity": 1
     },
     {
       "id": 7,
-      "contract": 12,
+      "contract": 1,
       "attach": 1,
       "quantity": 1
     },
     {
       "id": 8,
-      "contract": 12,
+      "contract": 137,
       "attach": 1,
       "quantity": 1
     },
@@ -573,7 +463,7 @@
     },
     {
       "id": 11,
-      "contract": 12,
+      "contract": 1,
       "attach": 1,
       "quantity": 1
     },
@@ -585,7 +475,7 @@
     },
     {
       "id": 13,
-      "contract": 12,
+      "contract": 122,
       "attach": 1,
       "quantity": 1
     },
@@ -609,7 +499,7 @@
     },
     {
       "id": 17,
-      "contract": 138,
+      "contract": 2,
       "attach": 1,
       "quantity": "1"
     },

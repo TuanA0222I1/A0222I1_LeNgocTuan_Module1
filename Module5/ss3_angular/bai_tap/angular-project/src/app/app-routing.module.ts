@@ -13,6 +13,7 @@ import {ProducesComponent} from "./component/produces/produces.component";
 import {DeleteProducesComponent} from "./component/produces/delete-produces/delete-produces.component";
 import {UpdateProducesComponent} from "./component/produces/update-produces/update-produces.component";
 import {TotoComponent} from "./component/toto/toto.component";
+import {TestDateComponent} from "./component/test-date/test-date.component";
 
 
 const routes: Routes = [
@@ -59,6 +60,9 @@ const routes: Routes = [
   },
   {
     path: "todo", component: TotoComponent
+  },
+  {
+    path: "check", component: TestDateComponent
   }
 ];
 

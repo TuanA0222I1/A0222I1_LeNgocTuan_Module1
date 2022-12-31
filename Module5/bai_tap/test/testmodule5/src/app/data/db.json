@@ -1,0 +1,90 @@
+{
+  "account": [
+    {
+      "id": 3,
+      "codeCustomer": 1,
+      "dayCreate": "2023-04-20",
+      "dayTransfer": "2023-04-21",
+      "term": "4",
+      "money": 15000000,
+      "rate": 0.12,
+      "discount": "Umbrella"
+    },
+    {
+      "id": 4,
+      "codeCustomer": 2,
+      "dayCreate": "2022-12-31",
+      "dayTransfer": "2022-12-31",
+      "term": "3",
+      "money": 10000000,
+      "rate": 0.2,
+      "discount": "Pencil"
+    },
+    {
+      "id": 2,
+      "codeCustomer": 3,
+      "dayCreate": "2023-10-20",
+      "dayTransfer": "2023-11-01",
+      "term": "1",
+      "money": 50000000,
+      "rate": 0.2,
+      "discount": "white umbrella"
+    },
+    {
+      "id": 7,
+      "codeCustomer": 4,
+      "dayCreate": "2023-02-22",
+      "dayTransfer": "2023-02-23",
+      "term": 3,
+      "money": 60000000,
+      "rate": 0.18,
+      "discount": "Pen Color"
+    },
+    {
+      "id": 47,
+      "codeCustomer": 6,
+      "dayCreate": "2022-12-30",
+      "dayTransfer": "2022-12-31",
+      "term": 4,
+      "money": 120000000,
+      "rate": 0.12,
+      "discount": "Pen Color Red"
+    },
+    {
+      "id": 9,
+      "codeCustomer": 5,
+      "dayCreate": "2023-01-11",
+      "dayTransfer": "2023-02-21",
+      "term": 2,
+      "money": 21000000,
+      "rate": 0.11,
+      "discount": "pencil color"
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "nameCustomer": "Le Thai Phuong Blanc"
+    },
+    {
+      "id": 2,
+      "nameCustomer": "Thai Will PiPi"
+    },
+    {
+      "id": 3,
+      "nameCustomer": "Van An"
+    },
+    {
+      "id": 4,
+      "nameCustomer": "Van Binh"
+    },
+    {
+      "id": 5,
+      "nameCustomer": "Cu Meo"
+    },
+    {
+      "id": 6,
+      "nameCustomer": "Tuan Lee"
+    }
+  ]
+}

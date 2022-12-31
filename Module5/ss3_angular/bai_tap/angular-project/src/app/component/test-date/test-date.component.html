@@ -1,0 +1,15 @@
+<form [formGroup]="formCheck">
+  <input type="date" formControlName="dayIn" name="dayIn">
+  <p>Day In</p>
+  <input type="date" formControlName="dayOut" name="dayOut">
+  <p>Day Out
+    <span style="color: red"
+          *ngIf="formCheck.controls.dayOut.touched && formCheck.hasError('inout')"> must big day in</span>
+  </p>
+  <input type="date" formControlName="dayEX" name="dayEX">
+  <p>Day Ex
+    <span style="color: red"
+          *ngIf="formCheck.controls.dayEX.touched && formCheck.hasError('outex')"> must big day out</span>
+  </p>
+  <button type="submit">submit</button>
+</form>

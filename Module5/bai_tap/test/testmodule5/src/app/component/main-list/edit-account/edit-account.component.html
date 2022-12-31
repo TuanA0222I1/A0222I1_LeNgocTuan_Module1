@@ -1,0 +1,115 @@
+<div class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+               class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+               alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Edit Account</h3>
+
+            <form class="px-md-2" [formGroup]="formEdit" novalidate autocomplete="off" (ngSubmit)="saveDate()">
+              <div class="form-outline mb-4">
+                <input type="number" id="id" class="form-control" formControlName="id" name="id" disabled/>
+                <label class="form-label">Id</label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="number" id="codeCustomer" class="form-control" formControlName="codeCustomer"
+                       name="codeCustomer" disabled/>
+                <label class="form-label">
+                  Code Customer
+                </label>
+
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="dayOfBirth" class="form-control" formControlName="nameCustomer"
+                       name="nameCustomer"/>
+                <label class="form-label">
+                  Name Customer
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.nameCustomer.touched) && formEdit.controls.nameCustomer.hasError('required') "> is something!!! Input again </span>
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.nameCustomer.touched) && formEdit.controls.nameCustomer.hasError('pattern') "> not have number!!! Change Something </span>
+
+                </label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="date" id="dayCreate" class="form-control form-control-lg" formControlName="dayCreate"
+                       name="dayCreate"/>
+                <label class="form-label" for="dayCreate">
+                  Day Create
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.dayCreate.touched) && formEdit.controls.dayCreate.hasError('required') "> is something!!! Input day create</span>
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.dayCreate.touched) && formEdit.controls.dayCreate.hasError('presentAndFuture') "> is present or bigger!!! Change day create</span>
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.dayCreate.touched) && formEdit.hasError('createfail') "> must smaller day transfer!!! Change day transfer or change day create</span>
+                </label>
+              </div>
+              <div class="form-outline mb-4">
+                <input type="date" id="dayTransfer" class="form-control form-control-lg" formControlName="dayTransfer"
+                       name="dayTransfer"/>
+                <label class="form-label" for="dayCreate">
+                  Day Transfer
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.dayTransfer.touched) && formEdit.controls.dayTransfer.hasError('required') "> is something!!! Input day transfer</span>
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.dayTransfer.touched) && formEdit.hasError('createfail') "> must bigger day create!!! Input day transfer</span>
+                </label>
+              </div>
+              <div class="form-outline mb-4">
+                <select formControlName="term" name="term" class="form-control">
+                  <option value="">Chose Something</option>
+                  <option *ngFor="let item of terms" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <label class="form-label">
+                  Term
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.term.touched) && formEdit.controls.term.hasError('required') "> is something!!! Input term</span>
+                </label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="number" id="money" class="form-control" formControlName="money"
+                       name="money"/>
+                <label class="form-label">
+                  Money
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.money.touched) && formEdit.controls.money.hasError('required') "> is something!!! Input Money</span>
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.money.touched) && formEdit.controls.money.hasError('min') "> min is 10 million!!! Input Money</span>
+
+                </label>
+
+              </div>
+              <div class="form-outline mb-4">
+                <input type="number" id="rate" class="form-control" formControlName="rate"
+                       name="rate"/>
+                <label class="form-label">
+                  Rate
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.rate.touched) && formEdit.controls.rate.hasError('required') "> is something!!! Input rate</span>
+
+                </label>
+
+              </div>
+              <div class="form-outline mb-4">
+                <input type="text" id="discount" class="form-control" formControlName="discount"
+                       name="discount"/>
+                <label class="form-label">
+                  Discount
+                  <span style="color:red;"
+                        *ngIf="(formEdit.controls.discount.touched) && formEdit.controls.discount.hasError('required') "> is something!!! Input discount</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-success btn-lg mb-1" [disabled]="formEdit.invalid">Submit</button>
+              <button type="button" class="btn btn-second btn-lg mb-1" (click)="confirmBackListButton()">Back List
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

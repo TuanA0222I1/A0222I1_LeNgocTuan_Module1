@@ -20,6 +20,7 @@ import { UpdateProducesComponent } from './component/produces/update-produces/up
 import { DeleteProducesComponent } from './component/produces/delete-produces/delete-produces.component';
 import { TotoComponent } from './component/toto/toto.component';
 import {HttpClientModule} from "@angular/common/http";
+import { TestDateComponent } from './component/test-date/test-date.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {HttpClientModule} from "@angular/common/http";
     ProducesComponent,
     UpdateProducesComponent,
     DeleteProducesComponent,
-    TotoComponent
+    TotoComponent,
+    TestDateComponent
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,7 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class CustomerServiceService {
-listCustomer: Customer[] = []
-  base_customer_url = "http://localhost:3000/customers"
+   base_customer_url = "http://localhost:3000/customers"
   constructor(private httpClient: HttpClient) {
 
   }
@@ -19,7 +18,8 @@ listCustomer: Customer[] = []
   }
 
   save(customerUpdate: Customer): Observable<Customer> {
-     return this.httpClient.post(this.base_customer_url, customerUpdate);
+    if (customerUpdate.id == null) return this.httpClient.post(this.base_customer_url, customerUpdate);
+    return this.httpClient.put(`${this.base_customer_url}/${customerUpdate.id}`, customerUpdate);
   }
 
   findById(id: any): Observable<Customer> {

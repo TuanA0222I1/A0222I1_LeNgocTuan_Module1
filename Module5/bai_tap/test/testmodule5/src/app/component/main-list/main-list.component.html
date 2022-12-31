@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-9">
+    <div class="input-group">
+
+      <div class="input-group">
+        <div class="form-outline">
+          <select name="id" class="form-select" #id aria-label=".form-select-lg example" id="id"
+                  (change)="searchById()">
+            <option value="" selected>Search By ID Account</option>
+            <option *ngFor="let item of list" value="{{item.id}}">
+              {{item.id}}
+            </option>
+          </select>
+        </div>
+        <div class="form-outline">
+          <div class="input-group">
+            <div class="form-outline">
+              <input class="form-control" #name_search type="text"
+                     placeholder="name search">
+            </div>
+            <button class="btn btn-primary" type="submit" (click)="findAllByNamePerson()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-3">
+    <button class="btn btn-success" (click)="refreshPage()">
+      <i class="fa-solid fa-arrows-rotate"></i>
+    </button>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id Account</th>
+    <th>Id Customer</th>
+    <th>Name Customer</th>
+    <th>Day Create</th>
+    <th>Day Transfer</th>
+    <th>Term</th>
+    <th>Money</th>
+    <th>Rate</th>
+    <th>Discount</th>
+    <th>Action</th>
+  </tr>
+
+  </thead>
+  <tr *ngFor="let item of list |  slice: (page-1) * pageSize : page * pageSize">
+    <td>{{item.id}}</td>
+    <td>{{item.codeCustomer}}</td>
+    <ng-container *ngFor="let check of persons">
+      <span *ngIf="check.id == item.codeCustomer"> {{check.nameCustomer}}</span>
+    </ng-container>
+    <td>{{item.dayCreate|date:"dd/MM/yyyy"}}</td>
+    <td>{{item.dayTransfer|date:"dd/MM/yyyy"}}</td>
+    <td>
+      <ng-container *ngFor="let check of terms">
+        <span *ngIf="check.id == item.term"> {{check.name}}</span>
+      </ng-container>
+    </td>
+    <td>{{item.money |currency:  'VND'}}</td>
+    <td>{{item.rate | percent}}/year</td>
+    <td>{{item.discount| titlecase}}</td>
+    <td>
+      <button [routerLink]="['/edit',item.id]" type="button" class="btn btn-outline-warning"><i
+        class="fa-regular fa-pen-to-square"></i> edit
+      </button>
+
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployee"
+              (click)="deleteIt(item)">
+        <i class="fa-solid fa-trash"></i>
+        delete
+      </button>
+    </td>
+  </tr>
+</table>
+
+<ngb-pagination
+  [collectionSize]="list.length"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [boundaryLinks]="true">
+</ngb-pagination>
+<div class="modal fade" id="deleteEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Delete this {{accountDelete.id}}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="deleteThisItem()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

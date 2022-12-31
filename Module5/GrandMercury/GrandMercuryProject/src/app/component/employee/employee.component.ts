@@ -4,6 +4,7 @@ import {EmployeeServiceService} from "../../service/employee/employee-service.se
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {PositionServiceService} from "../../service/employee/position-service.service";
 import {PositionEmpl} from "../../model/employee/PositionEmpl";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-employee',
@@ -17,17 +18,24 @@ export class EmployeeComponent implements OnInit {
   employeeDelete: Employee = {};
 
   constructor(private employeeService: EmployeeServiceService,
+              private activatedRouter: ActivatedRoute,
+              private router: Router,
               private positionsService: PositionServiceService,
               private formBuilder: FormBuilder) {
   }
 
   page = 1;
   pageSize = 5;
+  message: string;
 
   ngOnInit(): void {
+    this.getMessageInUrl();
     this.positions = this.positionsService.findAll();
     this.findAllByName("", '', "");
     this.buildFormSearch();
+    setTimeout(() => {
+      this.message = ''
+    }, 3000);
   }
 
   buildFormSearch() {
@@ -50,6 +58,7 @@ export class EmployeeComponent implements OnInit {
 
   deleteIt(item: Employee) {
     this.employeeDelete = item;
+    console.log(item)
   }
 
   deleteThisItem(item: Employee) {
@@ -58,6 +67,7 @@ export class EmployeeComponent implements OnInit {
       this.employeeDelete = {};
       document.getElementById('deleteEmployee').click();
       this.ngOnInit();
+      this.message = "delete success!!!";
     });
   }
 
@@ -65,6 +75,14 @@ export class EmployeeComponent implements OnInit {
     this.findAllByName("", '', "");
     this.employeeDelete = {};
     this.buildFormSearch();
+    this.message = '';
+  }
 
+  getMessageInUrl() {
+    if (this.router.url.includes("message")) {
+      this.activatedRouter.queryParams.subscribe(value => {
+        if (value.message == "1") this.message = "Update success !!!!";
+      })
+    }
   }
 }
