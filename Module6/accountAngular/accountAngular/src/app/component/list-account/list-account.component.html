@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-2">
+    <button class="btn btn-success" routerLink="/create">
+      <i class="fa-solid fa-square-plus"></i>
+    </button>
+  </div>
+  <div class="col-8">
+    <div class="input-group rounded">
+      <input type="number" class="form-control rounded" placeholder="Search id" aria-label="Search" #idInInput
+             aria-describedby="search-addon"/>
+      <input type="search" class="form-control rounded" placeholder="Search customer name" aria-label="Search name search" #nameSearchInInput
+             aria-describedby="search-addon"/>
+      <span class="input-group-text border-0" id="search-addon">
+    <button class="btn btn-outline-second" (click)="searchByName()">
+      <i class="fas fa-search"></i>
+    </button>
+  </span>
+    </div>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-outline-success" (click)="refreshPage()">
+      <i class="fa-solid fa-arrows-rotate"></i>
+    </button>
+  </div>
+
+</div>
+<table class="table table-success table-striped">
+  <thead>
+  <td>No.</td>
+  <td>ID Account</td>
+  <td>Customer ID</td>
+  <td>Customer Name</td>
+  <td>Day Of Create</td>
+  <td>Day Of Transfer</td>
+  <td>Term</td>
+  <td>Money</td>
+  <td>Rate</td>
+  <td>Discount</td>
+  <td>Action</td>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of accounts, let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{item.id}}</td>
+    <td>{{item.customer.id}}</td>
+    <td>{{item.customer.name}}</td>
+    <td>{{item.dayCreate| date: 'dd/MM/yyyy'}}</td>
+    <td>{{item.dayTransfer| date: 'dd/MM/yyyy'}}</td>
+    <td>{{item.term.name}}</td>
+    <td>{{item.money| currency}}</td>
+    <td>{{item.rate| percent}} / year</td>
+    <td>{{item.discount}}</td>
+    <td>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
+              (click)="this.accountSelect = item">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+      <button type="button" class="btn btn-warning" [routerLink]="['edit/',item.id]">
+        <i class="fa-solid fa-user-pen"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <ul class="pagination justify-content-center">
+    <li class="page-item" *ngFor="let item of [].constructor(totalPage); let i = index">
+      <a class="page-link" (click)="getListInPage('',nameSearch,i)">
+        {{i + 1}}
+      </a>
+    </li>
+  </ul>
+</div>
+<!-- Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Delete account have id = {{accountSelect.id}} 's {{accountSelect.customer.name}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteItem()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
