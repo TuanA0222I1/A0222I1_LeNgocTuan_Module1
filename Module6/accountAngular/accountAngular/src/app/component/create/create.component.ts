@@ -9,6 +9,7 @@ import {CustomerServiceService} from "../../service/customer-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {checkDayCreate, checkPresentAndFuture} from "../../utils/checkDay";
 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -18,6 +19,9 @@ export class CreateComponent implements OnInit {
   accountEdit: Account = {customer: {}};
   terms: TermAccount[] = [];
   formEdit: FormGroup;
+
+  message: string = '';
+  display: string = 'none';
 
   constructor(private formBuilder: FormBuilder,
               private termService: TermServiceService,
@@ -36,10 +40,12 @@ export class CreateComponent implements OnInit {
       return;
     }
     this.activatedRoute.paramMap.subscribe(value => {
-      let id = +value.get("id");
-      this.accountService.findById(id).subscribe(data => {
+      this.accountService.findById(+value.get("id")).subscribe(data => {
         this.accountEdit = data;
         this.buildForm();
+      }, error => {
+        this.message = error.error.messageerror;
+        this.display = "block"
       })
     })
   }
@@ -53,32 +59,31 @@ export class CreateComponent implements OnInit {
       dayTransfer: [this.accountEdit.dayTransfer, [Validators.required]],
       term: [this.accountEdit.term == undefined ? "" : this.accountEdit.term.id, [Validators.required]],
       money: [this.accountEdit.money, [Validators.required, Validators.min(10000000)]],
-      rate: [this.accountEdit.rate, [Validators.required,Validators.max(1),Validators.min(0)]],
+      rate: [this.accountEdit.rate, [Validators.required, Validators.max(1), Validators.min(0)]],
       discount: [this.accountEdit.discount, [Validators.required]]
     }, {
       validator: [checkDayCreate]
     })
-    // this.formEdit = this.formBuilder.group({
-    //   id: [null],
-    //   codeCustomer: [null],
-    //   nameCustomer: ["aaaaaa", [Validators.required, Validators.pattern("^[A-Za-z .?!@#$%^&*]+$")]],
-    //   dayCreate: ["2022-02-12", [Validators.required]],
-    //   dayTransfer: ["2022-02-12", [Validators.required]],
-    //   term: [1, [Validators.required]],
-    //   money: [122222222222, [Validators.required, Validators.min(10000000)]],
-    //   rate: [0.2, [Validators.required]],
-    //   discount: ["pen", [Validators.required]]
-    // })
   }
 
   saveDate() {
+    if (this.accountEdit.id == undefined) {
+      this.message = "Create Success!!!"
+    } else {
+      this.message = "Edit Success!!!"
+    }
+
     this.personService.saveCustomer(this.getPersonInForm()).subscribe(value => {
       this.accountService.save(this.getAccountInFor(value)).subscribe(result => {
-        this.route.navigateByUrl("/").then(data => {
-          this.formEdit.reset();
-          this.accountEdit = {customer: {}};
-        })
+        this.display = "block";
       })
+    })
+  }
+
+  resetForm() {
+    this.route.navigateByUrl("/").then(data => {
+      this.formEdit.reset();
+      this.accountEdit = {customer: {}};
     })
   }
 

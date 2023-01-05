@@ -7,7 +7,8 @@ import {CreateComponent} from "./component/create/create.component";
 const routes: Routes = [
   {path: "", component: ListAccountComponent},
   {path: "create", component: CreateComponent},
-  {path: "edit/:id", component: CreateComponent}
+  {path: "edit/:id", component: CreateComponent},
+  {path: "**", pathMatch: "full", redirectTo: ""}
 ];
 
 @NgModule({

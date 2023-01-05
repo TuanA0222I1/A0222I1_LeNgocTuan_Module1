@@ -1,8 +1,10 @@
 package com.todo.service.impl;
 
+import com.todo.error.exceptionCustom.NotFoundAccount;
 import com.todo.model.Account;
 import com.todo.repos.AccountRepos;
 import com.todo.service.AccountService;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,10 +25,13 @@ public class AccountServiceImpl implements AccountService {
         return repos.findAllByCustomerNameAndId(id, name, pageable);
     }
 
+    @SneakyThrows
     @Override
     public Account findById(Long id) {
-        assert repos.findById(id).isPresent();
-        return repos.findById(id).get();
+        if (repos.findById(id).isPresent()) {
+            return repos.findById(id).get();
+        }
+        throw new NotFoundAccount("Server not found any account with id " + id);
     }
 
     @Override

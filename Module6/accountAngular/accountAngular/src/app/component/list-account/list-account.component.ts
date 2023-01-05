@@ -14,13 +14,14 @@ export class ListAccountComponent implements OnInit {
 
   totalPage: number = 0;
   nameSearch: string = '';
+  idSearch: string = '';
   accountSelect: Account = {customer: {name: ""}};
 
   constructor(private accountService: AccountServiceService) {
   }
 
   ngOnInit(): void {
-    this.getListInPage('', this.nameSearch, 0);
+    this.getListInPage(this.idSearch, this.nameSearch, 0);
   }
 
   getListInPage(id: string, name: string, i: number) {
@@ -32,9 +33,10 @@ export class ListAccountComponent implements OnInit {
 
   refreshPage() {
     this.nameSearch = '';
+    this.idSearch = '';
     this.nameSearchInput.nativeElement.value = '';
     this.idSearchInput.nativeElement.value = '';
-    this.getListInPage('',this.nameSearch, 0);
+    this.getListInPage(this.idSearch, this.nameSearch, 0);
   }
 
   deleteItem() {
@@ -48,6 +50,7 @@ export class ListAccountComponent implements OnInit {
 
   searchByName() {
     this.nameSearch = this.nameSearchInput.nativeElement.value;
-    this.getListInPage(this.idSearchInput.nativeElement.value,this.nameSearch, 0);
+    this.idSearch = this.idSearchInput.nativeElement.value;
+    this.getListInPage(this.idSearch, this.nameSearch, 0);
   }
 }
