@@ -8,7 +8,7 @@ import {AccountServiceService} from "../../service/account-service.service";
 import {CustomerServiceService} from "../../service/customer-service.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {checkDayCreate, checkPresentAndFuture} from "../../utils/checkDay";
-
+import {ValidNameCustomer} from "../../utils/ValidNameCustomer";
 
 @Component({
   selector: 'app-create',
@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
   terms: TermAccount[] = [];
   formEdit: FormGroup;
 
-  message: string = '';
+  message: string = 'Not Known';
   display: string = 'none';
 
   constructor(private formBuilder: FormBuilder,
@@ -39,6 +39,7 @@ export class CreateComponent implements OnInit {
     if (this.route.url.includes("create")) {
       return;
     }
+
     this.activatedRoute.paramMap.subscribe(value => {
       this.accountService.findById(+value.get("id")).subscribe(data => {
         this.accountEdit = data;
@@ -54,7 +55,7 @@ export class CreateComponent implements OnInit {
     this.formEdit = this.formBuilder.group({
       id: [this.accountEdit.id],
       codeCustomer: [this.accountEdit.customer.id = undefined ? null : this.accountEdit.customer.id],
-      nameCustomer: [this.accountEdit.customer.name == undefined ? "" : this.accountEdit.customer.name, [Validators.required, Validators.pattern("^[A-Za-z .?!@#$%^&*]+$")]],
+      nameCustomer: [this.accountEdit.customer.name == undefined ? "" : this.accountEdit.customer.name, [Validators.required, Validators.pattern("^[A-Za-z .?!@#$%^&*]+$")], [ValidNameCustomer.checkNameExists(this.personService)]],
       dayCreate: [this.accountEdit.dayCreate, [Validators.required, checkPresentAndFuture]],
       dayTransfer: [this.accountEdit.dayTransfer, [Validators.required]],
       term: [this.accountEdit.term == undefined ? "" : this.accountEdit.term.id, [Validators.required]],

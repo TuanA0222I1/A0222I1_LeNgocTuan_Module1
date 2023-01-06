@@ -10,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccountServiceImpl implements AccountService {
     @Autowired
@@ -32,6 +34,11 @@ public class AccountServiceImpl implements AccountService {
             return repos.findById(id).get();
         }
         throw new NotFoundAccount("Server not found any account with id " + id);
+    }
+
+    @Override
+    public List<Account> findAllByTerm(Long id) {
+        return repos.findAllByTermId(id);
     }
 
     @Override

@@ -22,4 +22,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer save(Customer customer) {
         return repos.save(customer);
     }
+
+    @Override
+    public boolean findByName(String name) {
+        return repos.findByName(name).isPresent();
+    }
 }

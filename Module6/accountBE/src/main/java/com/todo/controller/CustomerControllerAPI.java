@@ -20,7 +20,12 @@ public class CustomerControllerAPI {
     }
 
     @PutMapping("")
-    public ResponseEntity<Customer> editData(@RequestBody Customer customer){
+    public ResponseEntity<Customer> editData(@RequestBody Customer customer) {
         return new ResponseEntity<>(service.save(customer), HttpStatus.OK);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<Boolean> findByName(@RequestParam String name) {
+        return new ResponseEntity<>(service.findByName(name), HttpStatus.OK);
     }
 }
