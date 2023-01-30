@@ -54,4 +54,14 @@ public class CustomerServiceImpl implements PersonService<Customer> {
     public Boolean findByIdCard(String id_card) {
         return null;
     }
+
+    @Override
+    public Boolean findByPhone(String phone) {
+        return null;
+    }
+
+    @Override
+    public Boolean findByEmail(String email) {
+        return null;
+    }
 }

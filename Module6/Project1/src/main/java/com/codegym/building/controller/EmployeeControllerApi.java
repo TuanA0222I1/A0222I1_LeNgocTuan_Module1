@@ -1,7 +1,7 @@
 package com.codegym.building.controller;
 
 import com.codegym.building.dto.EmployeeDTO;
-import com.codegym.building.model.person.Customer;
+import com.codegym.building.dto.EmployeeViewDTO;
 import com.codegym.building.model.person.Employee;
 import com.codegym.building.repos.EmployeeRepos;
 import com.codegym.building.service.PersonService;
@@ -24,12 +24,12 @@ public class EmployeeControllerApi {
     PersonService<Employee> employeePersonService;
 
     @GetMapping("")
-    public ResponseEntity<Page<Employee>> findAllByCondition(@RequestParam(name = "name", defaultValue = "") String name,
+    public ResponseEntity<Page<EmployeeViewDTO>> findAllByCondition(@RequestParam(name = "name", defaultValue = "") String name,
                                                              @RequestParam(name = "id_card", defaultValue = "") String id_card,
                                                              @RequestParam(name = "address", defaultValue = "") String address,
                                                              @RequestParam(name = "department", defaultValue = "") String department,
                                                              @PageableDefault(size = MAX_DISPLAY, sort = "name", direction = Sort.Direction.ASC) Pageable pageable) {
-        return new ResponseEntity<>(employeePersonService.findAllByNameAndIdCardAndAddressAndDepartment(name, id_card, address, department, pageable), HttpStatus.OK);
+        return new ResponseEntity<>(employeePersonService.findAllByNameAndIdCardAndAddressAndDepartment(name, id_card, address, department, pageable).map(EmployeeViewDTO::new), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -62,8 +62,17 @@ public class EmployeeControllerApi {
         return new ResponseEntity<>(employeePersonService.beGranted((EmployeeRepos) employeePersonService, username), HttpStatus.OK);
     }
 
-    @GetMapping("/exists")
+    @GetMapping("/existsIdCard")
     private ResponseEntity<Boolean> isExistsIdCard(@RequestParam("id_card") String id_card) {
         return new ResponseEntity<>(employeePersonService.findByIdCard(id_card), HttpStatus.OK);
+    }
+
+    @GetMapping("/existsPhone")
+    private ResponseEntity<Boolean> isExistsPhone(@RequestParam("phone") String phone) {
+        return new ResponseEntity<>(employeePersonService.findByPhone(phone), HttpStatus.OK);
+    }
+    @GetMapping("/existsEmail")
+    private ResponseEntity<Boolean> isExistsEmail(@RequestParam("email") String email) {
+        return new ResponseEntity<>(employeePersonService.findByEmail(email), HttpStatus.OK);
     }
 }

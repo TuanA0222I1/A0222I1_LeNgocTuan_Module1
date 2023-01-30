@@ -1,4 +1,4 @@
-export interface EmployeeDTO {
+export interface EmployeeFormCreateDTO {
   avatar?: string,
   name?: string,
   birthday?: string,

@@ -1,4 +1,4 @@
-package com.codegym.building.generatorId;
+package com.codegym.building.utils;
 
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;

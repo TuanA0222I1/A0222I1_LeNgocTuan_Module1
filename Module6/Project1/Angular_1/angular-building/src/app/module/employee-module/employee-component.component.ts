@@ -9,9 +9,16 @@ import {Gender} from "./model/Gender";
 import {Employee} from "./model/Employee";
 import {SalaryScale} from "./model/SalaryScale";
 import {Department} from "./model/Department";
-import {checkBirthday, checkNameExists, checkPasswordConfirm, checkTrim} from "./utils/CustomerValidate";
+import {
+  checkBirthday, checkEmailExists, checkIdCardExists,
+  checkNameExists,
+  checkPasswordConfirm,
+  checkPhoneExists,
+  checkTrim
+} from "./utils/CustomerValidate";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
+import {EmployeeViewDTO} from "./dto/EmployeeViewDTO";
 
 @Component({
   selector: 'app-employee-component',
@@ -21,7 +28,7 @@ import {finalize} from "rxjs/operators";
 export class EmployeeComponentComponent implements OnInit {
   formGroup: FormGroup;
 
-  employees: Employee[] = [];
+  employees: EmployeeViewDTO[] = [];
 
   genders: Gender[] = [];
 
@@ -72,6 +79,10 @@ export class EmployeeComponentComponent implements OnInit {
   }
 
   refreshPage() {
+    (<HTMLInputElement>document.getElementById("nameSearch")).value = '';
+    (<HTMLInputElement>document.getElementById("cmndSearch")).value = '';
+    (<HTMLInputElement>document.getElementById("addressSearch")).value = '';
+    (<HTMLInputElement>document.getElementById("departmentSearch")).value = '';
     this.department_search = '';
     this.address_search = '';
     this.cmnd_search = '';
@@ -115,13 +126,13 @@ export class EmployeeComponentComponent implements OnInit {
       name: ['', [Validators.required, checkTrim]],
       address: ['', [Validators.required, checkTrim]],
       birthday: ['', [Validators.required, checkBirthday]],
-      email: ['', [Validators.required, Validators.pattern("^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")]],
-      phone: ['', [Validators.required, Validators.pattern("^([0]|(\\+84))([0-9]{9})$")]],
+      email: ['', [Validators.required, Validators.pattern("^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")],[checkEmailExists(this.employeeService)]],
+      phone: ['', [Validators.required, Validators.pattern("^([0]|(\\+84))([0-9]{9})$")],[checkPhoneExists(this.employeeService)]],
       salaryScale: ['', [Validators.required]],
       department: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       salary: ['', [Validators.required, Validators.min(1)]],
-      id_card: ['', [Validators.required, Validators.pattern("^([0-9]{12})$")]],
+      id_card: ['', [Validators.required, Validators.pattern("^([0-9]{12})$")],[checkIdCardExists(this.employeeService)]],
       account: ['', [Validators.required, checkTrim], [checkNameExists(this.employeeService)]],
       password: ['', [Validators.required, checkTrim]],
       passwordConfirm: ['', [Validators.required]]
@@ -149,25 +160,29 @@ export class EmployeeComponentComponent implements OnInit {
     //   salaryScale: "4"
     // }
     this.employeeService.save(this.formGroup).subscribe(value => {
-      console.log(value)
-      this.message = `tạo mới thành công nhân viên tên ${value.name}`;
+       this.message = `tạo mới thành công nhân viên tên ${value.name}`;
       document.getElementById("createModal").click();
       this.alert = true;
-      console.log(this.message);
       this.ngOnInit();
     });
 
   }
 
   saveAllForm() {
+    // đặt tên cho file nên thêm tiền tố ngày đăng để tránh trùng lập tên file sẽ gây mất dữ liệu
+    // employeeAvatar/ là để tách folder lưu ra cho dễ kiểm soát
     const filePath = `employeeAvatar/${Date.now()}${this.fileChose.name}`;
     const fileRef = this.storage.ref(filePath);
+    // bắt đầu upload
     this.storage.upload(filePath, this.fileChose)
       .snapshotChanges()
       .pipe(
         finalize(() => {
            fileRef.getDownloadURL().subscribe(url => {
+             console.log(url)
+             // return về link url đã lưu trên firebase. set nó vào trong form sau khi đã lưu
              this.formGroup.value.avatar = url;
+             // và lưu form
              this.saveForm();
           });
         })

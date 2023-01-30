@@ -21,7 +21,6 @@ public class EmployeeServiceImpl implements PersonService<Employee> {
     EmployeeRepos repos;
 
 
-
     @Override
     public Page<Employee> findAllByNameAndIdCardAndAddressAndDepartment(String name, String id_card, String address, String department, Pageable pageable) {
         return repos.findAllByNameAndIdCardAndAddressAndDepartment(name, id_card, address, department, pageable);
@@ -30,11 +29,6 @@ public class EmployeeServiceImpl implements PersonService<Employee> {
     @Override
     public Employee save(Employee employee) {
         return repos.save(employee);
-//        return repos.saveEmployee(employee.getAddress(),employee.getBirthday()+"",employee.getEmail()
-//        ,employee.getId_card(),employee.getName(),employee.getPhone(),employee.getAvatar(),employee.getSalary(),
-//                employee.getAccount().getUser_name(),employee.getDepartment().getId()+"",
-//                employee.getGender().getId()+"",employee.getSalaryScale().getId()+"",
-//                employee.getStatus());
     }
 
     @SneakyThrows
@@ -60,5 +54,15 @@ public class EmployeeServiceImpl implements PersonService<Employee> {
     @Override
     public Boolean findByIdCard(String id_card) {
         return repos.findByIdCard(id_card).isPresent();
+    }
+
+    @Override
+    public Boolean findByPhone(String phone) {
+        return repos.findByPhone(phone).isPresent();
+    }
+
+    @Override
+    public Boolean findByEmail(String email) {
+        return repos.findByEmail(email).isPresent();
     }
 }

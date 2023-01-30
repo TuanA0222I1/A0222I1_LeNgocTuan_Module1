@@ -4,19 +4,21 @@
   </div>
 
   <div class="input-group" *ngIf="searchForm">
-    <input type="search" class="form-control rounded" placeholder="tên nhân viên cần tìm" #name
-           (change)="name_search = name.value"/>
-    <input type="search" class="form-control rounded" placeholder="chứng minh nhân dân cần tìm" #cmnd
-           (change)="cmnd_search=cmnd.value"/>
-    <input type="search" class="form-control rounded" placeholder="địa chỉ tìm" #address
-           (change)="address_search = address.value"/>
-    <input type="search" class="form-control rounded" placeholder="tên bộ phận tìm" #department
-           (change)="department_search = department.value"/>
+    <input type="search" class="form-control rounded" placeholder="tên nhân viên cần tìm" #name id="nameSearch"
+           (change)="name_search = name.value.trim()"/>
+    <input type="search" class="form-control rounded" placeholder="chứng minh nhân dân cần tìm" #cmnd id="cmndSearch"
+           (change)="cmnd_search=cmnd.value.trim()"/>
+    <input type="search" class="form-control rounded" placeholder="địa chỉ tìm" #address id="addressSearch"
+           (change)="address_search = address.value.trim()"/>
+    <input type="search" class="form-control rounded" placeholder="tên bộ phận tìm" #department id="departmentSearch"
+           (change)="department_search = department.value.trim()"/>
     <button type="button" class="btn btn-primary"
             (click)="findAllWithCondition(name_search,cmnd_search,address_search,department_search,0)">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>
     <button class="btn btn-outline-success" (click)="refreshPage()">
+      <i class="fa-solid fa-arrows-rotate"></i>
+    </button>  <button class="btn btn-outline-success" (click)="refreshPage()">
       <i class="fa-solid fa-arrows-rotate"></i>
     </button>
   </div>
@@ -30,9 +32,16 @@
     </div>
 
     <div class="button-create">
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
         <i class="fa-solid fa-file-circle-plus"></i> thêm mới nhân viên
       </button>
+    </div>
+    <div class="button-go-home">
+      <a routerLink="/home">
+        <button class="btn btn-info" >
+          <i class="fa-solid fa-house-chimney"></i> về trang chủ
+        </button>
+      </a>
     </div>
   </div>
   <div class="table-main">
@@ -62,13 +71,13 @@
         <td>{{item.email| slice: 0 : 10}}...</td>
         <td>{{item.phone}}</td>
         <td>{{item.birthday | date:'dd/MM/yyyy'}}</td>
-        <td>{{item.gender.name}}</td>
-        <td>{{item.address | slice: 0: 10}}...</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.address.length > 10 ? item.address.substring(0,10) + ' ...'  : item.address}}</td>
         <td>{{item.salary| currency: "VND": "symbol"}}</td>
-        <td>{{item.salaryScale.name}}</td>
-        <td>{{item.department.name}}</td>
-        <td>{{item.account == null ? 'chưa có' : item.account.dateCreate | date : 'dd/MM/yyyy'}}</td>
-        <td>{{item.account == null ? 'chưa có' : item.account.user_name}}</td>
+        <td>{{item.salaryScale}}</td>
+        <td>{{item.department}}</td>
+        <td>{{ item.dateBegin }}</td>
+        <td>{{ item.account}}</td>
         <td>
           <button type="button" class="btn btn-warning">
             <i class="fa-solid fa-user-pen"></i>
@@ -377,13 +386,23 @@
                                   </span>
                                 </div>
                                 <div class="alert alert-danger d-flex align-items-center" role="alert"
-                                     *ngIf="(formGroup.controls.email.hasError('pattern')) && formGroup.controls.email.touched">
+                                     *ngIf="(formGroup.controls.email.hasError('pattern'))  ">
                                   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
                                        aria-label="Danger:">
                                     <use xlink:href="#exclamation-triangle-fill"/>
                                   </svg>
                                   <span>
                                     email chưa đúng định dạng
+                                  </span>
+                                </div>
+                                <div class="alert alert-danger d-flex align-items-center" role="alert"
+                                     *ngIf="(formGroup.controls.email.hasError('emailAlreadyExists'))">
+                                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                       aria-label="Danger:">
+                                    <use xlink:href="#exclamation-triangle-fill"/>
+                                  </svg>
+                                  <span>
+                                    email đã tồn tại
                                   </span>
                                 </div>
                               </div>
@@ -413,6 +432,16 @@
                                   </svg>
                                   <span>
                                     Mời nhập số điện thoại vào
+                                  </span>
+                                </div>
+                                <div class="alert alert-danger d-flex align-items-center" role="alert"
+                                     *ngIf="(formGroup.controls.phone.hasError('phoneAlreadyExists'))">
+                                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                       aria-label="Danger:">
+                                    <use xlink:href="#exclamation-triangle-fill"/>
+                                  </svg>
+                                  <span>
+                                    số điện thoại này đã được sử dụng
                                   </span>
                                 </div>
                                 <div class="alert alert-danger d-flex align-items-center" role="alert"
@@ -561,6 +590,16 @@
                                   </svg>
                                   <span>
                                     Mời nhập số chứng minh nhân dân
+                                  </span>
+                                </div>
+                                <div class="alert alert-danger d-flex align-items-center" role="alert"
+                                     *ngIf="(formGroup.controls.id_card.hasError('idCardAlreadyExists'))">
+                                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                       aria-label="Danger:">
+                                    <use xlink:href="#exclamation-triangle-fill"/>
+                                  </svg>
+                                  <span>
+                                    chứng minh nhân dân này đã được sử dụng
                                   </span>
                                 </div>
                               </div>

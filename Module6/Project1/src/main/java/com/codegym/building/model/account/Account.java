@@ -3,12 +3,15 @@ package com.codegym.building.model.account;
 import com.codegym.building.dto.AccountDTO;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -45,9 +48,13 @@ public class Account {
     }
 
     public Account(String account, String password) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        List<Roles> role = new ArrayList<>();
+        role.add(new Roles(3L));
         this.user_name = account;
-        this.password = password;
+        this.password = bCryptPasswordEncoder.encode(password);
         this.dateCreate = Date.valueOf(LocalDate.now());
+        this.list = role;
         this.status = "on";
     }
 }

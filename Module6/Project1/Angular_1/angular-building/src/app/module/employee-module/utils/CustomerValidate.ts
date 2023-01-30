@@ -36,3 +36,42 @@ export function checkNameExists(accountService: EmployeeServiceService): AsyncVa
       );
   };
 }
+
+export function checkPhoneExists(accountService: EmployeeServiceService): AsyncValidatorFn {
+  return (control: AbstractControl): Observable<ValidationErrors> => {
+    return accountService
+      .findByPhone(control.value)
+      .pipe(
+        map((result: boolean) => {
+
+            return result ? {phoneAlreadyExists: true} : null
+          }
+        )
+      );
+  };
+}export function checkEmailExists(accountService: EmployeeServiceService): AsyncValidatorFn {
+  return (control: AbstractControl): Observable<ValidationErrors> => {
+    return accountService
+      .findByEmail(control.value)
+      .pipe(
+        map((result: boolean) => {
+          console.log('email: ' + result)
+            return result ? {emailAlreadyExists: true} : null
+          }
+        )
+      );
+  };
+}
+export function checkIdCardExists(accountService: EmployeeServiceService): AsyncValidatorFn {
+  return (control: AbstractControl): Observable<ValidationErrors> => {
+    return accountService
+      .findByIdCard(control.value)
+      .pipe(
+        map((result: boolean) => {
+
+            return result ? {idCardAlreadyExists: true} : null
+          }
+        )
+      );
+  };
+}

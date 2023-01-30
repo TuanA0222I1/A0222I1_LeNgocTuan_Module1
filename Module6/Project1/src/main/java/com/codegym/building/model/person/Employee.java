@@ -27,7 +27,7 @@ public class Employee extends Person {
     @GeneratedValue(generator = "person-generator")
     @GenericGenerator(name = "person-generator",
             parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "NV-"),
-            strategy = "com.codegym.building.generatorId.PersonAutoGenerator")
+            strategy = "com.codegym.building.utils.PersonAutoGenerator")
     String id;
 
     Double salary;

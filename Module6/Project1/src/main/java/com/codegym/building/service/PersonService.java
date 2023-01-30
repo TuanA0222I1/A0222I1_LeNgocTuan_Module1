@@ -22,4 +22,8 @@ public interface PersonService<E extends Person> {
     }
 
     Boolean findByIdCard(String id_card);
+
+    Boolean findByPhone(String phone);
+
+    Boolean findByEmail(String email);
 }

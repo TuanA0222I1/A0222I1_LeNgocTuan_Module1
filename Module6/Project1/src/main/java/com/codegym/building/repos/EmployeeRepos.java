@@ -30,11 +30,17 @@ public interface EmployeeRepos extends JpaRepository<Employee, String> {
 
     @Modifying
     @Transactional
-    @Query(value = "update account_role set role_id = 3 where user_name = :username", nativeQuery = true)
+    @Query(value = "update account_role set role_id = 1 where user_name = :username", nativeQuery = true)
     Employee beGranted(@Param("username") String username);
 
     @Query("select e from Employee e where e.id_card = :idCard")
     Optional<Employee> findByIdCard(@Param("idCard") String id_card);
+
+    @Query("select e from Employee e where e.phone = :phone")
+    Optional<Employee> findByPhone(@Param("phone") String phone);
+
+    @Query("select e from Employee e where e.email = :email")
+    Optional<Employee> findByEmail(@Param("email")String email);
 
 //    @Modifying
 //    @Transactional
