@@ -3,29 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListAccountComponent } from './component/list-account/list-account.component';
 import {HttpClientModule} from "@angular/common/http";
-import { CreateComponent } from './component/create/create.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {EmployeeModuleModule} from "./module/employee-module/employee-module.module";
 import {AngularFireStorageModule} from "@angular/fire/storage";
-// @ts-ignore
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 
-
-@NgModule({
+ @NgModule({
   declarations: [
-    AppComponent,
-    ListAccountComponent,
-    CreateComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    EmployeeModuleModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+    AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

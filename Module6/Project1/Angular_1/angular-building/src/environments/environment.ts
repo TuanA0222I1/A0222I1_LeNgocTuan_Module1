@@ -8,6 +8,7 @@ export const environment = {
     apiKey: "AIzaSyD_GZCTGxqPd756XV12-bSlvwqXBAhcx5k",
     authDomain: "projectspring1-3a404.firebaseapp.com",
     projectId: "projectspring1-3a404",
+    databaseURL: "gs://projectspring1-3a404.appspot.com",
     storageBucket: "projectspring1-3a404.appspot.com",
     messagingSenderId: "139714467302",
     appId: "1:139714467302:web:7f88912ff48a18839f3227",
