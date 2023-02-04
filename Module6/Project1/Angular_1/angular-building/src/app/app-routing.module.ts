@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {EmployeeComponentComponent} from "./module/employee-module/employee-component.component";
+import {EmployeeModuleModule} from "./module/employee-module/employee-module.module";
 
 
 const routes: Routes = [
@@ -8,7 +8,7 @@ const routes: Routes = [
   path: "", pathMatch: "full", redirectTo: "employee"
 },
   {
-  path: "employee", component: EmployeeComponentComponent
+  path: "employee", component: EmployeeModuleModule
 }
 ];
 

@@ -35,7 +35,7 @@ public class CustomerControllerApi {
         return new ResponseEntity<>(customerPersonService.findById(id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     private ResponseEntity<Integer> updateStatusById(@PathVariable String id) {
         return new ResponseEntity<>(customerPersonService.updateStatusById(id), HttpStatus.OK);
     }

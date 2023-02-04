@@ -2,7 +2,7 @@ package com.codegym.building.service.impl;
 
 import com.codegym.building.error.NotFoundById;
 import com.codegym.building.model.person.Customer;
- import com.codegym.building.repos.CustomerRepos;
+import com.codegym.building.repos.CustomerRepos;
 import com.codegym.building.service.PersonService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
- import java.util.Optional;
+import java.util.Optional;
 
 
 @Service
@@ -52,16 +52,16 @@ public class CustomerServiceImpl implements PersonService<Customer> {
 
     @Override
     public Boolean findByIdCard(String id_card) {
-        return null;
+        return repos.findByIdCard(id_card).isPresent();
     }
 
     @Override
     public Boolean findByPhone(String phone) {
-        return null;
+        return repos.findByPhone(phone).isPresent();
     }
 
     @Override
     public Boolean findByEmail(String email) {
-        return null;
+        return repos.findByEmail(email).isPresent();
     }
 }

@@ -6,11 +6,12 @@ import {DepartmentServiceService} from "./service/department-service.service";
 import {SalaryScaleServiceService} from "./service/salary-scale-service.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Gender} from "./model/Gender";
-import {Employee} from "./model/Employee";
 import {SalaryScale} from "./model/SalaryScale";
 import {Department} from "./model/Department";
 import {
-  checkBirthday, checkEmailExists, checkIdCardExists,
+  checkBirthday,
+  checkEmailExists,
+  checkIdCardExists,
   checkNameExists,
   checkPasswordConfirm,
   checkPhoneExists,
@@ -114,7 +115,7 @@ export class EmployeeComponentComponent implements OnInit {
         (<HTMLInputElement>document.getElementById("id_delete")).value = value.id;
       },
       error => {
-        this.message = 'Không tìm thấy bất kì người nào với id là ' + id;
+        this.message = error.error;
         this.alert = true;
         this.ngOnInit();
       })
@@ -123,18 +124,24 @@ export class EmployeeComponentComponent implements OnInit {
   buildForm() {
     this.formGroup = this.formBuilder.group({
       avatar: ['', [Validators.required]],
-      name: ['', [Validators.required, checkTrim]],
-      address: ['', [Validators.required, checkTrim]],
+      name: ['', [Validators.required, checkTrim,
+        Validators.minLength(5),
+        Validators.pattern("^[A-Za-z úùụũủịỉìỉĩâăôđêọòóõỏáàảãạèéẹẽẻưửữựừứốồổộỗếềểễệấầẫẩậặắẳẵằạáàảã.?!@#$%^&*]+$"),
+        Validators.maxLength(200)]],
+      address: ['', [Validators.required, checkTrim, Validators.maxLength(200)]],
       birthday: ['', [Validators.required, checkBirthday]],
-      email: ['', [Validators.required, Validators.pattern("^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")],[checkEmailExists(this.employeeService)]],
-      phone: ['', [Validators.required, Validators.pattern("^([0]|(\\+84))([0-9]{9})$")],[checkPhoneExists(this.employeeService)]],
+      email: ['', [Validators.required,
+        Validators.pattern("^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")]],
+      phone: ['', [Validators.required,
+        Validators.pattern("^([0]|(\\+84))([0-9]{9})$")]],
       salaryScale: ['', [Validators.required]],
       department: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       salary: ['', [Validators.required, Validators.min(1)]],
-      id_card: ['', [Validators.required, Validators.pattern("^([0-9]{12})$")],[checkIdCardExists(this.employeeService)]],
-      account: ['', [Validators.required, checkTrim], [checkNameExists(this.employeeService)]],
-      password: ['', [Validators.required, checkTrim]],
+      id_card: ['', [Validators.required,
+        Validators.pattern("^([0-9]{12})$")]],
+      account: ['', [Validators.required, checkTrim]],
+      password: ['', [Validators.required, checkTrim, Validators.pattern('')]],
       passwordConfirm: ['', [Validators.required]]
     }, {
       validator: [checkPasswordConfirm]
@@ -142,23 +149,7 @@ export class EmployeeComponentComponent implements OnInit {
   }
 
   saveForm() {
-    // // @ts-ignore
-    // this.formGroup.value = {
-    //   account: "NRTDATTEBAYO",
-    //   avatar: "https://firebasestorage.googleapis.com/v0/b/projectspring1-3…lry.png?alt=media&token=92426b27-69a4-47f3-a394-c7710c9ed879",
-    //   birthday: "2023-01-11",
-    //   department: "2",
-    //   email: "90accwno@gmail.com",
-    //   gender: "2",
-    //   id_card: "512414142421",
-    //   name: "erase",
-    //   address: "DN",
-    //   password: "123123",
-    //   passwordConfirm: "123123",
-    //   phone: "0912385124",
-    //   salary: 512414,
-    //   salaryScale: "4"
-    // }
+
     this.employeeService.save(this.formGroup).subscribe(value => {
        this.message = `tạo mới thành công nhân viên tên ${value.name}`;
       document.getElementById("createModal").click();
@@ -169,27 +160,78 @@ export class EmployeeComponentComponent implements OnInit {
   }
 
   saveAllForm() {
-    // đặt tên cho file nên thêm tiền tố ngày đăng để tránh trùng lập tên file sẽ gây mất dữ liệu
-    // employeeAvatar/ là để tách folder lưu ra cho dễ kiểm soát
-    const filePath = `employeeAvatar/${Date.now()}${this.fileChose.name}`;
-    const fileRef = this.storage.ref(filePath);
-    // bắt đầu upload
-    this.storage.upload(filePath, this.fileChose)
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-           fileRef.getDownloadURL().subscribe(url => {
-             console.log(url)
-             // return về link url đã lưu trên firebase. set nó vào trong form sau khi đã lưu
-             this.formGroup.value.avatar = url;
-             // và lưu form
-             this.saveForm();
-          });
-        })
-      )
-      .subscribe();
-    // this.saveForm();
+    let flag: boolean = true;
+    if (checkIdCardExists != null) {
+      flag = false;
+      document.getElementById("successCMND").style.display = 'none';
+      document.getElementById("cmndExists").style.display = 'block';
+      console.log('id card here')
+    }
+
+    if (checkEmailExists != null) {
+      document.getElementById("successEmail").style.display = 'none';
+      document.getElementById("emailExists").style.display = 'block';
+      flag = false;
+      console.log('email here')
+    }
+
+
+    if (checkPhoneExists != null) {
+      document.getElementById("successPhone").style.display = 'none';
+      document.getElementById("phoneExists").style.display = 'block';
+      console.log('phone here')
+      flag = false;
+    }
+
+    if (checkNameExists != null) {
+      document.getElementById("successName").style.display = 'none';
+      document.getElementById("nameExists").style.display = 'block';
+      console.log('name here')
+      flag = false;
+    }
+
+
+    if (flag) {
+      // đặt tên cho file nên thêm tiền tố ngày đăng để tránh trùng lập tên file sẽ gây mất dữ liệu
+      // employeeAvatar/ là để tách folder lưu ra cho dễ kiểm soát
+      const filePath = `employeeAvatar/${Date.now()}${this.fileChose.name}`;
+      const fileRef = this.storage.ref(filePath);
+      // bắt đầu upload
+      this.storage.upload(filePath, this.fileChose)
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            fileRef.getDownloadURL().subscribe(url => {
+              console.log(url)
+              // return về link url đã lưu trên firebase. set nó vào trong form sau khi đã lưu
+              this.formGroup.value.avatar = url;
+              // và lưu form
+              this.saveForm();
+            });
+          })
+        )
+        .subscribe();
+      // this.saveForm();
+    }
   }
 
+  changeCMND() {
+    document.getElementById("successCMND").style.display = 'block';
+    document.getElementById("cmndExists").style.display = 'none';
+  }
 
+  changeEmail() {
+    document.getElementById("successEmail").style.display = 'block';
+    document.getElementById("emailExists").style.display = 'none';
+  }
+
+  changePhone() {
+    document.getElementById("successPhone").style.display = 'block';
+    document.getElementById("phoneExists").style.display = 'none';
+  }
+
+  changeUsername() {
+    document.getElementById("successName").style.display = 'block';
+    document.getElementById("nameExists").style.display = 'none';
+  }
 }

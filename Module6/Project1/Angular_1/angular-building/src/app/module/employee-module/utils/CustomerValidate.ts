@@ -1,13 +1,16 @@
 import {AbstractControl, AsyncValidatorFn, ValidationErrors} from "@angular/forms";
-import {logger} from "codelyzer/util/logger";
 import {EmployeeServiceService} from "../service/employee-service.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import * as moment from "moment";
+
 
 export function checkBirthday(control: AbstractControl): ValidationErrors | null {
-  let now = new Date().toISOString().substring(0, 10);
-  let birthday = control.value;
-  if (now < birthday) return {birthdaypast: true};
+  let dayCheck = moment(control.value);
+  let dayNow = moment(new Date());
+  if (moment.duration(dayNow.diff(dayCheck)).years() < 18) {
+    return {birthdaypast: true};
+  }
   return null;
 }
 
@@ -49,13 +52,15 @@ export function checkPhoneExists(accountService: EmployeeServiceService): AsyncV
         )
       );
   };
-}export function checkEmailExists(accountService: EmployeeServiceService): AsyncValidatorFn {
+}
+
+export function checkEmailExists(accountService: EmployeeServiceService): AsyncValidatorFn {
   return (control: AbstractControl): Observable<ValidationErrors> => {
     return accountService
       .findByEmail(control.value)
       .pipe(
         map((result: boolean) => {
-          console.log('email: ' + result)
+            console.log('email: ' + result)
             return result ? {emailAlreadyExists: true} : null
           }
         )
